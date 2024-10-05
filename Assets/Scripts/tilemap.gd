@@ -29,7 +29,8 @@ func _unhandled_input(_event: InputEvent) -> void:
 		if cell_id == -1:
 			return
 		#Placeholder for cell coordinates until we set up tile visualizations
-		set_cell(coords, selected_tile_id, Vector2i(2, 1))	
+		set_cell(coords, selected_tile_id, Vector2i(2, 1))
+		id_map[get_array_index(coords)] = selected_tile_id
 		print("Placing tile id ", selected_tile_id, " at ", coords)
 		is_placing_tile = false
 		selected_tile_id = -1
@@ -58,6 +59,8 @@ func get_coord_from_position(location: Vector2) -> Vector2i:
 	var y_coord = floor(location.y / tile_size.y)
 	return Vector2i(x_coord, y_coord)
 
+func get_array_index(coords: Vector2i) -> int:
+	return coords.x + coords.y * map_size.x
 
 #No pathfinding, strict nearest
 func get_nearest_tile(starting_location: Vector2, id: int = -1, sprite_id: int = -1) -> Vector2i:
