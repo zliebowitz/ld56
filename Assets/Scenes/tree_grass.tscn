@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7jae8icnl10y"]
+
+[ext_resource type="Texture2D" uid="uid://dn4q72j81c618" path="res://Graphics/GrassTiles.png" id="1_0km38"]
+[ext_resource type="Texture2D" uid="uid://c6mi7fuo6iipy" path="res://Graphics/TreeTiles.png" id="2_oufyl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmb3p"]
+atlas = ExtResource("1_0km38")
+region = Rect2(64, 32, 32, 32)
+
+[node name="TreeGrass" type="Sprite2D"]
+texture = SubResource("AtlasTexture_cmb3p")
+
+[node name="TreeTile" type="Sprite2D" parent="."]
+position = Vector2(0.74, -18.355)
+texture = ExtResource("2_oufyl")
