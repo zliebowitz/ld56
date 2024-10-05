@@ -4,6 +4,10 @@ extends Node2D
 enum Movement {WALKING, FLYING, SWIMMING}
 
 enum STATE {SEEK_WATER, WAIT_DRINKING, SEEK_FOOD, WAIT_EAT, REPRODUCE_IF_ABLE, RANDOM_WANDERING}
+
+
+signal gain_dna(dna_value: int)
+
 # A list of states that the creature will loop through, in order.
 @export var state_list = [STATE.SEEK_WATER, STATE.SEEK_FOOD, STATE.RANDOM_WANDERING]
 # A list of timers, showing how long each state should last. Should be the same length as the state list
@@ -96,10 +100,9 @@ func move_towards_destination(delta: float) -> bool:
 
 
 func create_dna() -> void:
-	# TODO
-	pass
+	emit_signal("gain_dna", dna_value)
 
 
 func kill() -> void:
 	# TODO
-	pass
+	create_dna()
