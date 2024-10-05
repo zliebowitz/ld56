@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dneu2bybpb4da"
-path="res://.godot/imported/fox_eat7.png-58007f60bc4f9556cb8af6c1430d95ee.ctex"
+path="res://.godot/imported/fox_eat7.png-885de5c59306155ac6d36dd4a5018c6f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/fox/Eat/fox_eat7.png"
-dest_files=["res://.godot/imported/fox_eat7.png-58007f60bc4f9556cb8af6c1430d95ee.ctex"]
+source_file="res://Assets/Characters/Fox/Eat/fox_eat7.png"
+dest_files=["res://.godot/imported/fox_eat7.png-885de5c59306155ac6d36dd4a5018c6f.ctex"]
 
 [params]
 

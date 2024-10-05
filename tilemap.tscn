@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://c5cff1stfno0j"]
+[gd_scene load_steps=21 format=4 uid="uid://c5cff1stfno0j"]
 
 [ext_resource type="Texture2D" uid="uid://btue1udj2y7bs" path="res://Assets/Tiles/Grassland.png" id="1_72vrb"]
 [ext_resource type="Texture2D" uid="uid://oha2ecvftva" path="res://Graphics/GrassTiles0.png" id="1_lp1ne"]
@@ -11,7 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://78dhmemtgfvq" path="res://Assets/Scenes/ui_tile.tscn" id="5_mvtnu"]
 [ext_resource type="Texture2D" uid="uid://qs3watgxm7m5" path="res://Graphics/Acorn.png" id="6_u5lns"]
 [ext_resource type="PackedScene" uid="uid://knj83fof2f5h" path="res://Assets/Scripts/Animals/Squirrel.tscn" id="11_w0jgb"]
-[ext_resource type="PackedScene" uid="uid://bwagknfgqewx3" path="res://Assets/Scripts/Animals/Hawk.tscn" id="12_4q3w6"]
+[ext_resource type="PackedScene" uid="uid://q7wdqby8w0rk" path="res://Assets/Scripts/Animals/Hawk.tscn" id="12_4q3w6"]
+[ext_resource type="PackedScene" uid="uid://dkjdcp70u5gyd" path="res://Assets/Scripts/Animals/fox.tscn" id="13_jcdkv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_47fab"]
 texture = ExtResource("1_lp1ne")
@@ -299,6 +300,9 @@ food_class = "Nut"
 
 [node name="Hawk" parent="." instance=ExtResource("12_4q3w6")]
 position = Vector2(201, 241)
+
+[node name="Fox" parent="." instance=ExtResource("13_jcdkv")]
+position = Vector2(628, 377)
 
 [connection signal="tile_placed" from="TileMapLayer" to="CanvasLayer" method="_on_tile_map_layer_tile_placed"]
 [connection signal="ui_tile_selected" from="CanvasLayer/GridContainer/UI_Tile" to="CanvasLayer" method="_on_ui_tile_selected"]
