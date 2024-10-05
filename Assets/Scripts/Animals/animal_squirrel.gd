@@ -1,5 +1,5 @@
 class_name Squirrel
-extends "animal_base.gd"
+extends Animal
 
 func _ready() -> void:
 	state_list = [STATE.SEEK_WATER, STATE.WAIT_DRINKING, STATE.SEEK_FOOD, STATE.WAIT_EAT, STATE.RANDOM_WANDERING]

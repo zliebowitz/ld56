@@ -27,7 +27,7 @@ signal gain_dna(dna_value: int)
 @export var food_class : String
 @export var reproduction_site_class : String
 
-@onready var tilemap = get_node("../TileMapLayer")
+@onready var tilemap = GlobalManager.tilemap
 var current_state : STATE = initial_state
 var time_in_state : float = 0
 
