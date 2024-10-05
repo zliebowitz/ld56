@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ba0cysom8n0ag"
-path="res://.godot/imported/fox_death8.png-839a88f405c79b98164f2d87325b0096.ctex"
+path="res://.godot/imported/fox_death8.png-44fe967e4a8ffdb25a31980e3ab6db3a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/Fox/Death/fox_death8.png"
-dest_files=["res://.godot/imported/fox_death8.png-839a88f405c79b98164f2d87325b0096.ctex"]
+source_file="res://Assets/Characters/fox/death/fox_death8.png"
+dest_files=["res://.godot/imported/fox_death8.png-44fe967e4a8ffdb25a31980e3ab6db3a.ctex"]
 
 [params]
 
