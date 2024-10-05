@@ -3,17 +3,17 @@ extends Node2D
 
 enum Movement {WALKING, FLYING, SWIMMING}
 
-enum STATE {SEEK_WATER, WAIT_DRINKING, SEEK_FOOD, WAIT_EAT, REPRODUCE_IF_ABLE, RANDOM_WANDERING}
+enum STATE {SEEK_WATER, WAIT_DRINKING, SEEK_FOOD, WAIT_EAT, REPRODUCE_IF_ABLE, RANDOM_WANDERING, GO_HOME}
 
 
 signal gain_dna(dna_value: int)
 
 # A list of states that the creature will loop through, in order.
-@export var state_list = [STATE.SEEK_WATER, STATE.SEEK_FOOD, STATE.RANDOM_WANDERING]
+@export var state_list: Array[STATE] = []
 # A list of timers, showing how long each state should last. Should be the same length as the state list
 @export var state_timers = [10, 10, 10]
 # A list of states that, if they reach the end of the state timer, kills the creature.
-@export var timed_states = [STATE.SEEK_WATER, STATE.SEEK_FOOD]
+@export var timed_states: Array[STATE] = [STATE.SEEK_WATER, STATE.SEEK_FOOD]
 @export var animal_name: String = "PLACEHOLDER"
 @export var movement_mode: Movement = Movement.WALKING
 @export var destination: Vector2 = position
@@ -28,7 +28,7 @@ signal gain_dna(dna_value: int)
 @export var reproduction_site_class : String
 
 @onready var tilemap = GlobalManager.tilemap
-var current_state : STATE = initial_state
+@onready var current_state : STATE = initial_state
 var time_in_state : float = 0
 
 

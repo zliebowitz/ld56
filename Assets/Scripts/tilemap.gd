@@ -42,12 +42,20 @@ func select_tile(tile_id: int) -> void:
 
 func place_tile(coords: Vector2i, map_id: int = -1, sprite_id: int = -1):
 	if map_id != -1:
-		set_cell(coords, map_id, Vector2i(2, 1))
-		id_map[get_array_index(coords)] = selected_tile_id
-		print("Placing tile id ", selected_tile_id, " at ", coords)
+		var scene_source = tile_set.get_source(map_id)
+		if scene_source is TileSetScenesCollectionSource:
+			set_cell(coords, map_id, Vector2i(0, 0), 1)
+		else:
+			set_cell(coords, map_id, Vector2i(2, 1))
+		id_map[get_array_index(coords)] = map_id
+		print("Placing tile id ", map_id, " at ", coords)
 		
 	if sprite_id != -1:
-		spritelayer.set_cell(coords, sprite_id, Vector2i(0, 0))
+		var scene_source = tile_set.get_source(sprite_id)
+		if scene_source is TileSetScenesCollectionSource:
+			spritelayer.set_cell(coords, sprite_id, Vector2i(0, 0), 1)
+		else:
+			spritelayer.set_cell(coords, sprite_id, Vector2i(0, 0))
 		sprite_id_map[get_array_index(coords)] = sprite_id
 		print("Placing Sprite id ", sprite_id, " at ", coords)
 
@@ -107,3 +115,15 @@ func get_nearest_tile(starting_location: Vector2, id: int = -1, sprite_id: int =
 
 func get_nearest_tile_absolute(starting_location: Vector2, id: int = -1, sprite_id: int = -1) -> Vector2:
 	return get_nearest_tile(starting_location, id, sprite_id)*32
+	
+func get_nearest_creature(starting_location: Vector2, creature_type: Variant) -> Vector2:
+	var distance := 999999.9
+	var closest := Vector2(-1,-1)
+	var main = get_parent()
+	for child in main.get_children():
+		if is_instance_of(child, creature_type):
+			var new_distance = starting_location.distance_squared_to(child.position)
+			if new_distance < distance:
+				distance = new_distance
+				closest = child.position
+	return closest
