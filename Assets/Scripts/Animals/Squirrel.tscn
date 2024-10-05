@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://knj83fof2f5h"]
+
+[ext_resource type="Texture2D" uid="uid://0mckfbgo642b" path="res://Graphics/Squirrel/Squirrel Run.png" id="1_8hgi0"]
+[ext_resource type="Script" path="res://Assets/Scripts/Animals/animal_squirrel.gd" id="1_88qs4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_go165"]
+atlas = ExtResource("1_8hgi0")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hetj"]
+atlas = ExtResource("1_8hgi0")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilma4"]
+atlas = ExtResource("1_8hgi0")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6l80c"]
+atlas = ExtResource("1_8hgi0")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xboll"]
+atlas = ExtResource("1_8hgi0")
+region = Rect2(128, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h2t03"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_go165")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hetj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilma4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6l80c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xboll")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Squirrel" type="Node2D"]
+script = ExtResource("1_88qs4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_h2t03")
+autoplay = "default"
+frame_progress = 0.497074
+speed_scale = 2.0

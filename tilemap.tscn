@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://c5cff1stfno0j"]
+[gd_scene load_steps=19 format=4 uid="uid://c5cff1stfno0j"]
 
 [ext_resource type="Texture2D" uid="uid://btue1udj2y7bs" path="res://Assets/Tiles/Grassland.png" id="1_72vrb"]
 [ext_resource type="Texture2D" uid="uid://oha2ecvftva" path="res://Graphics/GrassTiles0.png" id="1_lp1ne"]
@@ -7,9 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://iq2vdmbaleq2" path="res://Assets/Tiles/Water.png" id="2_v1vw5"]
 [ext_resource type="Texture2D" uid="uid://dtge44bcrhpee" path="res://Graphics/WaterTiles0.png" id="3_wganx"]
 [ext_resource type="Script" path="res://Assets/Scripts/UI.gd" id="4_j5su3"]
-[ext_resource type="PackedScene" uid="uid://c7jae8icnl10y" path="res://Assets/Scenes/tree_grass.tscn" id="4_p0cog"]
+[ext_resource type="PackedScene" path="res://Assets/Scenes/tree_grass.tscn" id="4_p0cog"]
 [ext_resource type="PackedScene" uid="uid://78dhmemtgfvq" path="res://Assets/Scenes/ui_tile.tscn" id="5_mvtnu"]
 [ext_resource type="Texture2D" uid="uid://qs3watgxm7m5" path="res://Graphics/Acorn.png" id="6_u5lns"]
+[ext_resource type="PackedScene" uid="uid://knj83fof2f5h" path="res://Assets/Scripts/Animals/Squirrel.tscn" id="11_w0jgb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_47fab"]
 texture = ExtResource("1_lp1ne")
@@ -195,6 +196,9 @@ layout_mode = 0
 offset_top = 30.0
 offset_right = 80.0
 offset_bottom = 79.0
+
+[node name="Squirrel" parent="." instance=ExtResource("11_w0jgb")]
+position = Vector2(545, 276)
 
 [connection signal="tile_placed" from="TileMapLayer" to="CanvasLayer" method="_on_tile_map_layer_tile_placed"]
 [connection signal="ui_tile_selected" from="CanvasLayer/GridContainer/UI_Tile" to="CanvasLayer" method="_on_ui_tile_selected"]

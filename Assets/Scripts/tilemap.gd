@@ -77,4 +77,7 @@ func get_nearest_tile(starting_location: Vector2, id: int = -1, sprite_id: int =
 					distance = new_distance
 					closest = coords
 	return closest
-			
+
+
+func get_nearest_tile_absolute(starting_location: Vector2, id: int = -1, sprite_id: int = -1) -> Vector2:
+	return get_nearest_tile(starting_location, id, sprite_id)*32
