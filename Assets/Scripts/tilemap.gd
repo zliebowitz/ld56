@@ -55,8 +55,9 @@ func _unhandled_input(_event: InputEvent) -> void:
 			tile_placed_count += 1
 		elif is_placing_animal:
 			var animal: Animal = animal_resource.instantiate()
-			# check cost here
-			var current_cost: int = animal.cost * pow(animal.cost_scaling, animal_parent.get_child_count())
+			var animal_base_cost = AnimalDefinition.cost[animal_name]
+			var animal_cost_scale = AnimalDefinition.cost_scale[animal_name]
+			var current_cost: int = animal_base_cost * pow(animal_cost_scale, animal_parent.get_child_count())
 			if current_cost > main.dna:
 				animal.free()
 				return
@@ -80,11 +81,12 @@ func select_tile(tile_id: int) -> void:
 	is_placing_animal = false
 	
 	
-func select_animal(resource: PackedScene, parent: Node) -> void:
-	animal_resource = resource
-	animal_parent = parent
-	is_placing_tile = false
-	is_placing_animal = true
+func select_animal(animal_name: String, resource: PackedScene, parent: Node) -> void:
+	self.animal_resource = resource
+	self.animal_parent = parent
+	self.animal_name = animal_name
+	self.is_placing_tile = false
+	self.is_placing_animal = true
 
 
 

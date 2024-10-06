@@ -17,7 +17,7 @@ func _on_ui_tile_selected(tilename: String, tile_id: int, description: String) -
 	$Description.visible = true
 
 func _on_animal_selected(animal_name: String, animal_resource: PackedScene, descriptor: String, animal_parent: Node) -> void:
-	tilemap.select_animal(animal_resource, animal_parent)
+	tilemap.select_animal(animal_name, animal_resource, animal_parent)
 	$Description/TileName.text = animal_name
 	$Description/TileDescription.text = descriptor
 	$Description.visible = true
