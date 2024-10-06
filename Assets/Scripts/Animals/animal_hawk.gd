@@ -2,26 +2,30 @@ class_name Hawk
 extends Animal
 
 @onready var animation = $AnimatedSprite2D
-var target: Animal
 
 func _process_action(delta: float) -> void:
+	if animation.animation == "Eat" && animation.is_playing():
+		if time_in_state < 2:
+			return
+		
 	updateAnimation()
 	match current_state:
 		STATE.SEEK_FOOD:
-			target = null
 			target = get_nearest_creature_list([Squirrel, Rabbit])
-			if target:
+			if is_instance_valid(target):
 				destination = target.position
 			else: destination = position
 			if move_towards_destination(delta):
-				if not target:
+				if not is_instance_valid(target):
 					return
+				animation.play("Eat")
 				target.kill()
 				create_dna()
 				advance_state()
 		STATE.SEEK_ITEM:
-			var nearest_tree_tile = tilemap.get_nearest_tile(position - Vector2.UP * 25, 3)
-			destination = tilemap.get_tile_center(nearest_tree_tile) + Vector2.UP * 25
+			if can_process_pathfinding():
+				var nearest_tree_tile = tilemap.get_nearest_tile(position - Vector2.UP * 25, 3)
+				destination = tilemap.get_tile_center(nearest_tree_tile) + Vector2.UP * 25
 			if move_towards_destination(delta):
 				advance_state()
 		STATE.WAIT:

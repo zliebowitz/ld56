@@ -11,3 +11,9 @@ extends Node
 		if main == null: 
 			main = get_tree().root.get_node("Main")
 		return main
+		
+var creature_count: int = 0
+
+func add_creature_count() -> void:
+	creature_count = creature_count + 1
+	#print("Creature Count: ", creature_count, " Frame: ", Engine.get_frames_drawn())

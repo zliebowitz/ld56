@@ -1,12 +1,18 @@
-[gd_scene load_steps=19 format=3 uid="uid://bwagknfgqewx3"]
+[gd_scene load_steps=25 format=3 uid="uid://bwagknfgqewx3"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Animals/animal_hawk.gd" id="1_3ifj2"]
+[ext_resource type="Texture2D" uid="uid://dwttjf4allf3i" path="res://Graphics/Hawk/Eat/hawk_eat3.png" id="2_ige6b"]
 [ext_resource type="Texture2D" uid="uid://4lnnfytccwfa" path="res://Graphics/Hawk/Fly/hawk_fly1.png" id="2_tw6vf"]
 [ext_resource type="Texture2D" uid="uid://d0t5n1k6g8s4" path="res://Graphics/Hawk/Fly/hawk_fly2.png" id="3_2nldr"]
+[ext_resource type="Texture2D" uid="uid://bl0l1qwlqrukw" path="res://Graphics/Hawk/Eat/hawk_eat4.png" id="3_lp11n"]
 [ext_resource type="Texture2D" uid="uid://32d35vmjn8y4" path="res://Graphics/Hawk/Fly/hawk_fly3.png" id="4_bevfq"]
+[ext_resource type="Texture2D" uid="uid://ha61qwi8bql7" path="res://Graphics/Hawk/Eat/hawk_eat5.png" id="4_gvljb"]
+[ext_resource type="Texture2D" uid="uid://dii3l8xcx312x" path="res://Graphics/Hawk/Eat/hawk_eat6.png" id="5_cw15d"]
 [ext_resource type="Texture2D" uid="uid://8bgx53ryik8o" path="res://Graphics/Hawk/Fly/hawk_fly4.png" id="5_pisgk"]
+[ext_resource type="Texture2D" uid="uid://d2ox2kuveprq7" path="res://Graphics/Hawk/Eat/hawk_eat2.png" id="6_ocifk"]
 [ext_resource type="Texture2D" uid="uid://btat1mqw5f52g" path="res://Graphics/Hawk/Fly/hawk_fly5.png" id="6_yqgfs"]
 [ext_resource type="Texture2D" uid="uid://ra6eurkfr5kr" path="res://Graphics/Hawk/Fly/hawk_fly6.png" id="7_klh5o"]
+[ext_resource type="Texture2D" uid="uid://drd8api5wqoon" path="res://Graphics/Hawk/Eat/hawk_eat1.png" id="7_xo8uw"]
 [ext_resource type="Texture2D" uid="uid://ccayvhs14vy1l" path="res://Graphics/Hawk/Fly/hawk_fly7.png" id="8_4k3dw"]
 [ext_resource type="Texture2D" uid="uid://v4swmhoceqgy" path="res://Graphics/Hawk/Fly/hawk_fly8.png" id="9_eunei"]
 [ext_resource type="Texture2D" uid="uid://brse8q85w4nlw" path="res://Graphics/Hawk/Fly/hawk_fly9.png" id="10_pwv74"]
@@ -18,6 +24,38 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d48wb"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ige6b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lp11n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gvljb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cw15d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gvljb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lp11n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ige6b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ocifk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xo8uw")
+}],
+"loop": true,
+"name": &"Eat",
+"speed": 2.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_tw6vf")
@@ -131,17 +169,22 @@ initial_state = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_d48wb")
-animation = &"Fly"
+animation = &"Eat"
 autoplay = "Idle"
+frame_progress = 0.633863
 speed_scale = 2.0
 
 [node name="SearchRadius" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SearchRadius"]
+visible = false
 shape = SubResource("CircleShape2D_y4vg8")
 
 [node name="BodyRadius" type="Area2D" parent="."]
+visible = false
 input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyRadius"]
+visible = false
 shape = SubResource("CircleShape2D_c61tx")

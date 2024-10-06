@@ -1,5 +1,13 @@
 class_name AnimalDefinition
 
+enum {
+	ANIMAL_SQUIRREL = 0,
+	ANIMAL_HAWK = 1,
+	ANIMAL_FOX = 2,
+	ANIMAL_ALLIGATOR = 3,
+	ANIMAL_RABBIT = 4
+}
+
 static var name = {
 	0: "Squirrel",
 	1: "Hawk",
