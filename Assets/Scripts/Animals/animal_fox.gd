@@ -2,8 +2,6 @@ class_name Fox
 extends Animal
 
 @onready var animation = $FoxAnimation
-@onready var timer = $Timer
-var is_waiting = false
 var count = 0
 
 func _process_action(delta: float) -> void:
@@ -37,8 +35,7 @@ func _process_action(delta: float) -> void:
 			else:
 				if (fmod(time_in_state, 2.0) < 0.01):
 					destination =  Vector2(position.x + randf_range(-50, 50), position.y + randf_range(-50, 50))
-				if (fmod(time_in_state, 2.0) > 1.5):
-					count = 0
+				
 				if (move_towards_destination(delta)):
 					animation.play("Default")
 		STATE.PATROL:
@@ -58,8 +55,3 @@ func updateAnimation():
 			animation.play("Run")
 		STATE.PATROL:
 			animation.play("Sleep")
-
-
-func _on_wait_timeout() -> void:
-	is_waiting = false
-	print("Wait state finished!")
