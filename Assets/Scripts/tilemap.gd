@@ -5,6 +5,7 @@ extends TileMapLayer
 @export var map_size: Vector2
 
 @onready var spritelayer: TileMapLayer = $SpriteLayer
+@onready var main: Main = $".."
 
 var id_map: Array[int]
 var sprite_id_map: Array[int]
@@ -43,6 +44,11 @@ func _unhandled_input(_event: InputEvent) -> void:
 			tile_placed.emit()
 		elif is_placing_animal:
 			var animal: Animal = animal_resource.instantiate()
+			# check cost here
+			var current_cost: int = animal.cost * pow(animal.cost_scaling, animal_parent.get_child_count())
+			if current_cost > main.dna:
+				animal.free()
+				return
 			if animal.movement_mode == Animal.Movement.WALKING and cell_id == 2: # water
 				animal.free()
 				return
@@ -51,6 +57,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 				return
 			animal.position = mouse_pos
 			animal_parent.add_child(animal)
+			animal.gain_dna.emit(-current_cost)
 			
 			
 			
