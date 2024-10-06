@@ -1,13 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://bwagknfgqewx3"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Animals/animal_hawk.gd" id="1_3ifj2"]
-[ext_resource type="Texture2D" uid="uid://onur23p6t6ge" path="res://icon.svg" id="2_4maac"]
+[ext_resource type="Texture2D" uid="uid://bxer81bw7i01" path="res://Graphics/Hawk.png" id="2_gtxcg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d48wb"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_4maac")
+"texture": ExtResource("2_gtxcg")
 }],
 "loop": true,
 "name": &"default",
@@ -33,7 +33,6 @@ speed = 75.0
 initial_state = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_d48wb")
 autoplay = "default"
 speed_scale = 2.0
