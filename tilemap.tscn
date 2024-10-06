@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://Assets/Scripts/ui_animal.gd" id="11_gm37g"]
 [ext_resource type="Texture2D" uid="uid://0mckfbgo642b" path="res://Graphics/Squirrel/Squirrel Run.png" id="11_huu1q"]
 [ext_resource type="PackedScene" uid="uid://knj83fof2f5h" path="res://Assets/Scripts/Animals/Squirrel.tscn" id="11_w0jgb"]
-[ext_resource type="PackedScene" uid="uid://q7wdqby8w0rk" path="res://Assets/Scripts/Animals/Hawk.tscn" id="12_4q3w6"]
+[ext_resource type="PackedScene" uid="uid://bwagknfgqewx3" path="res://Assets/Scripts/Animals/Hawk.tscn" id="12_4q3w6"]
 [ext_resource type="Texture2D" uid="uid://onur23p6t6ge" path="res://icon.svg" id="14_nhw0j"]
 [ext_resource type="PackedScene" uid="uid://dkjdcp70u5gyd" path="res://Assets/Scripts/Animals/fox.tscn" id="16_f04wl"]
 

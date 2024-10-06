@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://dowgcxavecahd"]
+
+[ext_resource type="Script" path="res://title_screen.gd" id="1_h8i4g"]
+[ext_resource type="Texture2D" uid="uid://de0xdng2u1qsi" path="res://Graphics/TitleScreenStrip.png" id="2_ok22b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dgj5j"]
+atlas = ExtResource("2_ok22b")
+region = Rect2(0, 0, 948, 534)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4csr"]
+atlas = ExtResource("2_ok22b")
+region = Rect2(0, 534, 948, 534)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xpkp"]
+atlas = ExtResource("2_ok22b")
+region = Rect2(0, 1068, 948, 534)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylfsh"]
+atlas = ExtResource("2_ok22b")
+region = Rect2(0, 1602, 948, 534)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jovsi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dgj5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4csr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xpkp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ylfsh")
+}],
+"loop": true,
+"name": &"title_animation",
+"speed": 5.0
+}]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h8i4g")
+
+[node name="StartButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 948.0
+offset_bottom = 533.0
+text = "Start"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(474, 267)
+sprite_frames = SubResource("SpriteFrames_jovsi")
+animation = &"title_animation"
+frame_progress = 0.504312
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
