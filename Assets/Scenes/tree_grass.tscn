@@ -15,8 +15,10 @@ nut_timer = 10.0
 std_deviation = 1.0
 
 [node name="TreeTile" type="Sprite2D" parent="."]
-position = Vector2(0.74, -18.355)
+z_index = 1
+position = Vector2(0.74, 0)
 texture = ExtResource("2_oufyl")
+offset = Vector2(0, -18.355)
 
 [node name="Timer" type="Timer" parent="."]
 
