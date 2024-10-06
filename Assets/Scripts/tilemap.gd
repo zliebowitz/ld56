@@ -51,7 +51,6 @@ func _unhandled_input(_event: InputEvent) -> void:
 				return
 			animal.position = mouse_pos
 			animal_parent.add_child(animal)
-			is_placing_animal = false
 			
 			
 			

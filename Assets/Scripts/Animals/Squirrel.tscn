@@ -1,7 +1,32 @@
-[gd_scene load_steps=9 format=3 uid="uid://knj83fof2f5h"]
+[gd_scene load_steps=16 format=3 uid="uid://knj83fof2f5h"]
 
 [ext_resource type="Texture2D" uid="uid://0mckfbgo642b" path="res://Graphics/Squirrel/Squirrel Run.png" id="1_8hgi0"]
 [ext_resource type="Script" path="res://Assets/Scripts/Animals/animal_squirrel.gd" id="1_88qs4"]
+[ext_resource type="Texture2D" uid="uid://csyxanvy6pk00" path="res://Graphics/Squirrel/Squirrel Idle.png" id="2_aigx0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wm6kd"]
+atlas = ExtResource("2_aigx0")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0oaly"]
+atlas = ExtResource("2_aigx0")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6e3gn"]
+atlas = ExtResource("2_aigx0")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2rt5"]
+atlas = ExtResource("2_aigx0")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brs3h"]
+atlas = ExtResource("2_aigx0")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5rrd"]
+atlas = ExtResource("2_aigx0")
+region = Rect2(80, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_go165"]
 atlas = ExtResource("1_8hgi0")
@@ -26,6 +51,29 @@ region = Rect2(128, 0, 32, 16)
 [sub_resource type="SpriteFrames" id="SpriteFrames_h2t03"]
 animations = [{
 "frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_wm6kd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0oaly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6e3gn")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_g2rt5")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_brs3h")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_j5rrd")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_go165")
 }, {
@@ -42,7 +90,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_xboll")
 }],
 "loop": true,
-"name": &"default",
+"name": &"run",
 "speed": 5.0
 }]
 
@@ -58,6 +106,7 @@ food_class = "Nut"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_h2t03")
-autoplay = "default"
-frame_progress = 0.497074
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.540467
 speed_scale = 2.0
