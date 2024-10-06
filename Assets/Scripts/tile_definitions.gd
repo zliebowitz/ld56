@@ -4,7 +4,8 @@ enum {
 	TILE_GRASS = 0,
 	TILE_SAND = 1,
 	TILE_WATER = 2,
-	TILE_TREE = 3
+	TILE_TREE = 3,
+	TILE_DREY = 4
 }
 
 static var tile_placed_count: int = 0;
@@ -20,14 +21,16 @@ static var base_cost = {
 	"Grass": 2,
 	"Sand": 2,
 	"Water": 2,
-	"Tree": 2
+	"Tree": 2,
+	"Drey": 4
 }
 
 static var cost_scale = {
 	"Grass": 2,
 	"Sand": 2,
 	"Water": 2,
-	"Tree": 2
+	"Tree": 2,
+	"Drey": 2
 }
 
 static var sprite_ids = {

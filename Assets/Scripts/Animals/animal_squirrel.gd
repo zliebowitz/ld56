@@ -1,8 +1,9 @@
 class_name Squirrel
 extends Animal
 	
-var wander_wait: float = 2.0
+@export var ratio_to_reproduce: float = 0.2
 
+var wander_wait: float = 2.0
 
 func _process_action(delta: float) -> void:
 	match current_state:
@@ -24,17 +25,33 @@ func _process_action(delta: float) -> void:
 			$AnimatedSprite2D.animation = "idle"
 			if has_time_passed():
 				advance_state()
+		STATE.REPRODUCE_IF_ABLE:
+			if randf() > ratio_to_reproduce:
+				advance_state()
+				return
+			$AnimatedSprite2D.animation = "run"
+			destination = tilemap.get_nearest_tile_absolute(position, 4)
+			if move_towards_destination(delta):
+				var destination_tile = tilemap.get_coord_from_position(destination)
+				var drey_scene: SquirrelDrey = tilemap.get_tile_scene(destination_tile)
+				if drey_scene != null:
+					drey_scene.spawn_squirrel(self)
+				advance_state()
+				return
+			if has_time_passed():
+				advance_state()
 		STATE.RANDOM_WANDERING:
 			if wander_wait > 1.0:
-				var new_destination = Vector2(position.x + randf_range(-100, 100), position.y + randf_range(-100, 100))
+				var new_destination = Vector2(position.x + randf_range(-50, 50), position.y + randf_range(-50, 50))
 				#If a valid tile
 				var coord = tilemap.get_coord_from_position(new_destination)
-				if tilemap.is_in_bounds(coord) and tilemap.get_tile_info(coord)[0] >= 0:
+				if tilemap.is_in_bounds(coord) and tilemap.get_tile_info(coord)[0] != 2:
 					destination = new_destination
-				else: destination = position
+				else: 
+					destination = position
 				wander_wait = 0.0
 				
-			if position.distance_to(destination) <= 8:
+			if position.distance_to(destination) <= 8 and destination > Vector2(-900, -900):
 				$AnimatedSprite2D.animation = "idle"
 			else:
 				$AnimatedSprite2D.animation = "run"
@@ -42,7 +59,7 @@ func _process_action(delta: float) -> void:
 			if move_towards_destination(delta):
 				wander_wait += delta
 			if has_time_passed():
-				wander_wait = 0
+				wander_wait = 2.0
 				advance_state()
 		var unknown_state:
 			print("Got state ", unknown_state," for ", animal_name, ", and does not know what to do!!!")

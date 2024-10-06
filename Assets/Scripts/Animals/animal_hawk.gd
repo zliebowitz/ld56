@@ -31,10 +31,18 @@ func _process_action(delta: float) -> void:
 				advance_state()
 		var unknown_state:
 			print("Got state ", unknown_state," for ", animal_name, ", and does not know what to do!!!")
+			
+	# Flip sprite if the squirrel is facing the opposite direction
+	var direction = position.angle_to_point(destination)
+	if direction < 0:
+		direction += 2*PI
+	$AnimatedSprite2D.set_flip_h(direction > PI/2 && direction < 3*PI/2 )
 
 func updateAnimation():
 	match current_state:
-		STATE.SEEK_FOOD, STATE.SEEK_ITEM:
+		STATE.SEEK_FOOD:
+			animation.play("Fly")
+		STATE.SEEK_ITEM:
 			animation.play("Fly")
 		STATE.WAIT:
 			animation.play("Idle")

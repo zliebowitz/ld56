@@ -154,6 +154,14 @@ func get_adjacent_tiles(coords: Vector2i) -> Array[Vector2i]:
 		if get_tile_info(test_vector)[0] == -1: 			continue
 		output_array.append(test_vector)
 	return output_array
+	
+func get_tile_scene(coords: Vector2i) -> Node2D:
+	var test_position = get_tile_center(coords)
+	for child in get_children():
+		if child is not Node2D and child is not TileMapLayer: return
+		if child.position.distance_to(test_position) <= 8:
+			return child
+	return null
 
 #No pathfinding, strict nearest
 func get_nearest_tile(starting_location: Vector2, id: int = -1, sprite_id: int = -1) -> Vector2i:
