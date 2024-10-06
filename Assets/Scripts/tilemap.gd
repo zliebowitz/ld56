@@ -40,10 +40,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 			return
 		if is_placing_tile:
 			# Determine cost of tiles and make sure have enough DNA
-			var tile_name = TileDefinition.tile_ids[selected_tile_id]
-			var tile_base_cost = TileDefinition.tile_cost[tile_name]
-			var tile_cost_scale = TileDefinition.tile_cost_scale[tile_name]
-			var current_cost: int = tile_base_cost * pow(tile_cost_scale, tile_placed_count);
+			var current_cost: int = TileDefinition.cost_from_id(selected_tile_id, tile_placed_count)
 			if current_cost > main.dna:
 				return
 			#place the tile
@@ -55,9 +52,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 			tile_placed_count += 1
 		elif is_placing_animal:
 			var animal: Animal = animal_resource.instantiate()
-			var animal_base_cost = AnimalDefinition.cost[animal_name]
-			var animal_cost_scale = AnimalDefinition.cost_scale[animal_name]
-			var current_cost: int = animal_base_cost * pow(animal_cost_scale, animal_parent.get_child_count())
+			var current_cost: int = AnimalDefinition.cost_from_name(animal_name, animal_parent.get_child_count())
 			if current_cost > main.dna:
 				animal.free()
 				return
