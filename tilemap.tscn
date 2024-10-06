@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://btue1udj2y7bs" path="res://Assets/Tiles/Grassland.png" id="1_72vrb"]
 [ext_resource type="Script" path="res://Assets/Scripts/main.gd" id="1_ii4nv"]
+[ext_resource type="TileSet" uid="uid://cxdns6mau5abj" path="res://Assets/Tiles/TileMapLayerTileset.tres" id="2_0ak7v"]
 [ext_resource type="Texture2D" uid="uid://oha2ecvftva" path="res://Graphics/GrassTiles0.png" id="1_lp1ne"]
 [ext_resource type="Texture2D" uid="uid://d35ufd6iv5gh6" path="res://Graphics/SandTiles.png" id="1_q30io"]
 [ext_resource type="Script" path="res://Assets/Scripts/tilemap.gd" id="2_fvnuu"]
@@ -147,6 +148,10 @@ z_index = -1
 y_sort_enabled = true
 tile_set = SubResource("TileSet_8s1cn")
 collision_enabled = false
+
+[node name="BorderLayer" type="TileMapLayer" parent="TileMapLayer"]
+y_sort_enabled = true
+tile_set = ExtResource("2_0ak7v")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("gridcontainer", "tilemap")]
 script = ExtResource("4_j5su3")
