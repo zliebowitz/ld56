@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dowgcxavecahd"]
+[gd_scene load_steps=9 format=3 uid="uid://dowgcxavecahd"]
 
 [ext_resource type="Script" path="res://title_screen.gd" id="1_h8i4g"]
 [ext_resource type="Texture2D" uid="uid://de0xdng2u1qsi" path="res://Graphics/TitleScreenStrip.png" id="2_ok22b"]
+[ext_resource type="AudioStream" uid="uid://62nrcw8uocug" path="res://Assets/Audio/Music/BGM2.wav" id="3_vpa38"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dgj5j"]
 atlas = ExtResource("2_ok22b")
@@ -61,5 +62,9 @@ position = Vector2(474, 267)
 sprite_frames = SubResource("SpriteFrames_jovsi")
 animation = &"title_animation"
 frame_progress = 0.504312
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vpa38")
+autoplay = true
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
