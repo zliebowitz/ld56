@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://c5cff1stfno0j"]
+[gd_scene load_steps=38 format=4 uid="uid://c5cff1stfno0j"]
 
 [ext_resource type="Texture2D" uid="uid://btue1udj2y7bs" path="res://Assets/Tiles/Grassland.png" id="1_72vrb"]
 [ext_resource type="Script" path="res://Assets/Scripts/main.gd" id="1_ii4nv"]
@@ -26,6 +26,8 @@
 [ext_resource type="PackedScene" uid="uid://dt5mducivgh0f" path="res://Assets/Scripts/Animals/fox.tscn" id="20_4ynms"]
 [ext_resource type="Texture2D" uid="uid://cpr18x0j6ig2g" path="res://Graphics/Bear/BearIcon.png" id="20_xweg1"]
 [ext_resource type="PackedScene" uid="uid://evjonwcnwwmn" path="res://Assets/Scripts/Animals/Bear.tscn" id="23_tk8hd"]
+[ext_resource type="PackedScene" uid="uid://o8ok72imslx1" path="res://population_hud.tscn" id="27_3chdh"]
+[ext_resource type="Script" path="res://Assets/Scripts/population_hud.gd" id="28_gluq0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_47fab"]
 texture = ExtResource("1_lp1ne")
@@ -235,7 +237,7 @@ script = ExtResource("11_gm37g")
 animal_name = "Rabbit"
 animal_resource = ExtResource("18_055kk")
 description = "It's a Rabbit!"
-animal_parent = NodePath("../../../Animals/Hawks")
+animal_parent = NodePath("../../../Animals/Rabbit")
 
 [node name="Ui_Fox" type="TextureRect" parent="CanvasLayer/GridContainer" node_paths=PackedStringArray("animal_parent")]
 layout_mode = 2
@@ -255,7 +257,7 @@ script = ExtResource("11_gm37g")
 animal_name = "Bear"
 animal_resource = ExtResource("23_tk8hd")
 description = "It's a Bear!"
-animal_parent = NodePath("../../../Animals/Hawks")
+animal_parent = NodePath("../../../Animals/Bear")
 
 [node name="Description" type="ColorRect" parent="CanvasLayer"]
 visible = false
@@ -280,6 +282,15 @@ offset_top = -12.0
 offset_right = 80.0
 offset_bottom = 12.0
 grow_vertical = 2
+
+[node name="Population" type="RichTextLabel" parent="CanvasLayer/Description"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -24.0
+offset_right = 249.0
+grow_vertical = 0
 
 [node name="TileDescription" type="RichTextLabel" parent="CanvasLayer/Description"]
 layout_mode = 1
@@ -321,9 +332,18 @@ text = "0
 
 [node name="Fox" type="Node" parent="Animals"]
 
+[node name="Bear" type="Node" parent="Animals"]
+
+[node name="Rabbit" type="Node" parent="Animals"]
+
+[node name="Alligator" type="Node" parent="Animals"]
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_3bs1d")
 autoplay = true
+
+[node name="PopulationHUD" parent="." instance=ExtResource("27_3chdh")]
+script = ExtResource("28_gluq0")
 
 [connection signal="tile_placed" from="TileMapLayer" to="CanvasLayer" method="_on_tile_map_layer_tile_placed"]
 [connection signal="ui_tile_selected" from="CanvasLayer/GridContainer/UI_Tile" to="CanvasLayer" method="_on_ui_tile_selected"]
