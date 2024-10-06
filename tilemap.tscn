@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" path="res://Assets/Scripts/Animals/Rabbit.tscn" id="18_055kk"]
 [ext_resource type="Texture2D" uid="uid://d0nbm1p5dxgbb" path="res://Assets/Characters/Fox/Idle/fox_idle1.png" id="19_6cvdm"]
 [ext_resource type="PackedScene" uid="uid://dt5mducivgh0f" path="res://Assets/Scripts/Animals/fox.tscn" id="20_4ynms"]
+[ext_resource type="Texture2D" uid="uid://cpr18x0j6ig2g" path="res://Graphics/Bear/BearIcon.png" id="20_xweg1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_47fab"]
 texture = ExtResource("1_lp1ne")
@@ -240,6 +241,16 @@ animal_resource = ExtResource("20_4ynms")
 description = "It's a fox!"
 animal_parent = NodePath("../../../Animals/Fox")
 
+[node name="Ui_Bear" type="TextureRect" parent="CanvasLayer/GridContainer" node_paths=PackedStringArray("animal_parent")]
+layout_mode = 2
+texture = ExtResource("20_xweg1")
+expand_mode = 4
+script = ExtResource("11_gm37g")
+animal_name = "Bear"
+animal_resource = ExtResource("18_055kk")
+description = "It's a Bear!"
+animal_parent = NodePath("../../../Animals/Hawks")
+
 [node name="Description" type="ColorRect" parent="CanvasLayer"]
 visible = false
 offset_left = 606.0
@@ -319,3 +330,5 @@ autoplay = true
 [connection signal="ui_animal_selected" from="CanvasLayer/GridContainer/Ui_Bunny" to="CanvasLayer" method="_on_animal_selected"]
 [connection signal="gui_input" from="CanvasLayer/GridContainer/Ui_Fox" to="CanvasLayer/GridContainer/Ui_Fox" method="_on_gui_input"]
 [connection signal="ui_animal_selected" from="CanvasLayer/GridContainer/Ui_Fox" to="CanvasLayer" method="_on_animal_selected"]
+[connection signal="gui_input" from="CanvasLayer/GridContainer/Ui_Bear" to="CanvasLayer/GridContainer/Ui_Bear" method="_on_gui_input"]
+[connection signal="ui_animal_selected" from="CanvasLayer/GridContainer/Ui_Bear" to="CanvasLayer" method="_on_animal_selected"]

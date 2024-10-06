@@ -1,0 +1,115 @@
+[gd_scene load_steps=15 format=3 uid="uid://evjonwcnwwmn"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/Animals/animal_bear.gd" id="1_5ysy0"]
+[ext_resource type="Texture2D" uid="uid://b81n4no5aw0qn" path="res://Graphics/Bear/BearingEating.png" id="2_duley"]
+[ext_resource type="Texture2D" uid="uid://swmwca7qrk2t" path="res://Graphics/Bear/BearingWalking.png" id="3_s1kdo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egc8m"]
+atlas = ExtResource("2_duley")
+region = Rect2(0, 0, 76, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_harpu"]
+atlas = ExtResource("2_duley")
+region = Rect2(76, 0, 76, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abast"]
+atlas = ExtResource("2_duley")
+region = Rect2(0, 0, 76, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nura0"]
+atlas = ExtResource("2_duley")
+region = Rect2(76, 0, 76, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5osp"]
+atlas = ExtResource("3_s1kdo")
+region = Rect2(0, 0, 76, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctr20"]
+atlas = ExtResource("3_s1kdo")
+region = Rect2(76, 0, 76, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vc051"]
+atlas = ExtResource("3_s1kdo")
+region = Rect2(152, 0, 76, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydl6w"]
+atlas = ExtResource("3_s1kdo")
+region = Rect2(228, 0, 76, 44)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dtw6q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egc8m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_harpu")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abast")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nura0")
+}],
+"loop": true,
+"name": &"Love",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5osp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctr20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vc051")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydl6w")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gjmrt"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xngri"]
+radius = 48.0
+
+[node name="Bear" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_5ysy0")
+state_list = Array[int]([1, 3, 5, 4])
+state_timers = Array[float]([10.0, 3.0, 5.0, 5.0])
+timed_states = Array[int]([0])
+animal_name = "Bear"
+speed = 40.0
+cost = 15
+initial_state = 1
+food_class = "Grass"
+
+[node name="BearAnimation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dtw6q")
+animation = &"Run"
+frame_progress = 0.293626
+speed_scale = 2.0
+
+[node name="BodyRadius" type="Area2D" parent="."]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyRadius"]
+shape = SubResource("CircleShape2D_gjmrt")
+
+[node name="SearchRadius" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SearchRadius"]
+shape = SubResource("CircleShape2D_xngri")
