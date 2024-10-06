@@ -12,6 +12,12 @@ var sprite_id_map: Array[int]
 var is_placing_tile := false
 var selected_tile_id := -1
 
+var is_placing_animal := false
+var animal_name: String
+var animal_resource: PackedScene
+var animal_descriptor: String
+var animal_parent: Node
+
 signal tile_placed
 
 func _ready() -> void:
@@ -22,22 +28,49 @@ func _ready() -> void:
 			sprite_id_map.append(spritelayer.get_cell_source_id(coords))
 
 func _unhandled_input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("click") and is_placing_tile:
-		var coords = floor(get_global_mouse_position()/tile_size)
+	if Input.is_action_just_pressed("click"): 
+		var mouse_pos := get_global_mouse_position()
+		var coords = floor(mouse_pos/tile_size)
 		var cell_id = get_cell_source_id(coords)
 		
 		#If we haven't initialized a tile there, don't place a new one
 		if cell_id == -1:
 			return
-		place_tile(coords, selected_tile_id)
-		is_placing_tile = false
-		selected_tile_id = -1
-		tile_placed.emit()
+		if is_placing_tile:
+			place_tile(coords, selected_tile_id)
+			is_placing_tile = false
+			selected_tile_id = -1
+			tile_placed.emit()
+		elif is_placing_animal:
+			var animal: Animal = animal_resource.instantiate()
+			if animal.movement_mode == Animal.Movement.WALKING and cell_id == 2: # water
+				animal.free()
+				return
+			if animal.movement_mode == Animal.Movement.SWIMMING and cell_id != 2: # water
+				animal.free()
+				return
+			animal.position = mouse_pos
+			animal_parent.add_child(animal)
+			is_placing_animal = false
+			
+			
+			
 
 
 func select_tile(tile_id: int) -> void:
 	selected_tile_id = tile_id
 	is_placing_tile = true
+	is_placing_animal = false
+	
+	
+func select_animal(name: String, resource: PackedScene, descriptor: String, parent: Node) -> void:
+	animal_name = name
+	animal_resource = resource
+	animal_descriptor = descriptor
+	animal_parent = parent
+	is_placing_tile = false
+	is_placing_animal = true
+
 
 
 func place_tile(coords: Vector2i, map_id: int = -1, sprite_id: int = -1):

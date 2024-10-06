@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://c5cff1stfno0j"]
+[gd_scene load_steps=23 format=4 uid="uid://c5cff1stfno0j"]
 
 [ext_resource type="Texture2D" uid="uid://btue1udj2y7bs" path="res://Assets/Tiles/Grassland.png" id="1_72vrb"]
 [ext_resource type="Texture2D" uid="uid://oha2ecvftva" path="res://Graphics/GrassTiles0.png" id="1_lp1ne"]
@@ -10,8 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://c7jae8icnl10y" path="res://Assets/Scenes/tree_grass.tscn" id="4_p0cog"]
 [ext_resource type="PackedScene" uid="uid://78dhmemtgfvq" path="res://Assets/Scenes/ui_tile.tscn" id="5_mvtnu"]
 [ext_resource type="PackedScene" uid="uid://dldn4i6xcprqe" path="res://Assets/Scenes/nut.tscn" id="6_bbixn"]
+[ext_resource type="Script" path="res://Assets/Scripts/ui_animal.gd" id="11_gm37g"]
+[ext_resource type="Texture2D" uid="uid://0mckfbgo642b" path="res://Graphics/Squirrel/Squirrel Run.png" id="11_huu1q"]
 [ext_resource type="PackedScene" uid="uid://knj83fof2f5h" path="res://Assets/Scripts/Animals/Squirrel.tscn" id="11_w0jgb"]
-[ext_resource type="PackedScene" path="res://Assets/Scripts/Animals/Hawk.tscn" id="12_4q3w6"]
+[ext_resource type="PackedScene" uid="uid://q7wdqby8w0rk" path="res://Assets/Scripts/Animals/Hawk.tscn" id="12_4q3w6"]
+[ext_resource type="Texture2D" uid="uid://onur23p6t6ge" path="res://icon.svg" id="14_nhw0j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_47fab"]
 texture = ExtResource("1_lp1ne")
@@ -113,7 +116,6 @@ sources/2 = SubResource("TileSetAtlasSource_luh68")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ajo5h"]
 scenes/0/scene = ExtResource("6_bbixn")
-scenes/0/display_placeholder = ExtResource("6_bbixn")
 
 [sub_resource type="TileSet" id="TileSet_8s1cn"]
 tile_size = Vector2i(32, 32)
@@ -177,6 +179,24 @@ tile_name = "Water"
 tile_id = 2
 description = "This is Water!"
 
+[node name="UI_Squirrel" type="TextureRect" parent="CanvasLayer/GridContainer" node_paths=PackedStringArray("animal_parent")]
+layout_mode = 2
+texture = ExtResource("11_huu1q")
+script = ExtResource("11_gm37g")
+animal_name = "Squirrel"
+animal_resource = ExtResource("11_w0jgb")
+description = "It is a squirrel!"
+animal_parent = NodePath("../../../Animals/Squirels")
+
+[node name="Ui_Hawks" type="TextureRect" parent="CanvasLayer/GridContainer" node_paths=PackedStringArray("animal_parent")]
+layout_mode = 2
+texture = ExtResource("14_nhw0j")
+script = ExtResource("11_gm37g")
+animal_name = "Hawk"
+animal_resource = ExtResource("12_4q3w6")
+description = "It's a hawk!"
+animal_parent = NodePath("../../../Animals/Hawks")
+
 [node name="Description" type="ColorRect" parent="CanvasLayer"]
 visible = false
 offset_left = 834.0
@@ -197,108 +217,16 @@ offset_top = 30.0
 offset_right = 80.0
 offset_bottom = 79.0
 
-[node name="Squirrel" parent="." instance=ExtResource("11_w0jgb")]
-position = Vector2(459, 285)
-state_list = Array[int]([0, 1, 2, 4])
-state_timers = [10.0, 3.0, 10.0, 3.0, 10.0]
-animal_name = "Squirrel"
-speed = 50.0
-dna_value = 10
-food_class = "Nut"
+[node name="Animals" type="Node" parent="."]
 
-[node name="Squirrel2" parent="." instance=ExtResource("11_w0jgb")]
-position = Vector2(316, 243)
-state_list = Array[int]([0, 1, 2, 4])
-state_timers = [10.0, 3.0, 10.0, 3.0, 10.0]
-animal_name = "Squirrel"
-speed = 50.0
-dna_value = 10
-food_class = "Nut"
+[node name="Squirels" type="Node" parent="Animals"]
 
-[node name="Squirrel3" parent="." instance=ExtResource("11_w0jgb")]
-position = Vector2(245, 322)
-state_list = Array[int]([0, 1, 2, 4])
-state_timers = [10.0, 3.0, 10.0, 3.0, 10.0]
-animal_name = "Squirrel"
-speed = 50.0
-dna_value = 10
-food_class = "Nut"
-
-[node name="Squirrel4" parent="." instance=ExtResource("11_w0jgb")]
-position = Vector2(176, 143)
-state_list = Array[int]([0, 1, 2, 4])
-state_timers = [10.0, 3.0, 10.0, 3.0, 10.0]
-animal_name = "Squirrel"
-speed = 50.0
-dna_value = 10
-food_class = "Nut"
-
-[node name="Squirrel5" parent="." instance=ExtResource("11_w0jgb")]
-position = Vector2(402, 163)
-state_list = Array[int]([0, 1, 2, 4])
-state_timers = [10.0, 3.0, 10.0, 3.0, 10.0]
-animal_name = "Squirrel"
-speed = 50.0
-dna_value = 10
-food_class = "Nut"
-
-[node name="Squirrel6" parent="." instance=ExtResource("11_w0jgb")]
-position = Vector2(604, 170)
-state_list = Array[int]([0, 1, 2, 4])
-state_timers = [10.0, 3.0, 10.0, 3.0, 10.0]
-animal_name = "Squirrel"
-speed = 50.0
-dna_value = 10
-food_class = "Nut"
-
-[node name="Squirrel7" parent="." instance=ExtResource("11_w0jgb")]
-position = Vector2(636, 295)
-state_list = Array[int]([0, 1, 2, 4])
-state_timers = [10.0, 3.0, 10.0, 3.0, 10.0]
-animal_name = "Squirrel"
-speed = 50.0
-dna_value = 10
-food_class = "Nut"
-
-[node name="Squirrel8" parent="." instance=ExtResource("11_w0jgb")]
-position = Vector2(527, 353)
-state_list = Array[int]([0, 1, 2, 4])
-state_timers = [10.0, 3.0, 10.0, 3.0, 10.0]
-animal_name = "Squirrel"
-speed = 50.0
-dna_value = 10
-food_class = "Nut"
-
-[node name="Squirrel9" parent="." instance=ExtResource("11_w0jgb")]
-position = Vector2(704, 189)
-state_list = Array[int]([0, 1, 2, 4])
-state_timers = [10.0, 3.0, 10.0, 3.0, 10.0]
-animal_name = "Squirrel"
-speed = 50.0
-dna_value = 10
-food_class = "Nut"
-
-[node name="Squirrel10" parent="." instance=ExtResource("11_w0jgb")]
-position = Vector2(754, 311)
-state_list = Array[int]([0, 1, 2, 4])
-state_timers = [10.0, 3.0, 10.0, 3.0, 10.0]
-animal_name = "Squirrel"
-speed = 50.0
-dna_value = 10
-food_class = "Nut"
-
-[node name="Squirrel11" parent="." instance=ExtResource("11_w0jgb")]
-position = Vector2(743, 145)
-state_list = Array[int]([0, 1, 2, 4])
-state_timers = [10.0, 3.0, 10.0, 3.0, 10.0]
-animal_name = "Squirrel"
-speed = 50.0
-dna_value = 10
-food_class = "Nut"
-
-[node name="Hawk" parent="." instance=ExtResource("12_4q3w6")]
-position = Vector2(201, 241)
+[node name="Hawks" type="Node" parent="Animals"]
 
 [connection signal="tile_placed" from="TileMapLayer" to="CanvasLayer" method="_on_tile_map_layer_tile_placed"]
 [connection signal="ui_tile_selected" from="CanvasLayer/GridContainer/UI_Tile" to="CanvasLayer" method="_on_ui_tile_selected"]
 [connection signal="ui_tile_selected" from="CanvasLayer/GridContainer/UI_Tile2" to="CanvasLayer" method="_on_ui_tile_selected"]
+[connection signal="gui_input" from="CanvasLayer/GridContainer/UI_Squirrel" to="CanvasLayer/GridContainer/UI_Squirrel" method="_on_gui_input"]
+[connection signal="ui_animal_selected" from="CanvasLayer/GridContainer/UI_Squirrel" to="TileMapLayer" method="select_animal"]
+[connection signal="gui_input" from="CanvasLayer/GridContainer/Ui_Hawks" to="CanvasLayer/GridContainer/Ui_Hawks" method="_on_gui_input"]
+[connection signal="ui_animal_selected" from="CanvasLayer/GridContainer/Ui_Hawks" to="TileMapLayer" method="select_animal"]
