@@ -188,5 +188,3 @@ script = ExtResource("1_n17ia")
 [node name="FoxAnimation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_g0d40")
 animation = &"Sleep"
-
-[node name="Timer" type="Timer" parent="."]
