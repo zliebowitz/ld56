@@ -7,11 +7,18 @@ static var tile_ids = {
 	3: "Tree"
 }
 
-static var tile_costs = {
+static var tile_cost = {
 	"Grass": 1,
 	"Sand": 1,
 	"Water": 1,
 	"Tree": 1
+}
+
+static var tile_cost_scale = {
+	"Grass": 2,
+	"Sand": 2,
+	"Water": 2,
+	"Tree": 2
 }
 
 static var sprite_ids = {
