@@ -18,7 +18,6 @@ signal gain_dna(dna_value: int)
 @export var timed_states: Array[int] = []
 @export var animal_name: String = "PLACEHOLDER"
 @export var movement_mode: Movement = Movement.WALKING
-@export var destination: Vector2 = position
 @export var speed: float = 6
 @export var cost: int = 1
 @export var cost_scaling: float = 1.1
@@ -37,17 +36,29 @@ signal gain_dna(dna_value: int)
 
 var time_in_state : float = 0
 var index: int = 0
+var target: Node2D
+var destination: Vector2 = Vector2(-1,1):
+	set(value):
+		if value != Vector2(-999, -999):
+			destination = value
+	
+
+var process_kneecap: float = 0
 
 func _ready() -> void:
 	var main = GlobalManager.main
 	add_to_group("animal")
 	gain_dna.connect(main._on_gain_dna)
+	GlobalManager.add_creature_count()
 
 
 func _process(delta: float) -> void:
-	time_in_state += delta;
+	time_in_state += delta
+	process_kneecap += delta
 	kill_if_time_elapsed()
 	_process_action(delta)
+	if process_kneecap > 0.1:
+		process_kneecap = 0.0
 	
 
 func get_next_state() -> STATE:
@@ -59,6 +70,8 @@ func get_next_state() -> STATE:
 
 func advance_state() -> void:
 	current_state = get_next_state();
+	destination = Vector2(-1,-1)
+	target = null
 	time_in_state = 0
 
 
@@ -82,7 +95,7 @@ func _process_action(delta: float) -> void:
 
 
 func move_towards_destination(delta: float) -> bool:
-	if position.x < 0 or position.y < 0:			#For if the destination is invalid
+	if destination.x < 0 or destination.y < 0:			#For if the destination is invalid
 		return false
 	if position.distance_to(destination) <= 8:
 		return true
@@ -101,12 +114,15 @@ func kill() -> void:
 	add_sibling(new_corpse)
 	queue_free()
 
+func can_process_pathfinding() -> bool:
+	return process_kneecap > 0.1
 
 func get_nearest_creature(creature_type: Variant) -> Animal:
 	return get_nearest_creature_list([creature_type])
 	
-func get_nearest_creature_list(creature_types: Array[Variant]):
-	if not has_node("SearchRadius"): return
+func get_nearest_creature_list(creature_types: Array[Variant]) -> Animal:
+	if not can_process_pathfinding(): return null
+	if not has_node("SearchRadius"): return null
 	var search_radius: Area2D = $SearchRadius
 	var areas := search_radius.get_overlapping_areas()
 	var distance := 999999.9

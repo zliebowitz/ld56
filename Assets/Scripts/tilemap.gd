@@ -20,6 +20,8 @@ var animal_resource: PackedScene
 var animal_descriptor: String
 var animal_parent: Node
 
+var process_kneecap: float = 0.0
+
 signal tile_placed
 
 func _ready() -> void:
@@ -69,8 +71,11 @@ func _unhandled_input(_event: InputEvent) -> void:
 			animal_parent.add_child(animal)
 			main._on_gain_dna(-current_cost)
 			
-			
-			
+
+func _process(delta: float) -> void:
+	process_kneecap += delta
+	if process_kneecap > 0.2:
+		process_kneecap = 0
 
 
 func select_tile(tile_id: int) -> void:
@@ -152,34 +157,55 @@ func get_nearest_tile(starting_location: Vector2, id: int = -1, sprite_id: int =
 	if id == -1 and sprite_id == -1:
 		print("You aren't searching for anything!")
 		return Vector2i(-1, -1)
-		
+	if not can_process_pathfinding():
+		return Vector2i(-999, -999)
 	var distance := 999999.9
 	var closest := Vector2i(-1,-1)
-	for y in map_size.y:
-		for x in map_size.x:
-			var coords = Vector2i(x, y)
-			var tile_info = get_tile_info(coords)
-			if (id != -1 and tile_info[0] == id) or (sprite_id != -1 and tile_info[1] == sprite_id):
-				var new_distance = starting_location.distance_squared_to(get_tile_center(coords))
-				if new_distance < distance:
-					distance = new_distance
-					closest = coords
+	if id != -1:
+		var map_tiles: Array[Vector2i] = get_used_cells_by_id(id)
+		for tile: Vector2i in map_tiles:
+			var new_distance = starting_location.distance_squared_to(get_tile_center(tile))
+			if new_distance < distance:
+				distance = new_distance
+				closest = tile
+	if sprite_id != -1:
+		var sprite_tiles: Array[Vector2i] = get_used_cells_by_id(sprite_id)
+		for tile: Vector2i in sprite_tiles:
+			var new_distance = starting_location.distance_squared_to(get_tile_center(tile))
+			if new_distance < distance:
+				distance = new_distance
+				closest = tile
+	#for y in map_size.y:
+		#for x in map_size.x:
+			#var coords = Vector2i(x, y)
+			#var tile_info = get_tile_info(coords)
+			#if (id != -1 and tile_info[0] == id) or (sprite_id != -1 and tile_info[1] == sprite_id):
+				#var new_distance = starting_location.distance_squared_to(get_tile_center(coords))
+				#if new_distance < distance:
+					#distance = new_distance
+					#closest = coords
 	return closest
 
 
 func get_nearest_tile_absolute(starting_location: Vector2, id: int = -1, sprite_id: int = -1) -> Vector2:
-	var center = get_tile_center(get_nearest_tile(starting_location, id, sprite_id))
+	var tile: Vector2i = get_nearest_tile(starting_location, id, sprite_id)
+	if tile == Vector2i(-999, -999): return tile
+	var center = get_tile_center(tile)
+	if center.x < 0 or center.y < 0: return Vector2(-1, -1)
 	var offset = center + (starting_location - center).normalized()*12
 	return offset
-	
-func get_nearest_creature(starting_location: Vector2, creature_type: Variant) -> Animal:
-	var distance := 999999.9
-	var closest: Animal = null
-	var main = get_parent()
-	for animal in get_tree().get_nodes_in_group("animal"):
-		if is_instance_of(animal, creature_type):
-			var new_distance = starting_location.distance_squared_to(animal.position)
-			if new_distance < distance:
-				distance = new_distance
-				closest = animal
-	return closest
+
+func can_process_pathfinding() -> bool:
+	return process_kneecap > 0.1
+
+#func get_nearest_creature(starting_location: Vector2, creature_type: Variant) -> Animal:
+	#var distance := 999999.9
+	#var closest: Animal = null
+	#var main = get_parent()
+	#for animal in get_tree().get_nodes_in_group("animal"):
+		#if is_instance_of(animal, creature_type):
+			#var new_distance = starting_location.distance_squared_to(animal.position)
+			#if new_distance < distance:
+				#distance = new_distance
+				#closest = animal
+	#return closest

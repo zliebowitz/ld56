@@ -20,6 +20,8 @@ func _process_action(delta: float) -> void:
 				eat_counter = eat_counter + 1
 				if randf() < ratio_to_strip_grass:
 					var destination_tile = tilemap.get_coord_from_position(destination)
+					#If the tile isn't still grass, don't do anything
+					if not tilemap.get_tile_info(destination_tile)[0] == 0: return
 					tilemap.place_tile(destination_tile, 1)
 				advance_state()
 		STATE.WAIT:
@@ -39,14 +41,9 @@ func _process_action(delta: float) -> void:
 			if eat_counter < feed_to_reproduce:
 				advance_state()
 				return
-			var near_rabbit = get_nearest_creature(Rabbit)
-			if near_rabbit: 
-				destination = near_rabbit.position
-			else: 
-				destination = position
-				eat_counter = 0
-				advance_state()
-				return
+			target = get_nearest_creature(Rabbit)
+			if is_instance_valid(target): 
+				destination = target.position
 			if move_towards_destination(delta):
 				var new_rabbit = rabbit_scene.instantiate()
 				new_rabbit.position = position + position.direction_to(destination) * 8
