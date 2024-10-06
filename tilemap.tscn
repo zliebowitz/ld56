@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://c5cff1stfno0j"]
+[gd_scene load_steps=27 format=4 uid="uid://c5cff1stfno0j"]
 
 [ext_resource type="Texture2D" uid="uid://btue1udj2y7bs" path="res://Assets/Tiles/Grassland.png" id="1_72vrb"]
 [ext_resource type="Script" path="res://Assets/Scripts/main.gd" id="1_ii4nv"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bwagknfgqewx3" path="res://Assets/Scripts/Animals/Hawk.tscn" id="12_4q3w6"]
 [ext_resource type="Texture2D" uid="uid://onur23p6t6ge" path="res://icon.svg" id="14_nhw0j"]
 [ext_resource type="Texture2D" uid="uid://crhkx7ku4vfne" path="res://Graphics/DNA.png" id="17_v0bhs"]
+[ext_resource type="AudioStream" uid="uid://bobbyjsp1xlcb" path="res://Assets/Audio/Music/BGM.wav" id="18_3bs1d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_47fab"]
 texture = ExtResource("1_lp1ne")
@@ -256,6 +257,10 @@ scroll_active = false
 [node name="Squirrels" type="Node" parent="Animals"]
 
 [node name="Hawks" type="Node" parent="Animals"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_3bs1d")
+autoplay = true
 
 [connection signal="tile_placed" from="TileMapLayer" to="CanvasLayer" method="_on_tile_map_layer_tile_placed"]
 [connection signal="ui_tile_selected" from="CanvasLayer/GridContainer/UI_Tile" to="CanvasLayer" method="_on_ui_tile_selected"]
