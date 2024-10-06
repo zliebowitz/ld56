@@ -23,6 +23,7 @@ GlobalManager="*res://Assets/Scripts/GlobalManager.gd"
 
 window/size/viewport_width=948
 window/size/viewport_height=533
+window/stretch/mode="viewport"
 
 [input]
 

@@ -4,6 +4,9 @@ extends Animal
 var rabbit_scene: PackedScene = preload("res://Assets/Scripts/Animals/Rabbit.tscn")
 @onready var sprite2d = $RabbitAnimation
 
+@export var feed_to_reproduce: int = 3
+@export var ratio_to_strip_grass: float = 0.1
+
 var eat_counter := 0
 var is_waiting = false
 var count = 0
@@ -15,6 +18,9 @@ func _process_action(delta: float) -> void:
 			destination = tilemap.get_nearest_tile_absolute(position, 0)
 			if move_towards_destination(delta):
 				eat_counter = eat_counter + 1
+				if randf() < ratio_to_strip_grass:
+					var destination_tile = tilemap.get_coord_from_position(destination)
+					tilemap.place_tile(destination_tile, 1)
 				advance_state()
 		STATE.WAIT:
 			if has_time_passed():
@@ -30,7 +36,7 @@ func _process_action(delta: float) -> void:
 				move_towards_destination(delta)
 				count += 1
 		STATE.REPRODUCE_IF_ABLE:
-			if eat_counter < 0:
+			if eat_counter < feed_to_reproduce:
 				advance_state()
 				return
 			var near_rabbit = get_nearest_creature(Rabbit)
@@ -52,6 +58,11 @@ func _process_action(delta: float) -> void:
 				advance_state()
 		var unknown_state:
 			print("Got state ", unknown_state," for ", animal_name, ", and does not know what to do!!!")
+	
+	var direction = position.angle_to_point(destination)
+	if direction < 0:
+		direction += 2*PI
+	$RabbitAnimation.set_flip_h(direction > PI/2 && direction < 3*PI/2 )
 			
 func updateAnimation():
 	match current_state:
@@ -62,7 +73,7 @@ func updateAnimation():
 		STATE.RANDOM_WANDERING:
 			sprite2d.play("Run")
 		STATE.REPRODUCE_IF_ABLE:
-			if eat_counter < 0:
+			if eat_counter < feed_to_reproduce:
 				sprite2d.play("Run")
 			else:
 				sprite2d.play("Love")

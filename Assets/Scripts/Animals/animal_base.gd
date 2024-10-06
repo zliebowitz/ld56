@@ -8,6 +8,8 @@ enum STATE {SEEK_WATER, SEEK_FOOD, SEEK_ITEM, WAIT, REPRODUCE_IF_ABLE, RANDOM_WA
 
 signal gain_dna(dna_value: int)
 
+#Determines bones on death
+@export var small_animal: bool = true
 # A list of states that the creature will loop through, in order.
 @export var state_list: Array[STATE] = []
 # A list of timers, showing how long each state should last. Should be the same length as the state list
@@ -27,9 +29,11 @@ signal gain_dna(dna_value: int)
 @export var food_class : String
 @export var reproduction_site_class : String
 
+
 @onready var tilemap: WorldMapLayer = GlobalManager.tilemap
 @onready var current_state : STATE = initial_state
 @onready var corpse_scene: PackedScene = preload("res://Assets/Scenes/corpse.tscn")
+
 
 var time_in_state : float = 0
 var index: int = 0
@@ -78,6 +82,8 @@ func _process_action(delta: float) -> void:
 
 
 func move_towards_destination(delta: float) -> bool:
+	if position.x < 0 or position.y < 0:			#For if the destination is invalid
+		return false
 	if position.distance_to(destination) <= 8:
 		return true
 	position += (position.direction_to(destination)).normalized() * speed * delta
@@ -89,7 +95,8 @@ func create_dna() -> void:
 
 
 func kill() -> void:
-	var new_corpse = corpse_scene.instantiate()
+	var new_corpse: Corpse = corpse_scene.instantiate()
+	new_corpse.set_bones(small_animal)
 	new_corpse.position = position
 	add_sibling(new_corpse)
 	queue_free()
