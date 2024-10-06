@@ -8,10 +8,10 @@ static var tile_ids = {
 }
 
 static var tile_cost = {
-	"Grass": 1,
-	"Sand": 1,
-	"Water": 1,
-	"Tree": 1
+	"Grass": 2,
+	"Sand": 2,
+	"Water": 2,
+	"Tree": 2
 }
 
 static var tile_cost_scale = {
