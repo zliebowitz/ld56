@@ -1,9 +1,9 @@
-[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://cxdns6mau5abj"]
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://b2m5a46gigvnt"]
 
 [ext_resource type="Texture2D" uid="uid://oha2ecvftva" path="res://Graphics/GrassTiles0.png" id="1_ran5f"]
 [ext_resource type="Texture2D" uid="uid://d35ufd6iv5gh6" path="res://Graphics/SandTiles.png" id="2_kqal3"]
 [ext_resource type="Texture2D" uid="uid://dtge44bcrhpee" path="res://Graphics/WaterTiles0.png" id="3_uqha8"]
-[ext_resource type="PackedScene" uid="uid://c7jae8icnl10y" path="res://Assets/Scenes/tree_grass.tscn" id="4_3jukn"]
+[ext_resource type="PackedScene" uid="uid://c7jae8icnl10y" path="res://Assets/Scenes/Tiles/tree_grass.tscn" id="4_3jukn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_47fab"]
 texture = ExtResource("1_ran5f")

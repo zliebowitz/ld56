@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfjyug7nc6q1g"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/Tiles/squirrel_drey.gd" id="1_7mnh8"]
+
+[node name="SquirrelDrey" type="Sprite2D"]
+script = ExtResource("1_7mnh8")
