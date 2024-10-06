@@ -111,7 +111,6 @@ func place_tile(coords: Vector2i, map_id: int = -1, sprite_id: int = -1):
 		else:
 			spritelayer.set_cell(coords, sprite_id, Vector2i(0, 0))
 		sprite_id_map[get_array_index(coords)] = sprite_id
-	print("updating!")
 	_update_border_layer()
 	
 
