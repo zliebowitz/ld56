@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccpypak2wblc5"]
+[gd_scene load_steps=6 format=3 uid="uid://bjk5287py1q8c"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Animals/animal_vulture.gd" id="1_mnnag"]
 [ext_resource type="Texture2D" uid="uid://onur23p6t6ge" path="res://icon.svg" id="2_h71wr"]

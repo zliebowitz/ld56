@@ -5,6 +5,7 @@ extends TileMapLayer
 @export var map_size: Vector2
 
 @onready var spritelayer: TileMapLayer = $SpriteLayer
+@onready var borderlayer: TileMapLayer = $BorderLayer
 @onready var main: Main = $".."
 
 var id_map: Array[int]
@@ -30,6 +31,7 @@ func _ready() -> void:
 			var coords = Vector2i(x,y)
 			id_map.append(get_cell_source_id(coords))
 			sprite_id_map.append(spritelayer.get_cell_source_id(coords))
+	_update_border_layer()
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("click"): 
@@ -109,6 +111,7 @@ func place_tile(coords: Vector2i, map_id: int = -1, sprite_id: int = -1):
 		else:
 			spritelayer.set_cell(coords, sprite_id, Vector2i(0, 0))
 		sprite_id_map[get_array_index(coords)] = sprite_id
+	_update_border_layer()
 
 func clear_sprite(coords: Vector2i):
 	sprite_id_map[get_array_index(coords)] = -1
@@ -209,3 +212,108 @@ func can_process_pathfinding() -> bool:
 				#distance = new_distance
 				#closest = animal
 	#return closest
+
+# I am sorry you have to lay eyes on such a gross function.
+# Please ignore it, pretend it doesn't exist.
+# If something breaks, continue ignoring it, and compain in Travis' direction.
+func _update_border_layer():
+	for y in range(1, map_size.y-1):
+		for x in range(1, map_size.x-1):
+			var coords = Vector2i(x, y)
+			borderlayer.erase_cell(coords)
+			var center_tile_info = get_tile_info(Vector2i(x, y))[0]
+			# tiles are placed in reading order:
+			# 0 1 2
+			# 3 X 4
+			# 5 6 7
+			var surrounding_info:Array[int] = []
+			surrounding_info.append(get_tile_info(Vector2i(x-1, y-1))[0])
+			surrounding_info.append(get_tile_info(Vector2i(x, y-1))[0])
+			surrounding_info.append(get_tile_info(Vector2i(x+1, y-1))[0])
+			surrounding_info.append(get_tile_info(Vector2i(x-1, y))[0])
+			# Ignore the center tile. 
+			#surrounding_info.append(get_tile_info(Vector2i(x, y))[0])
+			surrounding_info.append(get_tile_info(Vector2i(x+1, y))[0])
+			surrounding_info.append(get_tile_info(Vector2i(x-1, y+1))[0])
+			surrounding_info.append(get_tile_info(Vector2i(x, y+1))[0])
+			surrounding_info.append(get_tile_info(Vector2i(x+1, y+1))[0])
+			
+			
+			# Treat tree tiles as grass.
+			for i in surrounding_info.size():
+				if surrounding_info[i] == 3:
+					surrounding_info[i] = 0
+			
+			# Determine which overlay to do.
+			# Current ordering is grass -> sand
+			var dominant_border = 0
+			
+			if center_tile_info == dominant_border:
+				dominant_border = -1
+			
+			# Format a unique string based on the surrounding dominant tiles.
+			var border_string:String = ""
+			var border:Array[bool] = []
+			for i in surrounding_info.size():
+				border.append(surrounding_info[i] == dominant_border)
+					
+			
+			
+			
+			
+			var tile_position
+			# Full surround
+			if border[1] && border[3] && border[4] && border[6]:
+				tile_position = Vector2i(1,7)
+			# Three sides
+			elif border[1] && border[3] && border[4]:
+				tile_position = Vector2i(2,8)
+			elif border[1] && border[3] && border[6]:
+				tile_position = Vector2i(3,8)
+			elif border[1] && border[4] && border[6]:
+				tile_position = Vector2i(1,8)
+			elif border[3] && border[4] && border[6]:
+				tile_position = Vector2i(4,8)
+			# Two sides adjacent
+			elif border[1] && border[3]:
+				tile_position = Vector2i(3,7)
+			elif border[4] && border[6]:
+				tile_position = Vector2i(2,6)
+			elif border[1] && border[4]:
+				tile_position = Vector2i(2,7)
+			elif border[3] && border[6]:
+				tile_position = Vector2i(3,6)
+			# 2 parrellel sides
+			elif border[1] && border[6]:
+				tile_position = Vector2i(4,7)
+			elif border[3] && border[4]:
+				tile_position = Vector2i(4,6)
+			# Single Side
+			elif border[1]:
+				tile_position = Vector2i(3,5)
+			elif border[3]:
+				tile_position = Vector2i(4,4)
+			elif border[4]:
+				tile_position = Vector2i(2,4)
+			elif border[6]:
+				tile_position = Vector2i(3,3)
+			# Double Corners
+			elif border[0] && border[7]:
+				tile_position = Vector2i(1,6)
+			elif border[2] && border[5]:
+				tile_position = Vector2i(1,5)
+			# Single Corners
+			elif border[0]:
+				tile_position = Vector2i(4,5)
+			elif border[2]:
+				tile_position = Vector2i(2,5)
+			elif border[5]:
+				tile_position = Vector2i(4,3)
+			elif border[7]:
+				tile_position = Vector2i(2,3)
+			else:
+				tile_position = null
+			
+			# Set the tile!
+			if tile_position != null:
+				borderlayer.set_cell(coords, dominant_border, tile_position)
