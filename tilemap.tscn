@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://csyxanvy6pk00" path="res://Graphics/Squirrel/Squirrel Idle.png" id="11_p7808"]
 [ext_resource type="PackedScene" uid="uid://knj83fof2f5h" path="res://Assets/Scripts/Animals/Squirrel.tscn" id="11_w0jgb"]
 [ext_resource type="PackedScene" uid="uid://bwagknfgqewx3" path="res://Assets/Scripts/Animals/Hawk.tscn" id="12_4q3w6"]
-[ext_resource type="Texture2D" uid="uid://bxer81bw7i01" path="res://Graphics/Hawk.png" id="15_kjc7i"]
+[ext_resource type="Texture2D" uid="uid://8b6jbsbvouq2" path="res://Graphics/Hawk/Idle/hawk_idle1.png" id="15_iqjxc"]
 [ext_resource type="Texture2D" uid="uid://crhkx7ku4vfne" path="res://Graphics/DNA.png" id="17_v0bhs"]
 [ext_resource type="AudioStream" uid="uid://bobbyjsp1xlcb" path="res://Assets/Audio/Music/BGM.wav" id="18_3bs1d"]
 
@@ -201,7 +201,8 @@ animal_parent = NodePath("../../../Animals/Squirrels")
 
 [node name="Ui_Hawks" type="TextureRect" parent="CanvasLayer/GridContainer" node_paths=PackedStringArray("animal_parent")]
 layout_mode = 2
-texture = ExtResource("15_kjc7i")
+texture = ExtResource("15_iqjxc")
+expand_mode = 4
 script = ExtResource("11_gm37g")
 animal_name = "Hawk"
 animal_resource = ExtResource("12_4q3w6")
