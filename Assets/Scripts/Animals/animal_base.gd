@@ -39,7 +39,7 @@ var index: int = 0
 var target: Node2D
 var destination: Vector2 = Vector2(-1,1):
 	set(value):
-		if value != Vector2(-999, -999):
+		if value > Vector2(-900, -900):
 			destination = value
 	
 
@@ -135,4 +135,20 @@ func get_nearest_creature_list(creature_types: Array[Variant]) -> Animal:
 				if new_distance < distance:
 					distance = new_distance
 					closest = animal
+	return closest
+	
+func get_nearest_corpse() -> Corpse:
+	if not can_process_pathfinding(): return null
+	if not has_node("SearchRadius"): return null
+	var search_radius: Area2D = $SearchRadius
+	var areas := search_radius.get_overlapping_areas()
+	var distance := 999999.9
+	var closest: Corpse = null
+	for area in areas:
+		var animal = area.get_parent()
+		if is_instance_of(animal, Corpse):
+			var new_distance = position.distance_squared_to(animal.position)
+			if new_distance < distance:
+				distance = new_distance
+				closest = animal
 	return closest

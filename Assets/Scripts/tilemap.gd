@@ -112,7 +112,6 @@ func place_tile(coords: Vector2i, map_id: int = -1, sprite_id: int = -1):
 			spritelayer.set_cell(coords, sprite_id, Vector2i(0, 0))
 		sprite_id_map[get_array_index(coords)] = sprite_id
 	_update_border_layer()
-	
 
 func clear_sprite(coords: Vector2i):
 	sprite_id_map[get_array_index(coords)] = -1
@@ -173,7 +172,7 @@ func get_nearest_tile(starting_location: Vector2, id: int = -1, sprite_id: int =
 				distance = new_distance
 				closest = tile
 	if sprite_id != -1:
-		var sprite_tiles: Array[Vector2i] = get_used_cells_by_id(sprite_id)
+		var sprite_tiles: Array[Vector2i] = spritelayer.get_used_cells_by_id(sprite_id)
 		for tile: Vector2i in sprite_tiles:
 			var new_distance = starting_location.distance_squared_to(get_tile_center(tile))
 			if new_distance < distance:
@@ -198,19 +197,21 @@ func get_nearest_tile_absolute(starting_location: Vector2, id: int = -1, sprite_
 	if center.x < 0 or center.y < 0: return Vector2(-1, -1)
 	var offset = center + (starting_location - center).normalized()*12
 	return offset
-	
-func get_nearest_creature(starting_location: Vector2, creature_type: Variant) -> Animal:
-	var distance := 999999.9
-	var closest: Animal = null
-	var main = get_parent()
-	for animal in get_tree().get_nodes_in_group("animal"):
-		if is_instance_of(animal, creature_type):
-			var new_distance = starting_location.distance_squared_to(animal.position)
-			if new_distance < distance:
-				distance = new_distance
-				closest = animal
-	return closest
 
+func can_process_pathfinding() -> bool:
+	return process_kneecap > 0.1
+
+#func get_nearest_creature(starting_location: Vector2, creature_type: Variant) -> Animal:
+	#var distance := 999999.9
+	#var closest: Animal = null
+	#var main = get_parent()
+	#for animal in get_tree().get_nodes_in_group("animal"):
+		#if is_instance_of(animal, creature_type):
+			#var new_distance = starting_location.distance_squared_to(animal.position)
+			#if new_distance < distance:
+				#distance = new_distance
+				#closest = animal
+	#return closest
 
 # I am sorry you have to lay eyes on such a gross function.
 # Please ignore it, pretend it doesn't exist.
@@ -316,19 +317,3 @@ func _update_border_layer():
 			# Set the tile!
 			if tile_position != null:
 				borderlayer.set_cell(coords, dominant_border, tile_position)
-
-
-func can_process_pathfinding() -> bool:
-	return process_kneecap > 0.1
-
-#func get_nearest_creature(starting_location: Vector2, creature_type: Variant) -> Animal:
-	#var distance := 999999.9
-	#var closest: Animal = null
-	#var main = get_parent()
-	#for animal in get_tree().get_nodes_in_group("animal"):
-		#if is_instance_of(animal, creature_type):
-			#var new_distance = starting_location.distance_squared_to(animal.position)
-			#if new_distance < distance:
-				#distance = new_distance
-				#closest = animal
-	#return closest

@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjk5287py1q8c"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/Animals/animal_vulture.gd" id="1_mnnag"]
+[ext_resource type="Texture2D" uid="uid://onur23p6t6ge" path="res://icon.svg" id="2_h71wr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oe8hh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h71wr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y4vg8"]
+radius = 125.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c61tx"]
+radius = 16.0
+
+[node name="Vulture" type="Node2D"]
+z_index = 2
+y_sort_enabled = true
+script = ExtResource("1_mnnag")
+state_list = Array[int]([1, 2, 3, 6])
+state_timers = Array[float]([15.0, 10.0, 5.0, 10.0])
+timed_states = Array[int]([0])
+animal_name = "Vulture"
+movement_mode = 1
+speed = 50.0
+cost = 50
+dna_on_feed = 10
+initial_state = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_oe8hh")
+speed_scale = 2.0
+
+[node name="SearchRadius" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SearchRadius"]
+visible = false
+shape = SubResource("CircleShape2D_y4vg8")
+
+[node name="BodyRadius" type="Area2D" parent="."]
+visible = false
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyRadius"]
+visible = false
+shape = SubResource("CircleShape2D_c61tx")
