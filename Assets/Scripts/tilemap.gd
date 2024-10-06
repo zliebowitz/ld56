@@ -38,10 +38,15 @@ func _unhandled_input(_event: InputEvent) -> void:
 		if cell_id == -1:
 			return
 		if is_placing_tile:
+			# Determine cost of tiles and make sure have enough DNA
+			var current_cost: int = TileDefinition.tile_costs[TileDefinition.tile_ids[selected_tile_id]]
+			if current_cost > main.dna:
+				return
 			place_tile(coords, selected_tile_id)
 			is_placing_tile = false
 			selected_tile_id = -1
 			tile_placed.emit()
+			main._on_gain_dna(-current_cost)
 		elif is_placing_animal:
 			var animal: Animal = animal_resource.instantiate()
 			# check cost here
@@ -57,7 +62,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 				return
 			animal.position = mouse_pos
 			animal_parent.add_child(animal)
-			animal.gain_dna.emit(-current_cost)
+			main._on_gain_dna(-current_cost)
 			
 			
 			
