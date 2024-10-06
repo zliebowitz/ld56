@@ -78,7 +78,6 @@ func place_tile(coords: Vector2i, map_id: int = -1, sprite_id: int = -1):
 		else:
 			set_cell(coords, map_id, Vector2i(2, 1))
 		id_map[get_array_index(coords)] = map_id
-		print("Placing tile id ", map_id, " at ", coords)
 		
 	if sprite_id != -1:
 		var scene_source = tile_set.get_source(sprite_id)
@@ -87,7 +86,6 @@ func place_tile(coords: Vector2i, map_id: int = -1, sprite_id: int = -1):
 		else:
 			spritelayer.set_cell(coords, sprite_id, Vector2i(0, 0))
 		sprite_id_map[get_array_index(coords)] = sprite_id
-		print("Placing Sprite id ", sprite_id, " at ", coords)
 
 func clear_sprite(coords: Vector2i):
 	sprite_id_map[get_array_index(coords)] = -1
