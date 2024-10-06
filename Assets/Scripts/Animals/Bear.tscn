@@ -4,46 +4,46 @@
 [ext_resource type="Texture2D" uid="uid://b81n4no5aw0qn" path="res://Graphics/Bear/BearingEating.png" id="2_duley"]
 [ext_resource type="Texture2D" uid="uid://swmwca7qrk2t" path="res://Graphics/Bear/BearingWalking.png" id="3_s1kdo"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_egc8m"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxcdy"]
 atlas = ExtResource("2_duley")
-region = Rect2(0, 0, 76, 44)
+region = Rect2(0, 0, 38, 22)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_harpu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6micy"]
 atlas = ExtResource("2_duley")
-region = Rect2(76, 0, 76, 44)
+region = Rect2(38, 0, 38, 22)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_abast"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2y1g"]
 atlas = ExtResource("2_duley")
-region = Rect2(0, 0, 76, 44)
+region = Rect2(0, 0, 38, 22)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nura0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_n20jr"]
 atlas = ExtResource("2_duley")
-region = Rect2(76, 0, 76, 44)
+region = Rect2(38, 0, 38, 22)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n5osp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdg48"]
 atlas = ExtResource("3_s1kdo")
-region = Rect2(0, 0, 76, 44)
+region = Rect2(0, 0, 38, 22)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ctr20"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_s41m0"]
 atlas = ExtResource("3_s1kdo")
-region = Rect2(76, 0, 76, 44)
+region = Rect2(38, 0, 38, 22)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vc051"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1t17n"]
 atlas = ExtResource("3_s1kdo")
-region = Rect2(152, 0, 76, 44)
+region = Rect2(76, 0, 38, 22)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ydl6w"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1bfh"]
 atlas = ExtResource("3_s1kdo")
-region = Rect2(228, 0, 76, 44)
+region = Rect2(114, 0, 38, 22)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dtw6q"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_egc8m")
+"texture": SubResource("AtlasTexture_vxcdy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_harpu")
+"texture": SubResource("AtlasTexture_6micy")
 }],
 "loop": true,
 "name": &"Idle",
@@ -51,10 +51,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_abast")
+"texture": SubResource("AtlasTexture_w2y1g")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nura0")
+"texture": SubResource("AtlasTexture_n20jr")
 }],
 "loop": true,
 "name": &"Love",
@@ -62,16 +62,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n5osp")
+"texture": SubResource("AtlasTexture_wdg48")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ctr20")
+"texture": SubResource("AtlasTexture_s41m0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vc051")
+"texture": SubResource("AtlasTexture_1t17n")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ydl6w")
+"texture": SubResource("AtlasTexture_p1bfh")
 }],
 "loop": true,
 "name": &"Run",
@@ -98,8 +98,7 @@ food_class = "Grass"
 
 [node name="BearAnimation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dtw6q")
-animation = &"Run"
-frame_progress = 0.293626
+animation = &"Idle"
 speed_scale = 2.0
 
 [node name="BodyRadius" type="Area2D" parent="."]
