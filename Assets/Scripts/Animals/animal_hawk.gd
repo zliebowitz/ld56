@@ -9,7 +9,7 @@ func _process_action(delta: float) -> void:
 	match current_state:
 		STATE.SEEK_FOOD:
 			target = null
-			target = get_nearest_creature(Squirrel)
+			target = get_nearest_creature_list([Squirrel, Rabbit])
 			if target:
 				destination = target.position
 			else: destination = position

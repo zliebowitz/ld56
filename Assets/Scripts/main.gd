@@ -6,7 +6,7 @@ var dna: int = 1;
 
 
 func _ready() -> void:
-	_on_gain_dna(0) # noop at time of writing, but handles defaults that aren't 0.
+	_on_gain_dna(200) # noop at time of writing, but handles defaults that aren't 0.
 
 
 func _on_gain_dna(dna_value: int) -> void:

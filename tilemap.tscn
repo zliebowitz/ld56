@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://c5cff1stfno0j"]
+[gd_scene load_steps=29 format=4 uid="uid://c5cff1stfno0j"]
 
 [ext_resource type="Texture2D" uid="uid://btue1udj2y7bs" path="res://Assets/Tiles/Grassland.png" id="1_72vrb"]
 [ext_resource type="Script" path="res://Assets/Scripts/main.gd" id="1_ii4nv"]
@@ -16,8 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://knj83fof2f5h" path="res://Assets/Scripts/Animals/Squirrel.tscn" id="11_w0jgb"]
 [ext_resource type="PackedScene" uid="uid://bwagknfgqewx3" path="res://Assets/Scripts/Animals/Hawk.tscn" id="12_4q3w6"]
 [ext_resource type="Texture2D" uid="uid://8b6jbsbvouq2" path="res://Graphics/Hawk/Idle/hawk_idle1.png" id="15_iqjxc"]
+[ext_resource type="Texture2D" uid="uid://c15krn1iopjih" path="res://Graphics/Rabbit/Rabbit.png" id="17_22cp1"]
 [ext_resource type="Texture2D" uid="uid://crhkx7ku4vfne" path="res://Graphics/DNA.png" id="17_v0bhs"]
 [ext_resource type="AudioStream" uid="uid://bobbyjsp1xlcb" path="res://Assets/Audio/Music/BGM.wav" id="18_3bs1d"]
+[ext_resource type="PackedScene" uid="uid://dxhnvxkn78rnb" path="res://Assets/Scripts/Animals/Rabbit.tscn" id="18_055kk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_47fab"]
 texture = ExtResource("1_lp1ne")
@@ -167,14 +169,14 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -8.0
-offset_top = -36.0
-offset_right = 8.0
+offset_left = -52.0
+offset_top = -68.0
+offset_right = 52.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 8
-columns = 2
+columns = 3
 
 [node name="UI_Tile" parent="CanvasLayer/GridContainer" instance=ExtResource("5_mvtnu")]
 layout_mode = 2
@@ -207,6 +209,16 @@ script = ExtResource("11_gm37g")
 animal_name = "Hawk"
 animal_resource = ExtResource("12_4q3w6")
 description = "It's a hawk!"
+animal_parent = NodePath("../../../Animals/Hawks")
+
+[node name="Ui_Hawks2" type="TextureRect" parent="CanvasLayer/GridContainer" node_paths=PackedStringArray("animal_parent")]
+layout_mode = 2
+texture = ExtResource("17_22cp1")
+expand_mode = 4
+script = ExtResource("11_gm37g")
+animal_name = "Rabbit"
+animal_resource = ExtResource("18_055kk")
+description = "It's a Rabbit!"
 animal_parent = NodePath("../../../Animals/Hawks")
 
 [node name="Description" type="ColorRect" parent="CanvasLayer"]
@@ -268,3 +280,5 @@ autoplay = true
 [connection signal="ui_animal_selected" from="CanvasLayer/GridContainer/UI_Squirrel" to="CanvasLayer" method="_on_animal_selected"]
 [connection signal="gui_input" from="CanvasLayer/GridContainer/Ui_Hawks" to="CanvasLayer/GridContainer/Ui_Hawks" method="_on_gui_input"]
 [connection signal="ui_animal_selected" from="CanvasLayer/GridContainer/Ui_Hawks" to="CanvasLayer" method="_on_animal_selected"]
+[connection signal="gui_input" from="CanvasLayer/GridContainer/Ui_Hawks2" to="CanvasLayer/GridContainer/Ui_Hawks2" method="_on_gui_input"]
+[connection signal="ui_animal_selected" from="CanvasLayer/GridContainer/Ui_Hawks2" to="CanvasLayer" method="_on_animal_selected"]

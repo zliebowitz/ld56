@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkh65hbtycvyw"
-path="res://.godot/imported/fox_sleep4.png-473bf4817c243624faf2094cd38c3526.ctex"
+uid="uid://c15krn1iopjih"
+path="res://.godot/imported/Rabbit.png-9a4c6e5809c9a18a7473d3d4b0f390fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/fox/Sleep/fox_sleep4.png"
-dest_files=["res://.godot/imported/fox_sleep4.png-473bf4817c243624faf2094cd38c3526.ctex"]
+source_file="res://Graphics/Rabbit/Rabbit.png"
+dest_files=["res://.godot/imported/Rabbit.png-9a4c6e5809c9a18a7473d3d4b0f390fc.ctex"]
 
 [params]
 

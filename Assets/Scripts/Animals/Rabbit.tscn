@@ -1,0 +1,162 @@
+[gd_scene load_steps=23 format=3 uid="uid://dxhnvxkn78rnb"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/Animals/animal_rabbit.gd" id="1_5ysy0"]
+[ext_resource type="Texture2D" uid="uid://f4rpv6uy2t25" path="res://Graphics/Rabbit/Rabbit_Idle.png" id="2_7h7oy"]
+[ext_resource type="Texture2D" uid="uid://uwpt50ipl4ih" path="res://Graphics/Rabbit/Rabbit_Love.png" id="3_1p1vq"]
+[ext_resource type="Texture2D" uid="uid://dru65whsorlk3" path="res://Graphics/Rabbit/Rabbit_Run.png" id="4_f1uhj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1p3tx"]
+atlas = ExtResource("2_7h7oy")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_570jb"]
+atlas = ExtResource("2_7h7oy")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_weg4u"]
+atlas = ExtResource("2_7h7oy")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4uiqw"]
+atlas = ExtResource("2_7h7oy")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nacg"]
+atlas = ExtResource("2_7h7oy")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fw1tn"]
+atlas = ExtResource("3_1p1vq")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0q58k"]
+atlas = ExtResource("3_1p1vq")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1cy2"]
+atlas = ExtResource("3_1p1vq")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4s440"]
+atlas = ExtResource("3_1p1vq")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0iju"]
+atlas = ExtResource("3_1p1vq")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ff42"]
+atlas = ExtResource("4_f1uhj")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hrnu"]
+atlas = ExtResource("4_f1uhj")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75m4k"]
+atlas = ExtResource("4_f1uhj")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgjeg"]
+atlas = ExtResource("4_f1uhj")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0wh4"]
+atlas = ExtResource("4_f1uhj")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dtw6q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1p3tx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_570jb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_weg4u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4uiqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nacg")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fw1tn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0q58k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1cy2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4s440")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0iju")
+}],
+"loop": true,
+"name": &"Love",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ff42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hrnu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75m4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgjeg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0wh4")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gjmrt"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xngri"]
+radius = 48.0
+
+[node name="Rabbit" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_5ysy0")
+state_list = Array[int]([1, 3, 5, 4])
+state_timers = Array[float]([10.0, 3.0, 5.0, 5.0])
+timed_states = Array[int]([0])
+animal_name = "Rabbit"
+speed = 40.0
+cost = 15
+initial_state = 1
+food_class = "Grass"
+
+[node name="RabbitAnimation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dtw6q")
+animation = &"Idle"
+speed_scale = 2.0
+
+[node name="BodyRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyRadius"]
+shape = SubResource("CircleShape2D_gjmrt")
+
+[node name="SearchRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SearchRadius"]
+shape = SubResource("CircleShape2D_xngri")

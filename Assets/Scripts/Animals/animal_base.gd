@@ -29,6 +29,8 @@ signal gain_dna(dna_value: int)
 
 @onready var tilemap: WorldMapLayer = GlobalManager.tilemap
 @onready var current_state : STATE = initial_state
+@onready var corpse_scene: PackedScene = preload("res://Assets/Scenes/corpse.tscn")
+
 var time_in_state : float = 0
 var index: int = 0
 
@@ -87,10 +89,16 @@ func create_dna() -> void:
 
 
 func kill() -> void:
+	var new_corpse = corpse_scene.instantiate()
+	new_corpse.position = position
+	add_sibling(new_corpse)
 	queue_free()
 
 
 func get_nearest_creature(creature_type: Variant) -> Animal:
+	return get_nearest_creature_list([creature_type])
+	
+func get_nearest_creature_list(creature_types: Array[Variant]):
 	if not has_node("SearchRadius"): return
 	var search_radius: Area2D = $SearchRadius
 	var areas := search_radius.get_overlapping_areas()
@@ -98,9 +106,10 @@ func get_nearest_creature(creature_type: Variant) -> Animal:
 	var closest: Animal = null
 	for area in areas:
 		var animal = area.get_parent()
-		if is_instance_of(animal, creature_type):
-			var new_distance = position.distance_squared_to(animal.position)
-			if new_distance < distance:
-				distance = new_distance
-				closest = animal
+		for creature_type in creature_types:
+			if is_instance_of(animal, creature_type) and animal != self:
+				var new_distance = position.distance_squared_to(animal.position)
+				if new_distance < distance:
+					distance = new_distance
+					closest = animal
 	return closest
