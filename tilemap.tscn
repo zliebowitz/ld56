@@ -342,8 +342,14 @@ text = "0
 stream = ExtResource("18_3bs1d")
 autoplay = true
 
-[node name="PopulationHUD" parent="." instance=ExtResource("27_3chdh")]
+[node name="PopulationHUD" parent="." node_paths=PackedStringArray("squirrels", "hawks", "fox", "bear", "rabbit", "alligator") instance=ExtResource("27_3chdh")]
 script = ExtResource("28_gluq0")
+squirrels = NodePath("../Animals/Squirrels")
+hawks = NodePath("../Animals/Hawks")
+fox = NodePath("../Animals/Fox")
+bear = NodePath("../Animals/Bear")
+rabbit = NodePath("../Animals/Rabbit")
+alligator = NodePath("../Animals/Alligator")
 
 [connection signal="tile_placed" from="TileMapLayer" to="CanvasLayer" method="_on_tile_map_layer_tile_placed"]
 [connection signal="ui_tile_selected" from="CanvasLayer/GridContainer/UI_Tile" to="CanvasLayer" method="_on_ui_tile_selected"]
