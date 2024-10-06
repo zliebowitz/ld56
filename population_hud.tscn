@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://o8ok72imslx1"]
+
+[ext_resource type="Texture2D" uid="uid://csyxanvy6pk00" path="res://Graphics/Squirrel/Squirrel Idle.png" id="1_88rwd"]
+[ext_resource type="Texture2D" uid="uid://8b6jbsbvouq2" path="res://Graphics/Hawk/Idle/hawk_idle1.png" id="2_cl5d6"]
+[ext_resource type="Texture2D" uid="uid://c15krn1iopjih" path="res://Graphics/Rabbit/Rabbit.png" id="3_qm76i"]
+[ext_resource type="Texture2D" uid="uid://cpr18x0j6ig2g" path="res://Graphics/Bear/BearIcon.png" id="4_nx7xq"]
+[ext_resource type="Texture2D" uid="uid://d1e6jexgl4ldi" path="res://Graphics/AlligatorRunning.png" id="5_d2ovt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tnln"]
+atlas = ExtResource("1_88rwd")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bukie"]
+atlas = ExtResource("5_d2ovt")
+region = Rect2(0, 0, 16, 16)
+
+[node name="PopulationHUD" type="CanvasLayer"]
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 2
+
+[node name="Squirrel_UI" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_0tnln")
+expand_mode = 4
+
+[node name="Squirrel_Pop" type="RichTextLabel" parent="GridContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+text = "0"
+
+[node name="Hawk_UI" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+texture = ExtResource("2_cl5d6")
+expand_mode = 4
+
+[node name="Hawk_Pop" type="RichTextLabel" parent="GridContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="Rabbit_UI" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+texture = ExtResource("3_qm76i")
+expand_mode = 4
+
+[node name="Rabbit_Pop" type="RichTextLabel" parent="GridContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="Bear_UI" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+texture = ExtResource("4_nx7xq")
+
+[node name="Bear_Pop" type="RichTextLabel" parent="GridContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="Alligator_UI" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_bukie")
+expand_mode = 4
+
+[node name="Alligator_Pop" type="RichTextLabel" parent="GridContainer"]
+layout_mode = 2
+text = "0"
