@@ -12,7 +12,7 @@ var sprite_id_map: Array[int]
 
 var is_placing_tile := false
 var selected_tile_id := -1
-var tile_placed_count: int = 0;
+
 
 var is_placing_animal := false
 var animal_name: String
@@ -42,7 +42,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 			return
 		if is_placing_tile:
 			# Determine cost of tiles and make sure have enough DNA
-			var current_cost: int = TileDefinition.cost_from_id(selected_tile_id, tile_placed_count)
+			var current_cost: int = TileDefinition.cost_from_id(selected_tile_id)
 			if current_cost > main.dna:
 				return
 			# Don't place tile on same type of tile.
@@ -54,7 +54,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 			selected_tile_id = -1
 			tile_placed.emit()
 			main._on_gain_dna(-current_cost)
-			tile_placed_count += 1
+			TileDefinition.tile_placed_count += 1
 		elif is_placing_animal:
 			var animal: Animal = animal_resource.instantiate()
 			var current_cost: int = AnimalDefinition.cost_from_name(animal_name, animal_parent.get_child_count())
