@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct5ot3isqm1ot"
-path="res://.godot/imported/fox_sleep1.png-27db8f895574c50774dde786656bf1b4.ctex"
+uid="uid://d2ox2kuveprq7"
+path="res://.godot/imported/hawk_eat2.png-74d001bb6cad8059674ba4f70c52300b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/Fox/Sleep/fox_sleep1.png"
-dest_files=["res://.godot/imported/fox_sleep1.png-27db8f895574c50774dde786656bf1b4.ctex"]
+source_file="res://Graphics/Hawk/Eat/hawk_eat2.png"
+dest_files=["res://.godot/imported/hawk_eat2.png-74d001bb6cad8059674ba4f70c52300b.ctex"]
 
 [params]
 

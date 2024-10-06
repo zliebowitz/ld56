@@ -5,6 +5,10 @@ extends Animal
 var target: Animal
 
 func _process_action(delta: float) -> void:
+	if animation.animation == "Eat" && animation.is_playing():
+		if time_in_state < 2:
+			return
+		
 	updateAnimation()
 	match current_state:
 		STATE.SEEK_FOOD:
@@ -16,6 +20,7 @@ func _process_action(delta: float) -> void:
 			if move_towards_destination(delta):
 				if not target:
 					return
+				animation.play("Eat")
 				target.kill()
 				create_dna()
 				advance_state()
