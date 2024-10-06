@@ -1,5 +1,12 @@
 class_name TileDefinition
 
+enum {
+	TILE_GRASS = 0,
+	TILE_SAND = 1,
+	TILE_WATER = 2,
+	TILE_TREE = 3
+}
+
 static var name = {
 	0: "Grass",
 	1: "Sand",

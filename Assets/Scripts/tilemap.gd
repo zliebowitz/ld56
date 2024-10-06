@@ -43,6 +43,9 @@ func _unhandled_input(_event: InputEvent) -> void:
 			var current_cost: int = TileDefinition.cost_from_id(selected_tile_id, tile_placed_count)
 			if current_cost > main.dna:
 				return
+			# Don't place tile on same type of tile.
+			if cell_id == selected_tile_id:
+				return
 			#place the tile
 			place_tile(coords, selected_tile_id)
 			is_placing_tile = false
@@ -56,10 +59,10 @@ func _unhandled_input(_event: InputEvent) -> void:
 			if current_cost > main.dna:
 				animal.free()
 				return
-			if animal.movement_mode == Animal.Movement.WALKING and cell_id == 2: # water
+			if animal.movement_mode == Animal.Movement.WALKING and cell_id == TileDefinition.TILE_WATER: # water
 				animal.free()
 				return
-			if animal.movement_mode == Animal.Movement.SWIMMING and cell_id != 2: # water
+			if animal.movement_mode == Animal.Movement.SWIMMING and cell_id != TileDefinition.TILE_WATER: # water
 				animal.free()
 				return
 			animal.position = mouse_pos
