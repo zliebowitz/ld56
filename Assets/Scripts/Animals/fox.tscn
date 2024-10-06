@@ -1,33 +1,34 @@
 [gd_scene load_steps=37 format=3 uid="uid://dt5mducivgh0f"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Animals/animal_fox.gd" id="1_n17ia"]
-[ext_resource type="Texture2D" uid="uid://c6lo1qfvfvu8b" path="res://Assets/Characters/fox/idle/fox_idle3.png" id="1_tkxnt"]
-[ext_resource type="Texture2D" uid="uid://dinefktqiaec2" path="res://Assets/Characters/fox/idle/fox_idle2.png" id="2_5yjbo"]
-[ext_resource type="Texture2D" uid="uid://d0nbm1p5dxgbb" path="res://Assets/Characters/fox/idle/fox_idle1.png" id="3_byahl"]
-[ext_resource type="Texture2D" uid="uid://dnvicpynn5wyw" path="res://Assets/Characters/fox/death/fox_death10.png" id="6_l5v6l"]
-[ext_resource type="Texture2D" uid="uid://dws7had5e4edm" path="res://Assets/Characters/fox/death/fox_death9.png" id="7_v6mvk"]
-[ext_resource type="Texture2D" uid="uid://ba0cysom8n0ag" path="res://Assets/Characters/fox/death/fox_death8.png" id="8_dji32"]
-[ext_resource type="Texture2D" uid="uid://d1hub8wnx1c6o" path="res://Assets/Characters/fox/death/fox_death7.png" id="9_mvmop"]
-[ext_resource type="Texture2D" uid="uid://bl6qcwhbaohgl" path="res://Assets/Characters/fox/death/fox_death6.png" id="10_h5ki0"]
-[ext_resource type="Texture2D" uid="uid://cbf5od6vq5j14" path="res://Assets/Characters/fox/death/fox_death5.png" id="11_begks"]
-[ext_resource type="Texture2D" uid="uid://jmv8b5rjhig3" path="res://Assets/Characters/fox/death/fox_death4.png" id="12_orwiw"]
-[ext_resource type="Texture2D" uid="uid://doq35hblia1i3" path="res://Assets/Characters/fox/death/fox_death3.png" id="13_ucey8"]
-[ext_resource type="Texture2D" uid="uid://c7voy32joi5su" path="res://Assets/Characters/fox/death/fox_death2.png" id="14_xnr7s"]
-[ext_resource type="Texture2D" uid="uid://b0pw5mbxav0q3" path="res://Assets/Characters/fox/death/fox_death1.png" id="15_rtxii"]
-[ext_resource type="Texture2D" uid="uid://dneu2bybpb4da" path="res://Assets/Characters/fox/Eat/fox_eat7.png" id="16_7n48a"]
-[ext_resource type="Texture2D" uid="uid://bd10ehkb4x10k" path="res://Assets/Characters/fox/Eat/fox_eat6.png" id="17_jpk8c"]
-[ext_resource type="Texture2D" uid="uid://cr13sst25yk10" path="res://Assets/Characters/fox/Eat/fox_eat5.png" id="18_dhetv"]
-[ext_resource type="Texture2D" uid="uid://d0da23n8stoo" path="res://Assets/Characters/fox/Eat/fox_eat4.png" id="19_afc3r"]
-[ext_resource type="Texture2D" uid="uid://noe8w83kfprf" path="res://Assets/Characters/fox/Eat/fox_eat3.png" id="20_efrxd"]
-[ext_resource type="Texture2D" uid="uid://b8mdvi6oilopp" path="res://Assets/Characters/fox/Eat/fox_eat2.png" id="21_kbxcb"]
-[ext_resource type="Texture2D" uid="uid://w6yptvxk0xti" path="res://Assets/Characters/fox/Eat/fox_eat1.png" id="22_a8ahl"]
-[ext_resource type="Texture2D" uid="uid://gwn4husa1w0u" path="res://Assets/Characters/fox/Run/fox_runing1.png" id="26_mao20"]
-[ext_resource type="Texture2D" uid="uid://b38pkvcimx1rd" path="res://Assets/Characters/fox/Run/fox_runing3.png" id="27_6bwkt"]
-[ext_resource type="Texture2D" uid="uid://cr2hgrmfbwalu" path="res://Assets/Characters/fox/Run/fox_runing2.png" id="28_2ti8j"]
-[ext_resource type="Texture2D" uid="uid://vvu1mi4tliya" path="res://Assets/Characters/fox/Sleep/fox_sleep5.png" id="29_ljstc"]
-[ext_resource type="Texture2D" uid="uid://ben0frua308ky" path="res://Assets/Characters/fox/Sleep/fox_sleep3.png" id="31_voejy"]
-[ext_resource type="Texture2D" uid="uid://5dg1m71n7hq8" path="res://Assets/Characters/fox/Sleep/fox_sleep2.png" id="32_4rddb"]
-[ext_resource type="Texture2D" uid="uid://ct5ot3isqm1ot" path="res://Assets/Characters/fox/Sleep/fox_sleep1.png" id="33_4ml4d"]
+[ext_resource type="Texture2D" uid="uid://c6lo1qfvfvu8b" path="res://Assets/Characters/Fox/Idle/fox_idle3.png" id="1_tkxnt"]
+[ext_resource type="Texture2D" uid="uid://dinefktqiaec2" path="res://Assets/Characters/Fox/Idle/fox_idle2.png" id="2_5yjbo"]
+[ext_resource type="Texture2D" uid="uid://d0nbm1p5dxgbb" path="res://Assets/Characters/Fox/Idle/fox_idle1.png" id="3_byahl"]
+[ext_resource type="Texture2D" uid="uid://dnvicpynn5wyw" path="res://Assets/Characters/Fox/Death/fox_death10.png" id="6_l5v6l"]
+[ext_resource type="Texture2D" uid="uid://dws7had5e4edm" path="res://Assets/Characters/Fox/Death/fox_death9.png" id="7_v6mvk"]
+[ext_resource type="Texture2D" uid="uid://ba0cysom8n0ag" path="res://Assets/Characters/Fox/Death/fox_death8.png" id="8_dji32"]
+[ext_resource type="Texture2D" uid="uid://d1hub8wnx1c6o" path="res://Assets/Characters/Fox/Death/fox_death7.png" id="9_mvmop"]
+[ext_resource type="Texture2D" uid="uid://bl6qcwhbaohgl" path="res://Assets/Characters/Fox/Death/fox_death6.png" id="10_h5ki0"]
+[ext_resource type="Texture2D" uid="uid://cbf5od6vq5j14" path="res://Assets/Characters/Fox/Death/fox_death5.png" id="11_begks"]
+[ext_resource type="Texture2D" uid="uid://jmv8b5rjhig3" path="res://Assets/Characters/Fox/Death/fox_death4.png" id="12_orwiw"]
+[ext_resource type="Texture2D" uid="uid://doq35hblia1i3" path="res://Assets/Characters/Fox/Death/fox_death3.png" id="13_ucey8"]
+[ext_resource type="Texture2D" uid="uid://c7voy32joi5su" path="res://Assets/Characters/Fox/Death/fox_death2.png" id="14_xnr7s"]
+[ext_resource type="Texture2D" uid="uid://b0pw5mbxav0q3" path="res://Assets/Characters/Fox/Death/fox_death1.png" id="15_rtxii"]
+[ext_resource type="Texture2D" uid="uid://dneu2bybpb4da" path="res://Assets/Characters/Fox/Eat/fox_eat7.png" id="16_7n48a"]
+[ext_resource type="Texture2D" uid="uid://bd10ehkb4x10k" path="res://Assets/Characters/Fox/Eat/fox_eat6.png" id="17_jpk8c"]
+[ext_resource type="Texture2D" uid="uid://cr13sst25yk10" path="res://Assets/Characters/Fox/Eat/fox_eat5.png" id="18_dhetv"]
+[ext_resource type="Texture2D" uid="uid://d0da23n8stoo" path="res://Assets/Characters/Fox/Eat/fox_eat4.png" id="19_afc3r"]
+[ext_resource type="Texture2D" uid="uid://noe8w83kfprf" path="res://Assets/Characters/Fox/Eat/fox_eat3.png" id="20_efrxd"]
+[ext_resource type="Texture2D" uid="uid://b8mdvi6oilopp" path="res://Assets/Characters/Fox/Eat/fox_eat2.png" id="21_kbxcb"]
+[ext_resource type="Texture2D" uid="uid://w6yptvxk0xti" path="res://Assets/Characters/Fox/Eat/fox_eat1.png" id="22_a8ahl"]
+[ext_resource type="Texture2D" uid="uid://gwn4husa1w0u" path="res://Assets/Characters/Fox/Run/fox_runing1.png" id="26_mao20"]
+[ext_resource type="Texture2D" uid="uid://b38pkvcimx1rd" path="res://Assets/Characters/Fox/Run/fox_runing3.png" id="27_6bwkt"]
+[ext_resource type="Texture2D" uid="uid://cr2hgrmfbwalu" path="res://Assets/Characters/Fox/Run/fox_runing2.png" id="28_2ti8j"]
+[ext_resource type="Texture2D" uid="uid://bkh65hbtycvyw" path="res://Assets/Characters/Fox/Sleep/fox_sleep4.png" id="29_b8t35"]
+[ext_resource type="Texture2D" uid="uid://vvu1mi4tliya" path="res://Assets/Characters/Fox/Sleep/fox_sleep5.png" id="29_ljstc"]
+[ext_resource type="Texture2D" uid="uid://ben0frua308ky" path="res://Assets/Characters/Fox/Sleep/fox_sleep3.png" id="31_voejy"]
+[ext_resource type="Texture2D" uid="uid://5dg1m71n7hq8" path="res://Assets/Characters/Fox/Sleep/fox_sleep2.png" id="32_4rddb"]
+[ext_resource type="Texture2D" uid="uid://ct5ot3isqm1ot" path="res://Assets/Characters/Fox/Sleep/fox_sleep1.png" id="33_4ml4d"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a1a5l"]
 
@@ -36,8 +37,6 @@
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ej3dr"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4qdtr"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hwyvx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g0d40"]
 resource_local_to_scene = true
@@ -98,6 +97,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5yjbo")
+}],
+"loop": true,
+"name": &"Default",
 "speed": 5.0
 }, {
 "frames": [{
@@ -168,7 +175,7 @@ animations = [{
 "texture": ExtResource("31_voejy")
 }, {
 "duration": 1.0,
-"texture": SubResource("CompressedTexture2D_hwyvx")
+"texture": ExtResource("29_b8t35")
 }, {
 "duration": 1.0,
 "texture": ExtResource("29_ljstc")
@@ -199,7 +206,7 @@ food_class = "Squirrel"
 
 [node name="FoxAnimation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_g0d40")
-animation = &"Sleep"
+animation = &"Default"
 
 [node name="Timer" type="Timer" parent="."]
 

@@ -1,18 +1,16 @@
 class_name Fox
 extends Animal
 
-@onready var sprite2d = $FoxAnimation
+@onready var animation = $FoxAnimation
 @onready var timer = $Timer
 var is_waiting = false
 var count = 0
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:	
-	sprite2d.play("Run")
-
-
-func _process(delta: float) -> void:
-	super(delta)
+func _process_action(delta: float) -> void:
+	if animation.animation == "Sleep" && animation.is_playing():
+		if time_in_state < 3:
+			return
+	
 	updateAnimation()
 	match current_state:
 		STATE.SEEK_WATER:
@@ -20,13 +18,15 @@ func _process(delta: float) -> void:
 			if move_towards_destination(delta):
 				advance_state()
 		STATE.SEEK_FOOD:
-			var target = get_nearest_creature(Squirrel)
-			if (target != null):
+			target = get_nearest_creature_list([Squirrel, Rabbit])
+			if is_instance_valid(target):
 				destination = target.position
-			else:
-				return
 			if move_towards_destination(delta):
+				if not is_instance_valid(target):
+					return
+				animation.play("Eat")
 				target.kill()
+				create_dna()
 				advance_state()
 		STATE.WAIT:
 			if has_time_passed():
@@ -35,11 +35,12 @@ func _process(delta: float) -> void:
 			if has_time_passed():
 				advance_state()
 			else:
-				if (count > 50):
-					destination = tilemap.get_nearest_tile_absolute(position, randi() % 4)
+				if (fmod(time_in_state, 2.0) < 0.01):
+					destination =  Vector2(position.x + randf_range(-50, 50), position.y + randf_range(-50, 50))
+				if (fmod(time_in_state, 2.0) > 1.5):
 					count = 0
-				move_towards_destination(delta)
-				count += 1
+				if (move_towards_destination(delta)):
+					animation.play("Default")
 		STATE.PATROL:
 			if (time_in_state > 4):
 				advance_state()
@@ -50,13 +51,13 @@ func _process(delta: float) -> void:
 func updateAnimation():
 	match current_state:
 		STATE.SEEK_WATER, STATE.SEEK_FOOD:
-			sprite2d.play("Run")
+			animation.play("Run")
 		STATE.WAIT:
-			sprite2d.play("Eat")
+			animation.play("Eat")
 		STATE.RANDOM_WANDERING:
-			sprite2d.play("Run")
+			animation.play("Run")
 		STATE.PATROL:
-			sprite2d.play("Sleep")
+			animation.play("Sleep")
 
 
 func _on_wait_timeout() -> void:
