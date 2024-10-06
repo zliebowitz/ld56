@@ -16,9 +16,9 @@ animations = [{
 
 [node name="Hawk" type="Node2D"]
 script = ExtResource("1_3ifj2")
-state_list = Array[int]([2, 6, 3])
+state_list = Array[int]([1, 2, 3])
 state_timers = Array[float]([10.0, 5.0, 15.0])
-timed_states = Array[int]([2])
+timed_states = Array[int]([0])
 animal_name = "Hawk"
 movement_mode = 1
 speed = 75.0

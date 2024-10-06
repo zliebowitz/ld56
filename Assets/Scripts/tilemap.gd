@@ -72,6 +72,11 @@ func get_tile_center(coords: Vector2i) -> Vector2:
 	var y_loc: float = coords.y * tile_size.y + tile_size.y/2
 	return Vector2(x_loc, y_loc)
 
+func is_in_bounds(coords: Vector2i) -> bool:
+	var x_good = coords.x >= 0 and coords.x < map_size.x
+	var y_good = coords.y >= 0 and coords.y < map_size.y
+	return x_good and y_good
+
 
 #Returns the tile that the position is on.
 func get_coord_from_position(location: Vector2) -> Vector2i:
@@ -114,16 +119,18 @@ func get_nearest_tile(starting_location: Vector2, id: int = -1, sprite_id: int =
 
 
 func get_nearest_tile_absolute(starting_location: Vector2, id: int = -1, sprite_id: int = -1) -> Vector2:
-	return get_nearest_tile(starting_location, id, sprite_id)*32
+	var center = get_tile_center(get_nearest_tile(starting_location, id, sprite_id))
+	var offset = center + (starting_location - center).normalized()*12
+	return offset
 	
-func get_nearest_creature(starting_location: Vector2, creature_type: Variant) -> Vector2:
+func get_nearest_creature(starting_location: Vector2, creature_type: Variant) -> Animal:
 	var distance := 999999.9
-	var closest := Vector2(-1,-1)
+	var closest: Animal = null
 	var main = get_parent()
 	for child in main.get_children():
 		if is_instance_of(child, creature_type):
 			var new_distance = starting_location.distance_squared_to(child.position)
 			if new_distance < distance:
 				distance = new_distance
-				closest = child.position
+				closest = child
 	return closest

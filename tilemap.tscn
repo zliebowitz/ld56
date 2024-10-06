@@ -200,105 +200,42 @@ offset_bottom = 79.0
 
 [node name="Squirrel" parent="." instance=ExtResource("11_w0jgb")]
 position = Vector2(459, 285)
-state_list = Array[int]([0, 1, 2, 4])
-state_timers = [10.0, 3.0, 10.0, 3.0, 10.0]
-animal_name = "Squirrel"
-speed = 50.0
-dna_value = 10
-food_class = "Nut"
-
-[node name="Squirrel2" parent="." instance=ExtResource("11_w0jgb")]
-position = Vector2(316, 243)
-state_list = Array[int]([0, 1, 2, 4])
-state_timers = [10.0, 3.0, 10.0, 3.0, 10.0]
-animal_name = "Squirrel"
-speed = 50.0
-dna_value = 10
-food_class = "Nut"
-
-[node name="Squirrel3" parent="." instance=ExtResource("11_w0jgb")]
-position = Vector2(245, 322)
-state_list = Array[int]([0, 1, 2, 4])
-state_timers = [10.0, 3.0, 10.0, 3.0, 10.0]
-animal_name = "Squirrel"
-speed = 50.0
-dna_value = 10
-food_class = "Nut"
-
-[node name="Squirrel4" parent="." instance=ExtResource("11_w0jgb")]
-position = Vector2(176, 143)
-state_list = Array[int]([0, 1, 2, 4])
-state_timers = [10.0, 3.0, 10.0, 3.0, 10.0]
-animal_name = "Squirrel"
-speed = 50.0
-dna_value = 10
-food_class = "Nut"
-
-[node name="Squirrel5" parent="." instance=ExtResource("11_w0jgb")]
-position = Vector2(402, 163)
-state_list = Array[int]([0, 1, 2, 4])
-state_timers = [10.0, 3.0, 10.0, 3.0, 10.0]
-animal_name = "Squirrel"
-speed = 50.0
-dna_value = 10
-food_class = "Nut"
-
-[node name="Squirrel6" parent="." instance=ExtResource("11_w0jgb")]
-position = Vector2(604, 170)
-state_list = Array[int]([0, 1, 2, 4])
-state_timers = [10.0, 3.0, 10.0, 3.0, 10.0]
-animal_name = "Squirrel"
-speed = 50.0
-dna_value = 10
-food_class = "Nut"
-
-[node name="Squirrel7" parent="." instance=ExtResource("11_w0jgb")]
-position = Vector2(636, 295)
-state_list = Array[int]([0, 1, 2, 4])
-state_timers = [10.0, 3.0, 10.0, 3.0, 10.0]
-animal_name = "Squirrel"
-speed = 50.0
-dna_value = 10
-food_class = "Nut"
-
-[node name="Squirrel8" parent="." instance=ExtResource("11_w0jgb")]
-position = Vector2(527, 353)
-state_list = Array[int]([0, 1, 2, 4])
-state_timers = [10.0, 3.0, 10.0, 3.0, 10.0]
-animal_name = "Squirrel"
-speed = 50.0
-dna_value = 10
-food_class = "Nut"
-
-[node name="Squirrel9" parent="." instance=ExtResource("11_w0jgb")]
-position = Vector2(704, 189)
-state_list = Array[int]([0, 1, 2, 4])
-state_timers = [10.0, 3.0, 10.0, 3.0, 10.0]
-animal_name = "Squirrel"
-speed = 50.0
-dna_value = 10
-food_class = "Nut"
-
-[node name="Squirrel10" parent="." instance=ExtResource("11_w0jgb")]
-position = Vector2(754, 311)
-state_list = Array[int]([0, 1, 2, 4])
-state_timers = [10.0, 3.0, 10.0, 3.0, 10.0]
-animal_name = "Squirrel"
-speed = 50.0
-dna_value = 10
-food_class = "Nut"
-
-[node name="Squirrel11" parent="." instance=ExtResource("11_w0jgb")]
-position = Vector2(743, 145)
-state_list = Array[int]([0, 1, 2, 4])
-state_timers = [10.0, 3.0, 10.0, 3.0, 10.0]
-animal_name = "Squirrel"
-speed = 50.0
-dna_value = 10
-food_class = "Nut"
+state_timers = Array[float]([10.0, 3.0, 10.0, 3.0, 10.0])
 
 [node name="Hawk" parent="." instance=ExtResource("12_4q3w6")]
 position = Vector2(201, 241)
+
+[node name="Squirrel2" parent="." instance=ExtResource("11_w0jgb")]
+position = Vector2(272, 330)
+state_timers = Array[float]([10.0, 3.0, 10.0, 3.0, 10.0])
+
+[node name="Squirrel3" parent="." instance=ExtResource("11_w0jgb")]
+position = Vector2(349, 196)
+state_timers = Array[float]([10.0, 3.0, 10.0, 3.0, 10.0])
+
+[node name="Squirrel4" parent="." instance=ExtResource("11_w0jgb")]
+position = Vector2(631, 319)
+state_timers = Array[float]([10.0, 3.0, 10.0, 3.0, 10.0])
+
+[node name="Squirrel5" parent="." instance=ExtResource("11_w0jgb")]
+position = Vector2(582, 185)
+state_timers = Array[float]([10.0, 3.0, 10.0, 3.0, 10.0])
+
+[node name="Squirrel6" parent="." instance=ExtResource("11_w0jgb")]
+position = Vector2(454, 174)
+state_timers = Array[float]([10.0, 3.0, 10.0, 3.0, 10.0])
+
+[node name="Squirrel7" parent="." instance=ExtResource("11_w0jgb")]
+position = Vector2(547, 278)
+state_timers = Array[float]([10.0, 3.0, 10.0, 3.0, 10.0])
+
+[node name="Squirrel8" parent="." instance=ExtResource("11_w0jgb")]
+position = Vector2(638, 241)
+state_timers = Array[float]([10.0, 3.0, 10.0, 3.0, 10.0])
+
+[node name="Squirrel9" parent="." instance=ExtResource("11_w0jgb")]
+position = Vector2(473, 328)
+state_timers = Array[float]([10.0, 3.0, 10.0, 3.0, 10.0])
 
 [connection signal="tile_placed" from="TileMapLayer" to="CanvasLayer" method="_on_tile_map_layer_tile_placed"]
 [connection signal="ui_tile_selected" from="CanvasLayer/GridContainer/UI_Tile" to="CanvasLayer" method="_on_ui_tile_selected"]
