@@ -100,13 +100,19 @@ state_list = Array[int]([0, 3, 1, 3, 5])
 state_timers = Array[float]([10.0, 3.0, 10.0, 3.0, 10.0])
 timed_states = Array[int]([0, 2])
 animal_name = "Squirrel"
+movement_mode = null
 speed = 50.0
+cost = null
+cost_scaling = null
 dna_value = 10
+dna_on_feed = null
+initial_state = null
 food_class = "Nut"
+reproduction_site_class = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_h2t03")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.540467
+frame_progress = 0.337283
 speed_scale = 2.0
