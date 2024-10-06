@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwagknfgqewx3"]
+[gd_scene load_steps=4 format=3 uid="uid://q7wdqby8w0rk"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Animals/animal_hawk.gd" id="1_3ifj2"]
 [ext_resource type="Texture2D" uid="uid://onur23p6t6ge" path="res://icon.svg" id="2_4maac"]
