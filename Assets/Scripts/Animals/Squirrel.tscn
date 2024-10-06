@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://knj83fof2f5h"]
+[gd_scene load_steps=17 format=3 uid="uid://knj83fof2f5h"]
 
 [ext_resource type="Texture2D" uid="uid://0mckfbgo642b" path="res://Graphics/Squirrel/Squirrel Run.png" id="1_8hgi0"]
 [ext_resource type="Script" path="res://Assets/Scripts/Animals/animal_squirrel.gd" id="1_88qs4"]
@@ -94,6 +94,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gjmrt"]
+radius = 16.0
+
 [node name="Squirrel" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_88qs4")
@@ -103,6 +106,7 @@ timed_states = Array[int]([0, 2])
 animal_name = "Squirrel"
 speed = 50.0
 dna_value = 10
+dna_on_feed = 1
 food_class = "Nut"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -111,3 +115,8 @@ animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.540467
 speed_scale = 2.0
+
+[node name="BodyRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyRadius"]
+shape = SubResource("CircleShape2D_gjmrt")

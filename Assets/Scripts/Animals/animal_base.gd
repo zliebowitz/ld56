@@ -32,20 +32,16 @@ signal gain_dna(dna_value: int)
 var time_in_state : float = 0
 var index: int = 0
 
+func _ready() -> void:
+	var main = GlobalManager.main
+	add_to_group("animal")
+	gain_dna.connect(main._on_gain_dna)
+
 
 func _process(delta: float) -> void:
 	time_in_state += delta;
 	kill_if_time_elapsed()
 	_process_action(delta)
-
-
-#func _change_state_if_time_elapsed(state: STATE, time_to_wait: float) -> bool:
-	#if time_to_wait <= time_in_state:
-		#current_state = state;
-		## TODO: death
-		#_process(time_in_state - time_to_wait);
-		#return true
-	#return false
 	
 
 func get_next_state() -> STATE:
@@ -92,3 +88,19 @@ func create_dna() -> void:
 
 func kill() -> void:
 	queue_free()
+
+
+func get_nearest_creature(creature_type: Variant) -> Animal:
+	if not has_node("SearchRadius"): return
+	var search_radius: Area2D = $SearchRadius
+	var areas := search_radius.get_overlapping_areas()
+	var distance := 999999.9
+	var closest: Animal = null
+	for area in areas:
+		var animal = area.get_parent()
+		if is_instance_of(animal, creature_type):
+			var new_distance = position.distance_squared_to(animal.position)
+			if new_distance < distance:
+				distance = new_distance
+				closest = animal
+	return closest

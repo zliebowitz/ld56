@@ -1,33 +1,10 @@
 class_name Squirrel
 extends Animal
-
-func _ready() -> void:
-	pass
-	#state_list = [STATE.SEEK_WATER, STATE.WAIT_DRINKING, STATE.SEEK_FOOD, STATE.WAIT_EAT, STATE.RANDOM_WANDERING]
-	#movement_mode = Movement.WALKING
-	#state_timers = [10, 3, 10, 3, 10]
-	#timed_states = [STATE.SEEK_WATER, STATE.SEEK_FOOD]
-	#animal_name = "Squirrel"
-	#speed = 50
-	#cost = 1
-	#cost_scaling = 1.1
-	#dna_value = 10
-	#initial_state = STATE.SEEK_WATER
-	#food_class = "Nut"
 	
 var wander_wait: float = 2.0
 
-func _change_state_if_time_elapsed(state: STATE, time_to_wait: float) -> bool:
-	if time_to_wait <= time_in_state:
-		current_state = state;
-		# TODO: death
-		_process(time_in_state - time_to_wait);
-		return true
-	return false
-	
 
 func _process_action(delta: float) -> void:
-	
 	match current_state:
 		STATE.SEEK_WATER:
 			destination = tilemap.get_nearest_tile_absolute(position, 2)
@@ -38,6 +15,10 @@ func _process_action(delta: float) -> void:
 			destination = tilemap.get_nearest_tile_absolute(position, -1, 0)
 			$AnimatedSprite2D.animation = "run"
 			if move_towards_destination(delta):
+				create_dna()
+				if randf() < 0.75:		#75% chance to eat the nuts
+					var coords = tilemap.get_coord_from_position(destination)
+					tilemap.clear_sprite(coords)
 				advance_state()
 		STATE.WAIT:
 			$AnimatedSprite2D.animation = "idle"

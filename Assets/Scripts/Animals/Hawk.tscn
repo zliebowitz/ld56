@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwagknfgqewx3"]
+[gd_scene load_steps=6 format=3 uid="uid://bwagknfgqewx3"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Animals/animal_hawk.gd" id="1_3ifj2"]
 [ext_resource type="Texture2D" uid="uid://onur23p6t6ge" path="res://icon.svg" id="2_4maac"]
@@ -14,12 +14,18 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_y4vg8"]
+radius = 125.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c61tx"]
+radius = 16.0
+
 [node name="Hawk" type="Node2D"]
 z_index = 2
 y_sort_enabled = true
 script = ExtResource("1_3ifj2")
 state_list = Array[int]([1, 2, 3])
-state_timers = Array[float]([10.0, 5.0, 15.0])
+state_timers = Array[float]([10.0, 5.0, 10.0])
 timed_states = Array[int]([0])
 animal_name = "Hawk"
 movement_mode = 1
@@ -31,3 +37,14 @@ scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_d48wb")
 autoplay = "default"
 speed_scale = 2.0
+
+[node name="SearchRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SearchRadius"]
+shape = SubResource("CircleShape2D_y4vg8")
+
+[node name="BodyRadius" type="Area2D" parent="."]
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyRadius"]
+shape = SubResource("CircleShape2D_c61tx")

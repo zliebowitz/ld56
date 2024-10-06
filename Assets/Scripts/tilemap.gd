@@ -62,10 +62,8 @@ func select_tile(tile_id: int) -> void:
 	is_placing_animal = false
 	
 	
-func select_animal(name: String, resource: PackedScene, descriptor: String, parent: Node) -> void:
-	animal_name = name
+func select_animal(resource: PackedScene, parent: Node) -> void:
 	animal_resource = resource
-	animal_descriptor = descriptor
 	animal_parent = parent
 	is_placing_tile = false
 	is_placing_animal = true
@@ -91,6 +89,9 @@ func place_tile(coords: Vector2i, map_id: int = -1, sprite_id: int = -1):
 		sprite_id_map[get_array_index(coords)] = sprite_id
 		print("Placing Sprite id ", sprite_id, " at ", coords)
 
+func clear_sprite(coords: Vector2i):
+	sprite_id_map[get_array_index(coords)] = -1
+	spritelayer.erase_cell(coords)
 
 #Returns [TileMapID, SpriteLayerID]
 func get_tile_info(coords: Vector2i) -> Array[int]:
@@ -159,10 +160,10 @@ func get_nearest_creature(starting_location: Vector2, creature_type: Variant) ->
 	var distance := 999999.9
 	var closest: Animal = null
 	var main = get_parent()
-	for child in main.get_children():
-		if is_instance_of(child, creature_type):
-			var new_distance = starting_location.distance_squared_to(child.position)
+	for animal in get_tree().get_nodes_in_group("animal"):
+		if is_instance_of(animal, creature_type):
+			var new_distance = starting_location.distance_squared_to(animal.position)
 			if new_distance < distance:
 				distance = new_distance
-				closest = child
+				closest = animal
 	return closest

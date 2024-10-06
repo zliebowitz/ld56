@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dldn4i6xcprqe"]
+[gd_scene load_steps=3 format=3 uid="uid://dwuqnyq27mhvs"]
 
 [ext_resource type="Texture2D" uid="uid://qs3watgxm7m5" path="res://Graphics/Acorn.png" id="1_312xk"]
 [ext_resource type="Script" path="res://Assets/Scripts/Tiles/nut.gd" id="2_k1w38"]

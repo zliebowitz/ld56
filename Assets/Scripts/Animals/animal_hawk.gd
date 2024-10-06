@@ -6,9 +6,8 @@ var target: Animal
 func _process_action(delta: float) -> void:
 	match current_state:
 		STATE.SEEK_FOOD:
-			#TODO Get nearest animal
 			target = null
-			target = tilemap.get_nearest_creature(position, Squirrel)
+			target = get_nearest_creature(Squirrel)
 			if target:
 				destination = target.position
 			else: destination = position
@@ -19,7 +18,8 @@ func _process_action(delta: float) -> void:
 				create_dna()
 				advance_state()
 		STATE.SEEK_ITEM:
-			destination = tilemap.get_nearest_tile_absolute(position, 3)
+			var nearest_tree_tile = tilemap.get_nearest_tile(position - Vector2.UP * 25, 3)
+			destination = tilemap.get_tile_center(nearest_tree_tile) + Vector2.UP * 25
 			if move_towards_destination(delta):
 				advance_state()
 		STATE.WAIT:
