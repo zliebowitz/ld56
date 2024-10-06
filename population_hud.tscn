@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://o8ok72imslx1"]
+[gd_scene load_steps=9 format=3 uid="uid://o8ok72imslx1"]
 
 [ext_resource type="Texture2D" uid="uid://csyxanvy6pk00" path="res://Graphics/Squirrel/Squirrel Idle.png" id="1_88rwd"]
 [ext_resource type="Texture2D" uid="uid://8b6jbsbvouq2" path="res://Graphics/Hawk/Idle/hawk_idle1.png" id="2_cl5d6"]
 [ext_resource type="Texture2D" uid="uid://c15krn1iopjih" path="res://Graphics/Rabbit/Rabbit.png" id="3_qm76i"]
 [ext_resource type="Texture2D" uid="uid://cpr18x0j6ig2g" path="res://Graphics/Bear/BearIcon.png" id="4_nx7xq"]
 [ext_resource type="Texture2D" uid="uid://d1e6jexgl4ldi" path="res://Graphics/AlligatorRunning.png" id="5_d2ovt"]
+[ext_resource type="Texture2D" uid="uid://d0nbm1p5dxgbb" path="res://Assets/Characters/fox/idle/fox_idle1.png" id="5_nnoog"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0tnln"]
 atlas = ExtResource("1_88rwd")
@@ -26,10 +27,12 @@ layout_mode = 2
 texture = SubResource("AtlasTexture_0tnln")
 expand_mode = 4
 
-[node name="Squirrel_Pop" type="RichTextLabel" parent="GridContainer"]
+[node name="SquirrelPop" type="RichTextLabel" parent="GridContainer"]
 clip_contents = false
-custom_minimum_size = Vector2(64, 0)
+custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "0"
 
 [node name="Hawk_UI" type="TextureRect" parent="GridContainer"]
@@ -37,8 +40,11 @@ layout_mode = 2
 texture = ExtResource("2_cl5d6")
 expand_mode = 4
 
-[node name="Hawk_Pop" type="RichTextLabel" parent="GridContainer"]
+[node name="HawkPop" type="RichTextLabel" parent="GridContainer"]
+custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "0"
 
 [node name="Rabbit_UI" type="TextureRect" parent="GridContainer"]
@@ -46,16 +52,34 @@ layout_mode = 2
 texture = ExtResource("3_qm76i")
 expand_mode = 4
 
-[node name="Rabbit_Pop" type="RichTextLabel" parent="GridContainer"]
+[node name="RabbitPop" type="RichTextLabel" parent="GridContainer"]
+custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "0"
 
 [node name="Bear_UI" type="TextureRect" parent="GridContainer"]
 layout_mode = 2
 texture = ExtResource("4_nx7xq")
 
-[node name="Bear_Pop" type="RichTextLabel" parent="GridContainer"]
+[node name="BearPop" type="RichTextLabel" parent="GridContainer"]
+custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "0"
+
+[node name="Fox_UI" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+texture = ExtResource("5_nnoog")
+expand_mode = 4
+
+[node name="FoxPop" type="RichTextLabel" parent="GridContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "0"
 
 [node name="Alligator_UI" type="TextureRect" parent="GridContainer"]
@@ -63,6 +87,9 @@ layout_mode = 2
 texture = SubResource("AtlasTexture_bukie")
 expand_mode = 4
 
-[node name="Alligator_Pop" type="RichTextLabel" parent="GridContainer"]
+[node name="AlligatorPop" type="RichTextLabel" parent="GridContainer"]
+custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "0"
