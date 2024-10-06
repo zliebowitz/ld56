@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://c5cff1stfno0j"]
+[gd_scene load_steps=34 format=4 uid="uid://c5cff1stfno0j"]
 
 [ext_resource type="Texture2D" uid="uid://btue1udj2y7bs" path="res://Assets/Tiles/Grassland.png" id="1_72vrb"]
 [ext_resource type="Script" path="res://Assets/Scripts/main.gd" id="1_ii4nv"]
@@ -20,10 +20,11 @@
 [ext_resource type="Texture2D" uid="uid://c15krn1iopjih" path="res://Graphics/Rabbit/Rabbit.png" id="17_22cp1"]
 [ext_resource type="Texture2D" uid="uid://crhkx7ku4vfne" path="res://Graphics/DNA.png" id="17_v0bhs"]
 [ext_resource type="AudioStream" uid="uid://bobbyjsp1xlcb" path="res://Assets/Audio/Music/BGM.wav" id="18_3bs1d"]
-[ext_resource type="PackedScene" path="res://Assets/Scripts/Animals/Rabbit.tscn" id="18_055kk"]
-[ext_resource type="Texture2D" uid="uid://d0nbm1p5dxgbb" path="res://Assets/Characters/Fox/Idle/fox_idle1.png" id="19_6cvdm"]
+[ext_resource type="PackedScene" uid="uid://dxhnvxkn78rnb" path="res://Assets/Scripts/Animals/Rabbit.tscn" id="18_055kk"]
+[ext_resource type="Texture2D" uid="uid://d0nbm1p5dxgbb" path="res://Assets/Characters/fox/idle/fox_idle1.png" id="19_6cvdm"]
 [ext_resource type="PackedScene" uid="uid://dt5mducivgh0f" path="res://Assets/Scripts/Animals/fox.tscn" id="20_4ynms"]
 [ext_resource type="Texture2D" uid="uid://cpr18x0j6ig2g" path="res://Graphics/Bear/BearIcon.png" id="20_xweg1"]
+[ext_resource type="PackedScene" uid="uid://evjonwcnwwmn" path="res://Assets/Scripts/Animals/Bear.tscn" id="23_tk8hd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_47fab"]
 texture = ExtResource("1_lp1ne")
@@ -247,7 +248,7 @@ texture = ExtResource("20_xweg1")
 expand_mode = 4
 script = ExtResource("11_gm37g")
 animal_name = "Bear"
-animal_resource = ExtResource("18_055kk")
+animal_resource = ExtResource("23_tk8hd")
 description = "It's a Bear!"
 animal_parent = NodePath("../../../Animals/Hawks")
 
