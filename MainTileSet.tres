@@ -1,12 +1,9 @@
-[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://bc8k021l7fxkr"]
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://bc8k021l7fxkr"]
 
-[ext_resource type="Texture2D" uid="uid://dn4q72j81c618" path="res://Graphics/GrassTiles.png" id="1_4h20x"]
 [ext_resource type="Texture2D" uid="uid://d35ufd6iv5gh6" path="res://Graphics/SandTiles.png" id="2_byyyj"]
 [ext_resource type="Texture2D" uid="uid://c6mi7fuo6iipy" path="res://Graphics/TreeTiles.png" id="3_0fegl"]
-[ext_resource type="Texture2D" uid="uid://bhll4hk1gv5yq" path="res://Graphics/WaterTiles.png" id="4_7ryur"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2isp3"]
-texture = ExtResource("1_4h20x")
 2:0/0 = 0
 0:1/0 = 0
 1:1/0 = 0
@@ -39,7 +36,6 @@ texture = ExtResource("3_0fegl")
 3:3/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mis7y"]
-texture = ExtResource("4_7ryur")
 2:0/0 = 0
 0:1/0 = 0
 1:1/0 = 0
