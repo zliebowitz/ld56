@@ -377,13 +377,14 @@ all_quests = Array[ExtResource("27_cfmpe")]([ExtResource("28_y16lj"), ExtResourc
 stream = ExtResource("18_3bs1d")
 autoplay = true
 
-[node name="PopulationHUD" parent="." node_paths=PackedStringArray("squirrel_node", "hawk_node", "fox_node", "bear_node", "rabbit_node", "alligator_node") instance=ExtResource("27_3chdh")]
+[node name="PopulationHUD" parent="." node_paths=PackedStringArray("squirrel_node", "hawk_node", "fox_node", "bear_node", "rabbit_node", "alligator_node", "corpse_node") instance=ExtResource("27_3chdh")]
 squirrel_node = NodePath("../Animals/Squirrels")
 hawk_node = NodePath("../Animals/Hawks")
 fox_node = NodePath("../Animals/Fox")
 bear_node = NodePath("../Animals/Bear")
 rabbit_node = NodePath("../Animals/Rabbit")
 alligator_node = NodePath("../Animals/Alligator")
+corpse_node = NodePath("../Animals/Corpses")
 
 [connection signal="tile_placed" from="TileMapLayer" to="CanvasLayer" method="_on_tile_map_layer_tile_placed"]
 [connection signal="ui_tile_selected" from="CanvasLayer/GridContainer/UI_Tile" to="CanvasLayer" method="_on_ui_tile_selected"]

@@ -7,6 +7,7 @@ extends CanvasLayer
 @export var bear_node: Node
 @export var rabbit_node: Node
 @export var alligator_node: Node
+@export var corpse_node: Node
 
 var squirrels: int = 0
 var hawks: int = 0
@@ -30,4 +31,4 @@ func update_populations() -> void:
 	$GridContainer/BearPop.text = str(bear_node.get_child_count())
 	$GridContainer/RabbitPop.text = str(rabbit_node.get_child_count())
 	$GridContainer/HawkPop.text = str(hawk_node.get_child_count())
-	$GridContainer/CorpsePop.text = str(corpses.get_child_count())
+	$GridContainer/CorpsePop.text = str(corpse_node.get_child_count())

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://o8ok72imslx1"]
+[gd_scene load_steps=11 format=3 uid="uid://o8ok72imslx1"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/population_hud.gd" id="1_12xrf"]
 [ext_resource type="Texture2D" uid="uid://csyxanvy6pk00" path="res://Graphics/Squirrel/Squirrel Idle.png" id="1_88rwd"]
