@@ -1,9 +1,10 @@
 class_name Squirrel
 extends Animal
 	
-@export var ratio_to_reproduce: float = 0.2
+@export var max_drey_tile_distance: int = 4
 
 var wander_wait: float = 2.0
+var reproducing: bool = false
 
 func _process_action(delta: float) -> void:
 	match current_state:
@@ -14,7 +15,11 @@ func _process_action(delta: float) -> void:
 				advance_state()
 		STATE.SEEK_FOOD:
 			destination = tilemap.get_nearest_tile_absolute(position, -1, 0)
-			$AnimatedSprite2D.animation = "run"
+			if destination.x < 0 and destination.y < 0 and $AnimatedSprite2D.animation != "idle":
+				$AnimatedSprite2D.play("idle")
+				return
+			if not(destination.x < 0 and destination.y < 0):
+				$AnimatedSprite2D.play("run")
 			if move_towards_destination(delta):
 				create_dna()
 				var coords = tilemap.get_coord_from_position(destination)
@@ -25,19 +30,27 @@ func _process_action(delta: float) -> void:
 			if has_time_passed():
 				advance_state()
 		STATE.REPRODUCE_IF_ABLE:
-			if randf() > ratio_to_reproduce:
+			var drey_position = tilemap.get_nearest_tile_absolute(position, 4)
+			if not tilemap.is_in_bounds(tilemap.get_coord_from_position(drey_position)) and not reproducing:
+				$AnimatedSprite2D.animation = "idle"
+				return
+			#If too far from a Drey
+			destination = drey_position
+			if destination.distance_to(position) > max_drey_tile_distance * 32 and not reproducing:
 				advance_state()
 				return
+			reproducing = true
 			$AnimatedSprite2D.animation = "run"
-			destination = tilemap.get_nearest_tile_absolute(position, 4)
 			if move_towards_destination(delta):
 				var destination_tile = tilemap.get_coord_from_position(destination)
 				var drey_scene: SquirrelDrey = tilemap.get_tile_scene(destination_tile)
 				if drey_scene != null:
 					drey_scene.spawn_squirrel(self)
+				reproducing = false
 				advance_state()
 				return
 			if has_time_passed():
+				reproducing = false
 				advance_state()
 		STATE.RANDOM_WANDERING:
 			if wander_wait > 1.0:

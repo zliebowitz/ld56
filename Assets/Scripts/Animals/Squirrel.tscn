@@ -111,9 +111,8 @@ food_class = "Nut"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_h2t03")
-animation = &"idle"
+animation = &"run"
 autoplay = "idle"
-frame_progress = 0.540467
 speed_scale = 2.0
 
 [node name="BodyRadius" type="Area2D" parent="."]
