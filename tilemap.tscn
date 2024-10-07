@@ -33,7 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://bjk5287py1q8c" path="res://Assets/Scripts/Animals/Vulture.tscn" id="26_wd2ne"]
 [ext_resource type="PackedScene" uid="uid://o8ok72imslx1" path="res://population_hud.tscn" id="27_3chdh"]
 [ext_resource type="Texture2D" uid="uid://cthjdva18ynfm" path="res://Graphics/Vulture/VultureIdle.png" id="27_4rwws"]
-[ext_resource type="PackedScene" uid="uid://dnjo16lbkjih8" path="res://Assets/Scripts/Animals/Alligator.tscn" id="30_jl6hg"]
+[ext_resource type="PackedScene" uid="uid://l03fjibi0pxj" path="res://Assets/Scripts/Animals/Alligator.tscn" id="30_jl6hg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_47fab"]
 texture = ExtResource("1_lp1ne")
