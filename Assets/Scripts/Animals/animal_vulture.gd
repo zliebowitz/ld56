@@ -30,6 +30,7 @@ func _process_action(delta: float) -> void:
 			var nearest_tree_tile = tilemap.get_nearest_tile(position - Vector2.UP * 25, 3)
 			destination = tilemap.get_tile_center(nearest_tree_tile) + Vector2.UP * 25
 			if move_towards_destination(delta):
+				$AnimatedSprite2D.animation = "Idle"
 				advance_state()
 		STATE.WAIT:
 			$AnimatedSprite2D.animation = "Idle"

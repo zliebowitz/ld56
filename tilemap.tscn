@@ -164,6 +164,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ii4nv")
+metadata/_edit_horizontal_guides_ = [490.0]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 y_sort_enabled = true
@@ -205,16 +206,16 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 8
 size_flags_vertical = 8
-color = Color(0.403922, 0.509804, 0, 1)
+color = Color(0.151112, 0.314532, 0.147512, 1)
 
 [node name="GridContainer2" type="GridContainer" parent="CanvasLayer"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 70.0
-offset_top = -45.0
-offset_right = 314.0
-offset_bottom = -3.0
+offset_left = 89.44
+offset_top = -42.675
+offset_right = 265.44
+offset_bottom = -10.675
 grow_vertical = 0
 columns = 6
 
@@ -259,16 +260,16 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -175.0
-offset_top = -44.0
-offset_right = -10.0
-offset_bottom = -27.0
+offset_left = -135.835
+offset_top = -42.755
+offset_right = 0.165009
+offset_bottom = -26.755
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(2, 2)
 size_flags_horizontal = 4
 size_flags_vertical = 8
-columns = 11
+columns = 10
 
 [node name="UI_Squirrel" type="TextureRect" parent="CanvasLayer/GridContainer" node_paths=PackedStringArray("animal_parent")]
 layout_mode = 2
@@ -276,7 +277,8 @@ texture = SubResource("AtlasTexture_ucedu")
 script = ExtResource("11_gm37g")
 animal_name = "Squirrel"
 animal_resource = ExtResource("11_w0jgb")
-description = "Eats nuts every 20-30 seconds. Gives 10 dna when eating."
+description = "Squirrels eat nuts every 20-30 seconds. 
+Gives 10 DNA when eating."
 animal_parent = NodePath("../../../Animals/Squirrels")
 
 [node name="Ui_Hawks" type="TextureRect" parent="CanvasLayer/GridContainer" node_paths=PackedStringArray("animal_parent")]
@@ -285,7 +287,8 @@ texture = ExtResource("15_iqjxc")
 script = ExtResource("11_gm37g")
 animal_name = "Hawk"
 animal_resource = ExtResource("12_4q3w6")
-description = "Eats a squirrel or rabbit every 30-45 seconds. Gives 400 dna when eating."
+description = "Hawks eat a squirrel or rabbit every 30-45 seconds. 
+Gives 400 DNA when eating."
 animal_parent = NodePath("../../../Animals/Hawks")
 
 [node name="Ui_Bunny" type="TextureRect" parent="CanvasLayer/GridContainer" node_paths=PackedStringArray("animal_parent")]
@@ -295,7 +298,9 @@ expand_mode = 2
 script = ExtResource("11_gm37g")
 animal_name = "Rabbit"
 animal_resource = ExtResource("18_055kk")
-description = "Each rabbit spawns another rabbit every 30-60 seconds. Eats grass. If 4 rabbits eat eat the same grass tile, it turns into sand. Gives 30 dna when eating."
+description = "Rabbits reproduce every 30-60 seconds. 
+Eats grass. But turns it into sand if 4 rabbits are near.
+Gives 30 DNA when eating."
 animal_parent = NodePath("../../../Animals/Rabbit")
 
 [node name="Ui_Fox" type="TextureRect" parent="CanvasLayer/GridContainer" node_paths=PackedStringArray("animal_parent")]
@@ -304,7 +309,8 @@ texture = ExtResource("19_6cvdm")
 script = ExtResource("11_gm37g")
 animal_name = "Fox"
 animal_resource = ExtResource("20_4ynms")
-description = "Eats a rabbit, squirrel, or nut every 30-60 seconds. Gives 600 dna when eating."
+description = "Foxes eat a rabbit, squirrel, or nut every 30-60 seconds. 
+Gives 600 DNA when eating."
 animal_parent = NodePath("../../../Animals/Fox")
 
 [node name="UI_Vulture" type="TextureRect" parent="CanvasLayer/GridContainer" node_paths=PackedStringArray("animal_parent")]
@@ -314,7 +320,8 @@ expand_mode = 2
 script = ExtResource("11_gm37g")
 animal_name = "Vulture"
 animal_resource = ExtResource("26_wd2ne")
-description = "Vultures eat bone piles every 20-40 seconds. Gives 500 dna when eating."
+description = "Vultures eat bone piles every 20-40 seconds. 
+Gives 500 DNA when eating."
 animal_parent = NodePath("../../../Animals/Vulture")
 
 [node name="Ui_Alligator" type="TextureRect" parent="CanvasLayer/GridContainer" node_paths=PackedStringArray("animal_parent")]
@@ -325,8 +332,9 @@ flip_h = true
 script = ExtResource("11_gm37g")
 animal_name = "Alligator"
 animal_resource = ExtResource("30_jl6hg")
-description = "Eats all small land animals every 60-100 seconds. Gives 2000 dna when eating."
-animal_parent = NodePath("../../../Animals/Bear")
+description = "Alligators eat all small land animals every 60-100 seconds.
+Gives 2000 DNA when eating."
+animal_parent = NodePath("../../../Animals/Alligator")
 
 [node name="Ui_Bear" type="TextureRect" parent="CanvasLayer/GridContainer" node_paths=PackedStringArray("animal_parent")]
 layout_mode = 2
@@ -335,51 +343,70 @@ expand_mode = 2
 script = ExtResource("11_gm37g")
 animal_name = "Bear"
 animal_resource = ExtResource("23_tk8hd")
-description = "Eats small land animals  every 10-30 seconds. Gives 1500 dna when eating."
+description = "Bears eat small land animals every 10-30 seconds. 
+Gives 1500 DNA when eating."
 animal_parent = NodePath("../../../Animals/Bear")
 
 [node name="Description" type="ColorRect" parent="CanvasLayer"]
 visible = false
-offset_left = 606.0
-offset_top = 455.0
-offset_right = 915.0
+offset_left = 622.0
+offset_top = 424.0
+offset_right = 945.0
 offset_bottom = 528.0
 mouse_filter = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.129412, 0.27451, 0.12549, 1)
 
-[node name="TileName" type="RichTextLabel" parent="CanvasLayer/Description"]
+[node name="SecondColor" type="ColorRect" parent="CanvasLayer/Description"]
 layout_mode = 0
-offset_right = 80.0
-offset_bottom = 24.0
+offset_left = 8.415
+offset_top = 5.26
+offset_right = 315.725
+offset_bottom = 99.495
+mouse_filter = 2
+color = Color(0.186449, 0.331535, 0, 1)
 
-[node name="Cost" type="RichTextLabel" parent="CanvasLayer/Description"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -11.5
-offset_right = 182.0
-offset_bottom = 12.5
-grow_vertical = 2
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Description"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 6.0
+offset_right = 317.0
+offset_bottom = 98.0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
 
-[node name="Population" type="RichTextLabel" parent="CanvasLayer/Description"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -24.0
-offset_right = 249.0
-grow_vertical = 0
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Description/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
 
-[node name="TileDescription" type="RichTextLabel" parent="CanvasLayer/Description"]
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -192.0
-grow_horizontal = 0
-grow_vertical = 2
+[node name="TileDescription" type="RichTextLabel" parent="CanvasLayer/Description/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/normal_font_size = 13
+fit_content = true
+autowrap_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Description/MarginContainer"]
+layout_mode = 2
+
+[node name="TileName" type="RichTextLabel" parent="CanvasLayer/Description/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "TextName"
+fit_content = true
+
+[node name="Cost" type="RichTextLabel" parent="CanvasLayer/Description/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Cost"
+fit_content = true
+
+[node name="Population" type="RichTextLabel" parent="CanvasLayer/Description/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Population"
+fit_content = true
 
 [node name="Currency" type="HBoxContainer" parent="CanvasLayer"]
 anchors_preset = 2
