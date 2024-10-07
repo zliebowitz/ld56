@@ -22,8 +22,8 @@ static var base_cost = {
 	"Grass": 1,
 	"Sand": 1,
 	"Water": 1,
-	"Tree": 10,
-	"Drey": 200
+	"Tree": 20,
+	"Drey": 500
 }
 
 static var cost_scale = {
@@ -45,5 +45,7 @@ static func cost_from_id(tile_id: int) -> int:
 static func cost_from_name(tile_name: String) -> int:
 	var tile_base_cost = TileDefinition.base_cost[tile_name]
 	var tile_cost_scale = TileDefinition.cost_scale[tile_name]
-	var current_cost: int = tile_base_cost * pow(tile_cost_scale, tile_placed_count)
+	# There was some issues with tiles causing other tiles to be too expensive. 
+	# commented out scaling cost.
+	var current_cost: int = tile_base_cost #* pow(tile_cost_scale, tile_placed_count)
 	return current_cost

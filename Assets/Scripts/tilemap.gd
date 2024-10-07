@@ -59,7 +59,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			# Removed so you can place more than one tile
 			#is_placing_tile = false
 			#selected_tile_id = -1
-			tile_placed.emit()
+			#tile_placed.emit()
 			main._on_gain_dna(-current_cost)
 			TileDefinition.tile_placed_count += 1
 		elif is_placing_animal:
