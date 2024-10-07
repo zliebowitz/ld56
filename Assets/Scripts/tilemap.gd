@@ -272,9 +272,9 @@ func _update_border_layer(borderlayerindex):
 			surrounding_info.append(get_tile_info(Vector2i(x+1, y+1))[0])
 			
 			
-			# Treat tree tiles as grass.
+			# Treat tree and drey tiles as grass.
 			for i in surrounding_info.size():
-				if surrounding_info[i] == 3:
+				if surrounding_info[i] == 3 || surrounding_info[i] == 4:
 					surrounding_info[i] = 0
 			
 			# Determine which overlay to do.

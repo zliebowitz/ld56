@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://l03fjibi0pxj"]
+[gd_scene load_steps=15 format=3 uid="uid://dnjo16lbkjih8"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Animals/animal_alligator.gd" id="1_nu7oe"]
 [ext_resource type="Texture2D" uid="uid://4v0kib8paj4v" path="res://Graphics/Alligator/AlligatorMouthOpening.png" id="2_3qfnd"]
@@ -58,7 +58,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Float",
-"speed": 5.0
+"speed": 0.5
 }, {
 "frames": [{
 "duration": 1.0,
@@ -94,7 +94,7 @@ dna_on_feed = 20
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_d48wb")
-animation = &"Eat"
+animation = &"Float"
 autoplay = "Float"
 speed_scale = 2.0
 
