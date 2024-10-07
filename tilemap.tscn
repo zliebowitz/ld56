@@ -260,6 +260,7 @@ description = "It's a Bear!"
 animal_parent = NodePath("../../../Animals/Bear")
 
 [node name="Description" type="ColorRect" parent="CanvasLayer"]
+visible = false
 offset_left = 606.0
 offset_top = 455.0
 offset_right = 915.0
