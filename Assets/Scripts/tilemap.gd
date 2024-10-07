@@ -5,7 +5,8 @@ extends TileMapLayer
 @export var map_size: Vector2
 
 @onready var spritelayer: TileMapLayer = $SpriteLayer
-@onready var borderlayer: TileMapLayer = $BorderLayer
+@onready var grassborderlayer: TileMapLayer = $GrassBorderLayer
+@onready var sandborderlayer: TileMapLayer = $SandBorderLayer
 @onready var main: Main = $".."
 
 var id_map: Array[int]
@@ -31,7 +32,7 @@ func _ready() -> void:
 			var coords = Vector2i(x,y)
 			id_map.append(get_cell_source_id(coords))
 			sprite_id_map.append(spritelayer.get_cell_source_id(coords))
-	_update_border_layer()
+	_update_border_layers()
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("click"): 
@@ -111,7 +112,7 @@ func place_tile(coords: Vector2i, map_id: int = -1, sprite_id: int = -1):
 		else:
 			spritelayer.set_cell(coords, sprite_id, Vector2i(0, 0))
 		sprite_id_map[get_array_index(coords)] = sprite_id
-	_update_border_layer()
+	_update_border_layers()
 
 func clear_sprite(coords: Vector2i):
 	sprite_id_map[get_array_index(coords)] = -1
@@ -221,10 +222,30 @@ func can_process_pathfinding() -> bool:
 				#closest = animal
 	#return closest
 
+
+func _update_border_layers():
+	_update_border_layer(0)
+	_update_border_layer(1)
+
+
+
+# VERY IPORTANT!!!
+# VERY IPORTANT!!!
+# VERY IPORTANT!!!
+# VERY IPORTANT!!!
+#
+# Pretend this function doesn't exist
+#
 # I am sorry you have to lay eyes on such a gross function.
 # Please ignore it, pretend it doesn't exist.
 # If something breaks, continue ignoring it, and compain in Travis' direction.
-func _update_border_layer():
+func _update_border_layer(borderlayerindex):
+	var borderlayer:TileMapLayer
+	match borderlayerindex:
+		0:
+			borderlayer = grassborderlayer
+		1: 
+			borderlayer = sandborderlayer
 	for y in range(1, map_size.y-1):
 		for x in range(1, map_size.x-1):
 			var coords = Vector2i(x, y)
@@ -253,11 +274,15 @@ func _update_border_layer():
 					surrounding_info[i] = 0
 			
 			# Determine which overlay to do.
-			# Current ordering is grass -> sand
-			var dominant_border = 0
-			
-			if center_tile_info == dominant_border:
+			var dominant_border = borderlayerindex
+			if center_tile_info == borderlayerindex || !surrounding_info.has(borderlayerindex):
 				dominant_border = -1
+			
+			
+			# If the tile is grass, don't do anything on it. Grass is always on top
+			if center_tile_info == 0:
+				dominant_border = -1
+			
 			
 			# Format a unique string based on the surrounding dominant tiles.
 			var border_string:String = ""
@@ -310,6 +335,14 @@ func _update_border_layer():
 				tile_position = Vector2i(1,6)
 			elif border[2] && border[5]:
 				tile_position = Vector2i(1,5)
+			elif border[0] && border[2]:
+				tile_position = Vector2i(2,9)
+			elif border[5] && border[7]:
+				tile_position = Vector2i(1,9)
+			elif border[0] && border[5]:
+				tile_position = Vector2i(3,9)
+			elif border[2] && border[7]:
+				tile_position = Vector2i(4,9)
 			# Single Corners
 			elif border[0]:
 				tile_position = Vector2i(4,5)

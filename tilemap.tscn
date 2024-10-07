@@ -158,11 +158,17 @@ map_size = Vector2(28, 15)
 z_index = -1
 y_sort_enabled = true
 tile_set = SubResource("TileSet_8s1cn")
+y_sort_origin = 1
 collision_enabled = false
 
-[node name="BorderLayer" type="TileMapLayer" parent="TileMapLayer"]
+[node name="SandBorderLayer" type="TileMapLayer" parent="TileMapLayer"]
 y_sort_enabled = true
 tile_set = ExtResource("2_0ak7v")
+
+[node name="GrassBorderLayer" type="TileMapLayer" parent="TileMapLayer"]
+y_sort_enabled = true
+tile_set = ExtResource("2_0ak7v")
+y_sort_origin = 9
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("gridcontainer", "tilemap")]
 script = ExtResource("4_j5su3")
