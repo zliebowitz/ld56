@@ -260,7 +260,6 @@ description = "It's a Bear!"
 animal_parent = NodePath("../../../Animals/Bear")
 
 [node name="Description" type="ColorRect" parent="CanvasLayer"]
-visible = false
 offset_left = 606.0
 offset_top = 455.0
 offset_right = 915.0
@@ -278,9 +277,9 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -12.0
-offset_right = 80.0
-offset_bottom = 12.0
+offset_top = -11.5
+offset_right = 182.0
+offset_bottom = 12.5
 grow_vertical = 2
 
 [node name="Population" type="RichTextLabel" parent="CanvasLayer/Description"]
@@ -338,11 +337,13 @@ text = "0
 
 [node name="Alligator" type="Node" parent="Animals"]
 
+[node name="Corpses" type="Node" parent="Animals"]
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_3bs1d")
 autoplay = true
 
-[node name="PopulationHUD" parent="." node_paths=PackedStringArray("squirrels", "hawks", "fox", "bear", "rabbit", "alligator") instance=ExtResource("27_3chdh")]
+[node name="PopulationHUD" parent="." node_paths=PackedStringArray("squirrels", "hawks", "fox", "bear", "rabbit", "alligator", "corpses") instance=ExtResource("27_3chdh")]
 script = ExtResource("28_gluq0")
 squirrels = NodePath("../Animals/Squirrels")
 hawks = NodePath("../Animals/Hawks")
@@ -350,6 +351,7 @@ fox = NodePath("../Animals/Fox")
 bear = NodePath("../Animals/Bear")
 rabbit = NodePath("../Animals/Rabbit")
 alligator = NodePath("../Animals/Alligator")
+corpses = NodePath("../Animals/Corpses")
 
 [connection signal="tile_placed" from="TileMapLayer" to="CanvasLayer" method="_on_tile_map_layer_tile_placed"]
 [connection signal="ui_tile_selected" from="CanvasLayer/GridContainer/UI_Tile" to="CanvasLayer" method="_on_ui_tile_selected"]
