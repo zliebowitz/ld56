@@ -165,6 +165,7 @@ timed_states = Array[int]([0])
 animal_name = "Hawk"
 movement_mode = 1
 speed = 75.0
+dna_on_feed = 100
 initial_state = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

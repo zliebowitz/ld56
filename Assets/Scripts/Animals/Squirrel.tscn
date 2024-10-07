@@ -106,7 +106,7 @@ timed_states = Array[int]([0, 2])
 animal_name = "Squirrel"
 speed = 50.0
 dna_value = 10
-dna_on_feed = 1
+dna_on_feed = 10
 food_class = "Nut"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

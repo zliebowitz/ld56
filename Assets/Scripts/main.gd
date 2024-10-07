@@ -2,7 +2,8 @@ class_name Main
 
 extends Node2D
 
-var dna: int = 20000;
+var dna: int = 50;
+
 
 
 func _ready() -> void:

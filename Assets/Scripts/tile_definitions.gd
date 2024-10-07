@@ -18,19 +18,19 @@ static var name = {
 }
 
 static var base_cost = {
-	"Grass": 2,
-	"Sand": 2,
-	"Water": 2,
-	"Tree": 2,
-	"Drey": 4
+	"Grass": 1,
+	"Sand": 1,
+	"Water": 1,
+	"Tree": 5,
+	"Drey": 500
 }
 
 static var cost_scale = {
-	"Grass": 2,
-	"Sand": 2,
-	"Water": 2,
-	"Tree": 2,
-	"Drey": 2
+	"Grass": 1.2,
+	"Sand": 1.1,
+	"Water": 1.2,
+	"Tree": 1.7,
+	"Drey": 2.5
 }
 
 static var sprite_ids = {
