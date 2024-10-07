@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4v0kib8paj4v"
-path="res://.godot/imported/AlligatorMouthOpening.png-eb57b6a5fee809f760e395feac29c100.ctex"
+uid="uid://f8o0rqioqe0n"
+path="res://.godot/imported/AlligatorEmerging.png-2c2cc45edc00a21eab7743db1b63749e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/AlligatorMouthOpening.png"
-dest_files=["res://.godot/imported/AlligatorMouthOpening.png-eb57b6a5fee809f760e395feac29c100.ctex"]
+source_file="res://Graphics/Alligator/AlligatorEmerging.png"
+dest_files=["res://.godot/imported/AlligatorEmerging.png-2c2cc45edc00a21eab7743db1b63749e.ctex"]
 
 [params]
 

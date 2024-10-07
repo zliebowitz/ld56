@@ -7,6 +7,7 @@ enum {
 	ANIMAL_ALLIGATOR = 3,
 	ANIMAL_RABBIT = 4,
 	ANIMAL_BEAR = 5,
+	ANIMAL_VULTURE = 6
 }
 
 static var name = {
@@ -16,6 +17,7 @@ static var name = {
 	3: "Alligator",
 	4: "Rabbit",
 	5: "Bear",
+	6: "Vulture"
 }
 
 static var base_cost = {
@@ -25,6 +27,7 @@ static var base_cost = {
 	"Alligator": 5,
 	"Rabbit": 150,
 	"Bear": 500,
+	"Vulture": 20
 }
 
 static var cost_scale = {
@@ -34,6 +37,7 @@ static var cost_scale = {
 	"Alligator": 1.2,
 	"Rabbit": 1.5,
 	"Bear": 1.2,
+	"Vulture": 1.5
 }
 
 static func cost_from_id(animal_id: int, animal_count:int) -> int:

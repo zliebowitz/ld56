@@ -132,11 +132,12 @@ animations = [{
 radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xngri"]
-radius = 48.0
+radius = 32.0
 
 [node name="Rabbit" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_5ysy0")
+number_to_strip_grass = 4.0
 state_list = Array[int]([1, 3, 5, 4])
 state_timers = Array[float]([10.0, 3.0, 5.0, 5.0])
 timed_states = Array[int]([0])

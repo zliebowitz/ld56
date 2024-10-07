@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://c5cff1stfno0j"]
+[gd_scene load_steps=46 format=4 uid="uid://c5cff1stfno0j"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/main.gd" id="1_ii4nv"]
 [ext_resource type="Texture2D" uid="uid://oha2ecvftva" path="res://Graphics/GrassTiles0.png" id="1_lp1ne"]
@@ -27,12 +27,11 @@
 [ext_resource type="Texture2D" uid="uid://d0nbm1p5dxgbb" path="res://Assets/Characters/fox/idle/fox_idle1.png" id="19_6cvdm"]
 [ext_resource type="PackedScene" uid="uid://dt5mducivgh0f" path="res://Assets/Scripts/Animals/fox.tscn" id="20_4ynms"]
 [ext_resource type="Texture2D" uid="uid://cpr18x0j6ig2g" path="res://Graphics/Bear/BearIcon.png" id="20_xweg1"]
-[ext_resource type="PackedScene" uid="uid://6r11eambm1jv" path="res://Assets/Scripts/Animals/Bear.tscn" id="23_tk8hd"]
+[ext_resource type="PackedScene" uid="uid://evjonwcnwwmn" path="res://Assets/Scripts/Animals/Bear.tscn" id="23_tk8hd"]
+[ext_resource type="Texture2D" uid="uid://d1e6jexgl4ldi" path="res://Graphics/Alligator/AlligatorRunning.png" id="25_d7rkx"]
 [ext_resource type="PackedScene" uid="uid://o8ok72imslx1" path="res://population_hud.tscn" id="27_3chdh"]
-[ext_resource type="Script" path="res://Assets/Scripts/quest_log.gd" id="27_3gpde"]
-[ext_resource type="Script" path="res://Assets/Scripts/Quest Resources/Quest_base.gd" id="27_cfmpe"]
-[ext_resource type="Resource" uid="uid://dw21dtim6mlty" path="res://Assets/Scripts/Quest Resources/Quest_squirrel.tres" id="28_y16lj"]
-[ext_resource type="Resource" uid="uid://cfa7nrik2q3s4" path="res://Assets/Scripts/Quest Resources/Quest_hawk.tres" id="29_a013u"]
+[ext_resource type="Texture2D" uid="uid://cthjdva18ynfm" path="res://Graphics/Vulture/VultureIdle.png" id="27_4rwws"]
+[ext_resource type="PackedScene" uid="uid://l03fjibi0pxj" path="res://Assets/Scripts/Animals/Alligator.tscn" id="30_jl6hg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_47fab"]
 texture = ExtResource("1_lp1ne")
@@ -147,6 +146,14 @@ sources/0 = SubResource("TileSetScenesCollectionSource_ajo5h")
 atlas = ExtResource("11_p7808")
 region = Rect2(0, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2qqk"]
+atlas = ExtResource("27_4rwws")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4b64"]
+atlas = ExtResource("25_d7rkx")
+region = Rect2(0, 0, 30.7483, 18)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_puyxw"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
@@ -252,7 +259,7 @@ grow_vertical = 0
 scale = Vector2(2, 2)
 size_flags_horizontal = 4
 size_flags_vertical = 8
-columns = 5
+columns = 11
 
 [node name="UI_Squirrel" type="TextureRect" parent="CanvasLayer/GridContainer" node_paths=PackedStringArray("animal_parent")]
 layout_mode = 2
@@ -290,6 +297,27 @@ animal_name = "Rabbit"
 animal_resource = ExtResource("18_055kk")
 description = "It's a Rabbit!"
 animal_parent = NodePath("../../../Animals/Rabbit")
+
+[node name="UI_Vulture" type="TextureRect" parent="CanvasLayer/GridContainer" node_paths=PackedStringArray("animal_parent")]
+layout_mode = 2
+texture = SubResource("AtlasTexture_l2qqk")
+expand_mode = 2
+script = ExtResource("11_gm37g")
+animal_name = "Vulture"
+animal_resource = ExtResource("30_jl6hg")
+description = "It's a Vulture!"
+animal_parent = NodePath("../../../Animals/Vulture")
+
+[node name="Ui_Alligator" type="TextureRect" parent="CanvasLayer/GridContainer" node_paths=PackedStringArray("animal_parent")]
+layout_mode = 2
+texture = SubResource("AtlasTexture_u4b64")
+expand_mode = 2
+flip_h = true
+script = ExtResource("11_gm37g")
+animal_name = "Alligator"
+animal_resource = ExtResource("30_jl6hg")
+description = "Alligators!"
+animal_parent = NodePath("../../../Animals/Bear")
 
 [node name="Ui_Bear" type="TextureRect" parent="CanvasLayer/GridContainer" node_paths=PackedStringArray("animal_parent")]
 layout_mode = 2
@@ -366,6 +394,7 @@ text = "0
 "
 
 [node name="QuestLog" type="ItemList" parent="CanvasLayer"]
+visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -380,8 +409,6 @@ theme_override_styles/hovered = SubResource("StyleBoxFlat_vxhhn")
 theme_override_styles/selected = SubResource("StyleBoxFlat_vxhhn")
 allow_search = false
 auto_height = true
-script = ExtResource("27_3gpde")
-all_quests = Array[ExtResource("27_cfmpe")]([ExtResource("28_y16lj"), ExtResource("29_a013u")])
 
 [node name="Animals" type="Node" parent="."]
 
@@ -398,6 +425,8 @@ all_quests = Array[ExtResource("27_cfmpe")]([ExtResource("28_y16lj"), ExtResourc
 [node name="Alligator" type="Node" parent="Animals"]
 
 [node name="Corpses" type="Node" parent="Animals"]
+
+[node name="Vulture" type="Node" parent="Animals"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_3bs1d")
@@ -425,5 +454,9 @@ corpse_node = NodePath("../Animals/Corpses")
 [connection signal="ui_animal_selected" from="CanvasLayer/GridContainer/Ui_Fox" to="CanvasLayer" method="_on_animal_selected"]
 [connection signal="gui_input" from="CanvasLayer/GridContainer/Ui_Bunny" to="CanvasLayer/GridContainer/Ui_Bunny" method="_on_gui_input"]
 [connection signal="ui_animal_selected" from="CanvasLayer/GridContainer/Ui_Bunny" to="CanvasLayer" method="_on_animal_selected"]
+[connection signal="gui_input" from="CanvasLayer/GridContainer/UI_Vulture" to="CanvasLayer/GridContainer/UI_Vulture" method="_on_gui_input"]
+[connection signal="ui_animal_selected" from="CanvasLayer/GridContainer/UI_Vulture" to="CanvasLayer" method="_on_animal_selected"]
+[connection signal="gui_input" from="CanvasLayer/GridContainer/Ui_Alligator" to="CanvasLayer/GridContainer/Ui_Alligator" method="_on_gui_input"]
+[connection signal="ui_animal_selected" from="CanvasLayer/GridContainer/Ui_Alligator" to="CanvasLayer" method="_on_animal_selected"]
 [connection signal="gui_input" from="CanvasLayer/GridContainer/Ui_Bear" to="CanvasLayer/GridContainer/Ui_Bear" method="_on_gui_input"]
 [connection signal="ui_animal_selected" from="CanvasLayer/GridContainer/Ui_Bear" to="CanvasLayer" method="_on_animal_selected"]

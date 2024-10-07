@@ -11,8 +11,9 @@ func initialize():
 	tilemap = get_tree().root.get_node("Main/TileMapLayer")
 	main = get_tree().root.get_node("Main")
 	population_hud = get_tree().root.get_node("Main/PopulationHUD")
-	questlog = get_tree().root.get_node("Main/CanvasLayer/QuestLog")
+	#questlog = get_tree().root.get_node("Main/CanvasLayer/QuestLog")
 
 func update_populations():
+	await get_tree().process_frame
 	population_hud.update_populations()
-	questlog.check_quests()
+	#questlog.check_quests()

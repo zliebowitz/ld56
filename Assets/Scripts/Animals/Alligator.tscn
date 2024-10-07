@@ -1,0 +1,114 @@
+[gd_scene load_steps=15 format=3 uid="uid://l03fjibi0pxj"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/Animals/animal_alligator.gd" id="1_nu7oe"]
+[ext_resource type="Texture2D" uid="uid://4v0kib8paj4v" path="res://Graphics/Alligator/AlligatorMouthOpening.png" id="2_3qfnd"]
+[ext_resource type="Texture2D" uid="uid://u34vehdyb3cf" path="res://Graphics/Alligator/AlligatorFloating.png" id="3_dlago"]
+[ext_resource type="Texture2D" uid="uid://d1e6jexgl4ldi" path="res://Graphics/Alligator/AlligatorRunning.png" id="4_8f0x4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8miwx"]
+atlas = ExtResource("2_3qfnd")
+region = Rect2(0, 0, 92, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1u6em"]
+atlas = ExtResource("2_3qfnd")
+region = Rect2(92, 0, 92, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8shb"]
+atlas = ExtResource("2_3qfnd")
+region = Rect2(184, 0, 92, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rthak"]
+atlas = ExtResource("3_dlago")
+region = Rect2(0, 0, 92, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jaks0"]
+atlas = ExtResource("3_dlago")
+region = Rect2(92, 0, 92, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssqjo"]
+atlas = ExtResource("4_8f0x4")
+region = Rect2(0, 0, 92, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kwn4"]
+atlas = ExtResource("4_8f0x4")
+region = Rect2(92, 0, 92, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d48wb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8miwx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1u6em")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8shb")
+}],
+"loop": true,
+"name": &"Eat",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rthak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jaks0")
+}],
+"loop": true,
+"name": &"Float",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssqjo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kwn4")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y4vg8"]
+radius = 150.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c61tx"]
+radius = 16.0
+
+[node name="Alligator" type="Node2D"]
+z_index = 2
+y_sort_enabled = true
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_nu7oe")
+state_list = Array[int]([1, 0, 3])
+state_timers = Array[float]([45.0, 17.0, 5.0])
+timed_states = Array[int]([0, 1])
+animal_name = "Alligator"
+movement_mode = 2
+speed = 60.0
+cost = 5
+dna_on_feed = 20
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_d48wb")
+animation = &"Eat"
+autoplay = "Float"
+speed_scale = 2.0
+
+[node name="SearchRadius" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SearchRadius"]
+visible = false
+shape = SubResource("CircleShape2D_y4vg8")
+
+[node name="BodyRadius" type="Area2D" parent="."]
+visible = false
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyRadius"]
+visible = false
+shape = SubResource("CircleShape2D_c61tx")
