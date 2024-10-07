@@ -1,19 +1,18 @@
 extends Node
 
-@onready var tilemap: WorldMapLayer:
-	get:
-		if tilemap == null:
-			tilemap = get_tree().root.get_node("Main/TileMapLayer")
-		return tilemap
-
-@onready var main: Node2D:
-	get: 
-		if main == null: 
-			main = get_tree().root.get_node("Main")
-		return main
+var tilemap: WorldMapLayer
+var main: Node2D
+var population_hud: CanvasLayer
+var questlog: QuestLog
 		
 var creature_count: int = 0
 
-func add_creature_count() -> void:
-	creature_count = creature_count + 1
-	#print("Creature Count: ", creature_count, " Frame: ", Engine.get_frames_drawn())
+func initialize():
+	tilemap = get_tree().root.get_node("Main/TileMapLayer")
+	main = get_tree().root.get_node("Main")
+	population_hud = get_tree().root.get_node("Main/PopulationHUD")
+	questlog = get_tree().root.get_node("Main/CanvasLayer/QuestLog")
+
+func update_populations():
+	population_hud.update_populations()
+	questlog.check_quests()

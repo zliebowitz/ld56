@@ -32,6 +32,7 @@ signal gain_dna(dna_value: int)
 @onready var tilemap: WorldMapLayer = GlobalManager.tilemap
 @onready var current_state : STATE = initial_state
 @onready var corpse_scene: PackedScene = preload("res://Assets/Scenes/corpse.tscn")
+@onready var population_hud: CanvasLayer = GlobalManager.population_hud
 
 var time_in_state : float = 0
 var index: int = 0
@@ -48,7 +49,7 @@ func _ready() -> void:
 	var main = GlobalManager.main
 	add_to_group("animal")
 	gain_dna.connect(main._on_gain_dna)
-	GlobalManager.add_creature_count()
+	GlobalManager.update_populations()
 
 
 func _process(delta: float) -> void:
@@ -111,6 +112,8 @@ func kill() -> void:
 	new_corpse.set_bones(small_animal)
 	new_corpse.position = position
 	get_parent().get_parent().find_child("Corpses").add_child(new_corpse)
+	add_sibling(new_corpse)
+	GlobalManager.update_populations()
 	queue_free()
 
 func can_process_pathfinding() -> bool:

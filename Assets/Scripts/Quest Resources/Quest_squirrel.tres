@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=2 format=3 uid="uid://dw21dtim6mlty"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/Quest Resources/Quest_base.gd" id="1_y0oh5"]
+
+[resource]
+script = ExtResource("1_y0oh5")
+requirements = {
+"squirrels": 3
+}
+unlock = Array[String](["Hawk"])
+dna_reward = 0
+text = "Have 3 Squirrels."

@@ -1,5 +1,5 @@
 class_name SquirrelDrey
-extends Sprite2D
+extends Tile
 
 var coords: Vector2i
 @onready var squirrel_scene: PackedScene = preload("res://Assets/Scripts/Animals/Squirrel.tscn")

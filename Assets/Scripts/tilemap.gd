@@ -27,6 +27,7 @@ var process_kneecap: float = 0.0
 signal tile_placed
 
 func _ready() -> void:
+	GlobalManager.initialize()
 	for y in map_size.y:
 		for x in map_size.x:
 			var coords = Vector2i(x,y)
@@ -34,11 +35,13 @@ func _ready() -> void:
 			sprite_id_map.append(spritelayer.get_cell_source_id(coords))
 	_update_border_layers()
 
-func _unhandled_input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("click"): 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("click"):
 		var mouse_pos := get_global_mouse_position()
 		var coords = floor(mouse_pos/tile_size)
 		var cell_id = get_cell_source_id(coords)
+		
+		get_viewport().set_input_as_handled()
 		
 		#If we haven't initialized a tile there, don't place a new one
 		if cell_id == -1:

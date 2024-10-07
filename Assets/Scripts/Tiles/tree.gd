@@ -1,5 +1,5 @@
 class_name Tree_Tile
-extends Sprite2D
+extends Tile
 
 @onready var tilemap: WorldMapLayer = GlobalManager.tilemap
 @onready var timer = $Timer
