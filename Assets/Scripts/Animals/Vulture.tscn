@@ -132,7 +132,7 @@ animal_name = "Vulture"
 movement_mode = 1
 speed = 50.0
 cost = 50
-dna_on_feed = 10
+dna_on_feed = 500
 initial_state = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

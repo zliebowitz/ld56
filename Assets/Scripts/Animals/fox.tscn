@@ -201,7 +201,7 @@ animal_name = "Fox"
 speed = 70.0
 cost = 5
 dna_value = 20
-dna_on_feed = 2
+dna_on_feed = 600
 food_class = "Squirrel"
 
 [node name="FoxAnimation" type="AnimatedSprite2D" parent="."]

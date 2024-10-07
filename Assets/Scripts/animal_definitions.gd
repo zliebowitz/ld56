@@ -22,12 +22,12 @@ static var name = {
 
 static var base_cost = {
 	"Squirrel": 10,
-	"Hawk": 200,
-	"Fox": 100,
-	"Alligator": 5,
-	"Rabbit": 150,
-	"Bear": 500,
-	"Vulture": 20
+	"Hawk": 150,
+	"Fox": 500,
+	"Alligator": 2000,
+	"Rabbit": 200,
+	"Bear": 9000,
+	"Vulture": 1000
 }
 
 static var cost_scale = {
@@ -35,9 +35,9 @@ static var cost_scale = {
 	"Hawk": 1.2,
 	"Fox": 1.2,
 	"Alligator": 1.2,
-	"Rabbit": 1.5,
+	"Rabbit": 1.05,
 	"Bear": 1.2,
-	"Vulture": 1.5
+	"Vulture": 1.1
 }
 
 static func cost_from_id(animal_id: int, animal_count:int) -> int:

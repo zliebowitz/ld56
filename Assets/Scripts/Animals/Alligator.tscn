@@ -84,13 +84,13 @@ y_sort_enabled = true
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_nu7oe")
 state_list = Array[int]([1, 0, 3])
-state_timers = Array[float]([45.0, 17.0, 5.0])
+state_timers = Array[float]([20.0, 20.0, 60.0])
 timed_states = Array[int]([0, 1])
 animal_name = "Alligator"
 movement_mode = 2
 speed = 60.0
 cost = 5
-dna_on_feed = 20
+dna_on_feed = 2000
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_d48wb")

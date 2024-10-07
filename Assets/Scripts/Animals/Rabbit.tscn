@@ -144,6 +144,7 @@ timed_states = Array[int]([0])
 animal_name = "Rabbit"
 speed = 40.0
 cost = 15
+dna_on_feed = 30
 initial_state = 1
 food_class = "Grass"
 
