@@ -112,7 +112,6 @@ func kill() -> void:
 	new_corpse.set_bones(small_animal)
 	new_corpse.position = position
 	get_parent().get_parent().find_child("Corpses").add_child(new_corpse)
-	add_sibling(new_corpse)
 	GlobalManager.update_populations()
 	queue_free()
 
