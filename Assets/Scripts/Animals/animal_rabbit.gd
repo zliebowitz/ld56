@@ -5,7 +5,7 @@ var rabbit_scene: PackedScene = preload("res://Assets/Scripts/Animals/Rabbit.tsc
 @onready var sprite2d = $RabbitAnimation
 
 @export var feed_to_reproduce: int = 3
-@export var ratio_to_strip_grass: float = 0.1
+@export var number_to_strip_grass: float = 0.1
 
 var eat_counter := 0
 var is_waiting = false
@@ -18,7 +18,7 @@ func _process_action(delta: float) -> void:
 			destination = tilemap.get_nearest_tile_absolute(position, 0)
 			if move_towards_destination(delta):
 				eat_counter = eat_counter + 1
-				if randf() < ratio_to_strip_grass:
+				if get_number_in_radius() > number_to_strip_grass:
 					var destination_tile = tilemap.get_coord_from_position(destination)
 					#If the tile isn't still grass, don't do anything
 					if not tilemap.get_tile_info(destination_tile)[0] == 0: return
@@ -60,6 +60,17 @@ func _process_action(delta: float) -> void:
 	if direction < 0:
 		direction += 2*PI
 	$RabbitAnimation.set_flip_h(direction > PI/2 && direction < 3*PI/2 )
+	
+func get_number_in_radius() -> int:
+	if not has_node("SearchRadius"): return -1
+	var search_radius: Area2D = $SearchRadius
+	var areas := search_radius.get_overlapping_areas()
+	var creature_count = 0
+	for area in areas:
+		var animal = area.get_parent()
+		if is_instance_of(animal, Rabbit) and animal != self:
+			creature_count = creature_count + 1
+	return creature_count
 			
 func updateAnimation():
 	match current_state:

@@ -17,11 +17,11 @@ func _ready() -> void:
 
 
 func _on_timer_timeout() -> void:
-	var valid_adjacents := adjacent_coordinates
+	var valid_adjacents := adjacent_coordinates.duplicate()
 	while(valid_adjacents.size() > 0):
 		var test_coord: Vector2i = valid_adjacents.pick_random()
 		var test_info := tilemap.get_tile_info(test_coord)
-		if not test_info[0] in [2,3] and not test_info[1] in [0]:
+		if test_info[0] in [0,1] and not test_info[1] in [0]:
 			tilemap.place_tile(test_coord, -1, 0)
 			break
 		valid_adjacents.erase(test_coord)

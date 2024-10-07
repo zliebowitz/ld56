@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://f8o0rqioqe0n"
-path="res://.godot/imported/AlligatorEmerging.png-89e5614d6219e8a296106b7663701ed8.ctex"
+uid="uid://d1e6jexgl4ldi"
+path="res://.godot/imported/AlligatorRunning.png-a755716332e78910018253a1e7ea4a92.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/AlligatorEmerging.png"
-dest_files=["res://.godot/imported/AlligatorEmerging.png-89e5614d6219e8a296106b7663701ed8.ctex"]
+source_file="res://Graphics/Alligator/AlligatorRunning.png"
+dest_files=["res://.godot/imported/AlligatorRunning.png-a755716332e78910018253a1e7ea4a92.ctex"]
 
 [params]
 
