@@ -25,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://d0nbm1p5dxgbb" path="res://Assets/Characters/fox/idle/fox_idle1.png" id="19_6cvdm"]
 [ext_resource type="PackedScene" uid="uid://dt5mducivgh0f" path="res://Assets/Scripts/Animals/fox.tscn" id="20_4ynms"]
 [ext_resource type="Texture2D" uid="uid://cpr18x0j6ig2g" path="res://Graphics/Bear/BearIcon.png" id="20_xweg1"]
-[ext_resource type="PackedScene" path="res://Assets/Scripts/Animals/Bear.tscn" id="23_tk8hd"]
+[ext_resource type="PackedScene" uid="uid://6r11eambm1jv" path="res://Assets/Scripts/Animals/Bear.tscn" id="23_tk8hd"]
 [ext_resource type="PackedScene" path="res://population_hud.tscn" id="27_3chdh"]
 [ext_resource type="Script" path="res://Assets/Scripts/quest_log.gd" id="27_3gpde"]
 [ext_resource type="Script" path="res://Assets/Scripts/Quest Resources/Quest_base.gd" id="27_cfmpe"]
