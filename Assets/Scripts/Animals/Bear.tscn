@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://evjonwcnwwmn"]
+[gd_scene load_steps=15 format=3 uid="uid://6r11eambm1jv"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Animals/animal_bear.gd" id="1_5ysy0"]
 [ext_resource type="Texture2D" uid="uid://b81n4no5aw0qn" path="res://Graphics/Bear/BearingEating.png" id="2_duley"]
@@ -9,14 +9,6 @@ atlas = ExtResource("2_duley")
 region = Rect2(0, 0, 38, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6micy"]
-atlas = ExtResource("2_duley")
-region = Rect2(38, 0, 38, 22)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w2y1g"]
-atlas = ExtResource("2_duley")
-region = Rect2(0, 0, 38, 22)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n20jr"]
 atlas = ExtResource("2_duley")
 region = Rect2(38, 0, 38, 22)
 
@@ -36,6 +28,14 @@ region = Rect2(76, 0, 38, 22)
 atlas = ExtResource("3_s1kdo")
 region = Rect2(114, 0, 38, 22)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2y1g"]
+atlas = ExtResource("2_duley")
+region = Rect2(0, 0, 38, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n20jr"]
+atlas = ExtResource("2_duley")
+region = Rect2(38, 0, 38, 22)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_dtw6q"]
 animations = [{
 "frames": [{
@@ -46,18 +46,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_6micy")
 }],
 "loop": true,
-"name": &"Idle",
-"speed": 3.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w2y1g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n20jr")
-}],
-"loop": true,
-"name": &"Love",
+"name": &"Eat",
 "speed": 3.0
 }, {
 "frames": [{
@@ -76,6 +65,17 @@ animations = [{
 "loop": true,
 "name": &"Run",
 "speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2y1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n20jr")
+}],
+"loop": true,
+"name": &"Sleep",
+"speed": 3.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gjmrt"]
@@ -87,8 +87,8 @@ radius = 48.0
 [node name="Bear" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_5ysy0")
-state_list = Array[int]([1, 3, 5, 4])
-state_timers = Array[float]([10.0, 3.0, 5.0, 5.0])
+state_list = Array[int]([1, 3, 5, 0])
+state_timers = Array[float]([30.0, 3.0, 5.0, 10.0])
 timed_states = Array[int]([0])
 animal_name = "Bear"
 speed = 40.0
@@ -98,7 +98,7 @@ food_class = "Grass"
 
 [node name="BearAnimation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dtw6q")
-animation = &"Idle"
+animation = &"Eat"
 speed_scale = 2.0
 
 [node name="BodyRadius" type="Area2D" parent="."]
