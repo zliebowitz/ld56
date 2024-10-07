@@ -17,9 +17,8 @@ func _process_action(delta: float) -> void:
 			$AnimatedSprite2D.animation = "run"
 			if move_towards_destination(delta):
 				create_dna()
-				if randf() < 0.75:		#75% chance to eat the nuts
-					var coords = tilemap.get_coord_from_position(destination)
-					tilemap.clear_sprite(coords)
+				var coords = tilemap.get_coord_from_position(destination)
+				tilemap.clear_sprite(coords)
 				advance_state()
 		STATE.WAIT:
 			$AnimatedSprite2D.animation = "idle"

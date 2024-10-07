@@ -56,8 +56,9 @@ func _unhandled_input(event: InputEvent) -> void:
 				return
 			#place the tile
 			place_tile(coords, selected_tile_id)
-			is_placing_tile = false
-			selected_tile_id = -1
+			# Removed so you can place more than one tile
+			#is_placing_tile = false
+			#selected_tile_id = -1
 			tile_placed.emit()
 			main._on_gain_dna(-current_cost)
 			TileDefinition.tile_placed_count += 1
