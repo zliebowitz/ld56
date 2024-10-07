@@ -13,16 +13,16 @@ func _ready() -> void:
 
 func _process(delta):
 	if(show_animal_info && $Description.visible):
-		$Description/TileName.text = selected_name
-		$Description/TileDescription.text = selected_description
-		$Description/Cost.text = "Cost: " + str(AnimalDefinition.cost_from_name(selected_name, selected_animal_parent.get_child_count()))
-		$Description/Population.text = "Population: " + str(selected_animal_parent.get_child_count())
+		$Description/MarginContainer/VBoxContainer/TileName.text = selected_name
+		$Description/MarginContainer/HBoxContainer/TileDescription.text = selected_description
+		$Description/MarginContainer/VBoxContainer/Cost.text = "Cost: " + str(AnimalDefinition.cost_from_name(selected_name, selected_animal_parent.get_child_count()))
+		$Description/MarginContainer/VBoxContainer/Population.text = "Population: " + str(selected_animal_parent.get_child_count())
 		
 	elif(!show_animal_info && $Description.visible):
-		$Description/TileName.text = selected_name
-		$Description/TileDescription.text = selected_description
-		$Description/Cost.text = "Cost: " + str(TileDefinition.cost_from_name(selected_name))
-		$Description/Population.text = ""
+		$Description/MarginContainer/VBoxContainer/TileName.text = selected_name
+		$Description/MarginContainer/HBoxContainer/TileDescription.text = selected_description
+		$Description/MarginContainer/VBoxContainer/Cost.text = "Cost: " + str(TileDefinition.cost_from_name(selected_name))
+		$Description/MarginContainer/VBoxContainer/Population.text = ""
 		
 
 func _on_tile_map_layer_tile_selected() -> void:
@@ -30,9 +30,9 @@ func _on_tile_map_layer_tile_selected() -> void:
 
 func _on_ui_tile_selected(tilename: String, tile_id: int, description: String) -> void:
 	tilemap.select_tile(tile_id)
-	$Description/TileName.text = tilename
-	$Description/TileDescription.text = description
-	$Description/Population.text = ""
+	$Description/MarginContainer/VBoxContainer/TileName.text = tilename
+	$Description/MarginContainer/HBoxContainer/TileDescription.text = description
+	$Description/MarginContainer/VBoxContainer/Population.text = ""
 	$Description.visible = true
 	selected_name = tilename
 	selected_description = description
@@ -40,10 +40,10 @@ func _on_ui_tile_selected(tilename: String, tile_id: int, description: String) -
 
 func _on_animal_selected(animal_name: String, animal_resource: PackedScene, descriptor: String, animal_parent: Node) -> void:
 	tilemap.select_animal(animal_name, animal_resource, animal_parent)
-	$Description/TileName.text = animal_name
-	$Description/TileDescription.text = descriptor
-	$Description/Cost.text = "Cost: " + str(AnimalDefinition.cost_from_name(animal_name, animal_parent.get_child_count()))
-	$Description/Population.text = "Population: " + str(animal_parent.get_child_count())
+	$Description/MarginContainer/VBoxContainer/TileName.text = animal_name
+	$Description/MarginContainer/HBoxContainer/TileDescription.text = descriptor
+	$Description/MarginContainer/VBoxContainer/Cost.text = "Cost: " + str(AnimalDefinition.cost_from_name(animal_name, animal_parent.get_child_count()))
+	$Description/MarginContainer/VBoxContainer/Population.text = "Population: " + str(animal_parent.get_child_count())
 	$Description.visible = true
 	selected_name = animal_name
 	selected_description = descriptor

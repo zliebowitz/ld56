@@ -16,7 +16,7 @@ region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bukie"]
 atlas = ExtResource("5_d2ovt")
-region = Rect2(0, 0, 16, 16)
+region = Rect2(0, 0, 28.5619, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3i7ju"]
 atlas = ExtResource("8_76np0")
@@ -24,6 +24,11 @@ region = Rect2(0, 0, 16, 16)
 
 [node name="PopulationHUD" type="CanvasLayer"]
 script = ExtResource("1_12xrf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 78.0
+offset_bottom = 404.0
+color = Color(0.152941, 0.313726, 0.14902, 0.368627)
 
 [node name="GridContainer" type="GridContainer" parent="."]
 offset_right = 40.0
@@ -94,6 +99,7 @@ text = "0"
 layout_mode = 2
 texture = SubResource("AtlasTexture_bukie")
 expand_mode = 4
+flip_h = true
 
 [node name="AlligatorPop" type="RichTextLabel" parent="GridContainer"]
 custom_minimum_size = Vector2(64, 32)
