@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=2 format=3 uid="uid://dk73cnl516jcd"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/Quest Resources/Quest_base.gd" id="1_fofh1"]
+
+[resource]
+script = ExtResource("1_fofh1")
+requirements = {}
+unlock = Array[String]([])
+dna_reward = 0
+text = ""
