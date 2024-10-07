@@ -19,4 +19,4 @@ func _on_timer_timeout() -> void:
 		# if the tile is grass, grow a tree
 	if test_info[0] == 0:
 		tilemap.place_tile(coordinate, 3)
-	queue_free()
+	tilemap.clear_sprite(coordinate)
