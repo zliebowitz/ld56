@@ -14,13 +14,13 @@
 atlas = ExtResource("1_88rwd")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bukie"]
-atlas = ExtResource("5_d2ovt")
-region = Rect2(0, 0, 28.5619, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_3i7ju"]
 atlas = ExtResource("8_76np0")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bukie"]
+atlas = ExtResource("5_d2ovt")
+region = Rect2(0, 0, 28.5619, 16)
 
 [node name="PopulationHUD" type="CanvasLayer"]
 script = ExtResource("1_12xrf")
@@ -72,23 +72,24 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "0"
 
-[node name="Bear_UI" type="TextureRect" parent="GridContainer"]
-layout_mode = 2
-texture = ExtResource("4_nx7xq")
-
-[node name="BearPop" type="RichTextLabel" parent="GridContainer"]
-custom_minimum_size = Vector2(64, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "0"
-
 [node name="Fox_UI" type="TextureRect" parent="GridContainer"]
 layout_mode = 2
 texture = ExtResource("5_nnoog")
 expand_mode = 4
 
 [node name="FoxPop" type="RichTextLabel" parent="GridContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "0"
+
+[node name="Vulture_UI" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_3i7ju")
+expand_mode = 4
+
+[node name="VulturePop" type="RichTextLabel" parent="GridContainer"]
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -108,12 +109,11 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "0"
 
-[node name="Vulture_UI" type="TextureRect" parent="GridContainer"]
+[node name="Bear_UI" type="TextureRect" parent="GridContainer"]
 layout_mode = 2
-texture = SubResource("AtlasTexture_3i7ju")
-expand_mode = 4
+texture = ExtResource("4_nx7xq")
 
-[node name="VulturePop" type="RichTextLabel" parent="GridContainer"]
+[node name="BearPop" type="RichTextLabel" parent="GridContainer"]
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
 size_flags_horizontal = 4
