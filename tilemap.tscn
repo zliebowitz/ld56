@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Assets/Scripts/main.gd" id="1_ii4nv"]
 [ext_resource type="Texture2D" uid="uid://oha2ecvftva" path="res://Graphics/GrassTiles0.png" id="1_lp1ne"]
 [ext_resource type="Texture2D" uid="uid://d35ufd6iv5gh6" path="res://Graphics/SandTiles.png" id="1_q30io"]
-[ext_resource type="TileSet" uid="uid://db78icqgtq0ae" path="res://Assets/Tiles/TileMapLayerTileset.tres" id="2_0ak7v"]
+[ext_resource type="TileSet" uid="uid://bj2vv3b53loa4" path="res://Assets/Tiles/TileMapLayerTileset.tres" id="2_0ak7v"]
 [ext_resource type="Script" path="res://Assets/Scripts/tilemap.gd" id="2_fvnuu"]
 [ext_resource type="Texture2D" uid="uid://iq2vdmbaleq2" path="res://Assets/Tiles/Water.png" id="2_v1vw5"]
 [ext_resource type="Texture2D" uid="uid://dtge44bcrhpee" path="res://Graphics/WaterTiles0.png" id="3_wganx"]
@@ -21,12 +21,12 @@
 [ext_resource type="Texture2D" uid="uid://c15krn1iopjih" path="res://Graphics/Rabbit/Rabbit.png" id="17_22cp1"]
 [ext_resource type="Texture2D" uid="uid://crhkx7ku4vfne" path="res://Graphics/DNA.png" id="17_v0bhs"]
 [ext_resource type="AudioStream" uid="uid://bobbyjsp1xlcb" path="res://Assets/Audio/Music/BGM.wav" id="18_3bs1d"]
-[ext_resource type="PackedScene" uid="uid://dxhnvxkn78rnb" path="res://Assets/Scripts/Animals/Rabbit.tscn" id="18_055kk"]
+[ext_resource type="PackedScene" path="res://Assets/Scripts/Animals/Rabbit.tscn" id="18_055kk"]
 [ext_resource type="Texture2D" uid="uid://d0nbm1p5dxgbb" path="res://Assets/Characters/fox/idle/fox_idle1.png" id="19_6cvdm"]
 [ext_resource type="PackedScene" uid="uid://dt5mducivgh0f" path="res://Assets/Scripts/Animals/fox.tscn" id="20_4ynms"]
 [ext_resource type="Texture2D" uid="uid://cpr18x0j6ig2g" path="res://Graphics/Bear/BearIcon.png" id="20_xweg1"]
-[ext_resource type="PackedScene" uid="uid://evjonwcnwwmn" path="res://Assets/Scripts/Animals/Bear.tscn" id="23_tk8hd"]
-[ext_resource type="PackedScene" uid="uid://o8ok72imslx1" path="res://population_hud.tscn" id="27_3chdh"]
+[ext_resource type="PackedScene" path="res://Assets/Scripts/Animals/Bear.tscn" id="23_tk8hd"]
+[ext_resource type="PackedScene" path="res://population_hud.tscn" id="27_3chdh"]
 [ext_resource type="Script" path="res://Assets/Scripts/quest_log.gd" id="27_3gpde"]
 [ext_resource type="Script" path="res://Assets/Scripts/Quest Resources/Quest_base.gd" id="27_cfmpe"]
 [ext_resource type="Resource" uid="uid://dw21dtim6mlty" path="res://Assets/Scripts/Quest Resources/Quest_squirrel.tres" id="28_y16lj"]
@@ -255,6 +255,15 @@ animal_resource = ExtResource("12_4q3w6")
 description = "It's a hawk!"
 animal_parent = NodePath("../../../Animals/Hawks")
 
+[node name="Ui_Fox" type="TextureRect" parent="CanvasLayer/GridContainer" node_paths=PackedStringArray("animal_parent")]
+layout_mode = 2
+texture = ExtResource("19_6cvdm")
+script = ExtResource("11_gm37g")
+animal_name = "Fox"
+animal_resource = ExtResource("20_4ynms")
+description = "It's a fox!"
+animal_parent = NodePath("../../../Animals/Fox")
+
 [node name="Ui_Bunny" type="TextureRect" parent="CanvasLayer/GridContainer" node_paths=PackedStringArray("animal_parent")]
 layout_mode = 2
 texture = ExtResource("17_22cp1")
@@ -264,15 +273,6 @@ animal_name = "Rabbit"
 animal_resource = ExtResource("18_055kk")
 description = "It's a Rabbit!"
 animal_parent = NodePath("../../../Animals/Rabbit")
-
-[node name="Ui_Fox" type="TextureRect" parent="CanvasLayer/GridContainer" node_paths=PackedStringArray("animal_parent")]
-layout_mode = 2
-texture = ExtResource("19_6cvdm")
-script = ExtResource("11_gm37g")
-animal_name = "Fox"
-animal_resource = ExtResource("20_4ynms")
-description = "It's a fox!"
-animal_parent = NodePath("../../../Animals/Fox")
 
 [node name="Ui_Bear" type="TextureRect" parent="CanvasLayer/GridContainer" node_paths=PackedStringArray("animal_parent")]
 layout_mode = 2
@@ -402,9 +402,9 @@ corpse_node = NodePath("../Animals/Corpses")
 [connection signal="ui_animal_selected" from="CanvasLayer/GridContainer/UI_Squirrel" to="CanvasLayer" method="_on_animal_selected"]
 [connection signal="gui_input" from="CanvasLayer/GridContainer/Ui_Hawks" to="CanvasLayer/GridContainer/Ui_Hawks" method="_on_gui_input"]
 [connection signal="ui_animal_selected" from="CanvasLayer/GridContainer/Ui_Hawks" to="CanvasLayer" method="_on_animal_selected"]
-[connection signal="gui_input" from="CanvasLayer/GridContainer/Ui_Bunny" to="CanvasLayer/GridContainer/Ui_Bunny" method="_on_gui_input"]
-[connection signal="ui_animal_selected" from="CanvasLayer/GridContainer/Ui_Bunny" to="CanvasLayer" method="_on_animal_selected"]
 [connection signal="gui_input" from="CanvasLayer/GridContainer/Ui_Fox" to="CanvasLayer/GridContainer/Ui_Fox" method="_on_gui_input"]
 [connection signal="ui_animal_selected" from="CanvasLayer/GridContainer/Ui_Fox" to="CanvasLayer" method="_on_animal_selected"]
+[connection signal="gui_input" from="CanvasLayer/GridContainer/Ui_Bunny" to="CanvasLayer/GridContainer/Ui_Bunny" method="_on_gui_input"]
+[connection signal="ui_animal_selected" from="CanvasLayer/GridContainer/Ui_Bunny" to="CanvasLayer" method="_on_animal_selected"]
 [connection signal="gui_input" from="CanvasLayer/GridContainer/Ui_Bear" to="CanvasLayer/GridContainer/Ui_Bear" method="_on_gui_input"]
 [connection signal="ui_animal_selected" from="CanvasLayer/GridContainer/Ui_Bear" to="CanvasLayer" method="_on_animal_selected"]
