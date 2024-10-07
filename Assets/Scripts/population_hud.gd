@@ -6,6 +6,7 @@ extends CanvasLayer
 @export var bear: Node
 @export var rabbit: Node
 @export var alligator: Node
+@export var corpses: Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,3 +21,4 @@ func _process(delta: float) -> void:
 	$GridContainer/BearPop.text = str(bear.get_child_count())
 	$GridContainer/RabbitPop.text = str(rabbit.get_child_count())
 	$GridContainer/HawkPop.text = str(hawks.get_child_count())
+	$GridContainer/CorpsePop.text = str(corpses.get_child_count())

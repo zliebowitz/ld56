@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://o8ok72imslx1"]
+[gd_scene load_steps=10 format=3 uid="uid://o8ok72imslx1"]
 
 [ext_resource type="Texture2D" uid="uid://csyxanvy6pk00" path="res://Graphics/Squirrel/Squirrel Idle.png" id="1_88rwd"]
 [ext_resource type="Texture2D" uid="uid://8b6jbsbvouq2" path="res://Graphics/Hawk/Idle/hawk_idle1.png" id="2_cl5d6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cpr18x0j6ig2g" path="res://Graphics/Bear/BearIcon.png" id="4_nx7xq"]
 [ext_resource type="Texture2D" uid="uid://d1e6jexgl4ldi" path="res://Graphics/AlligatorRunning.png" id="5_d2ovt"]
 [ext_resource type="Texture2D" uid="uid://d0nbm1p5dxgbb" path="res://Assets/Characters/fox/idle/fox_idle1.png" id="5_nnoog"]
+[ext_resource type="Texture2D" uid="uid://gx63iok0f2hm" path="res://Graphics/Bones0.png" id="7_ieol5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0tnln"]
 atlas = ExtResource("1_88rwd")
@@ -88,6 +89,18 @@ texture = SubResource("AtlasTexture_bukie")
 expand_mode = 4
 
 [node name="AlligatorPop" type="RichTextLabel" parent="GridContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "0"
+
+[node name="Corpse_UI" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+texture = ExtResource("7_ieol5")
+expand_mode = 4
+
+[node name="CorpsePop" type="RichTextLabel" parent="GridContainer"]
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
 size_flags_horizontal = 4
