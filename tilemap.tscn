@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://c5cff1stfno0j"]
+[gd_scene load_steps=43 format=4 uid="uid://c5cff1stfno0j"]
 
 [ext_resource type="Texture2D" uid="uid://btue1udj2y7bs" path="res://Assets/Tiles/Grassland.png" id="1_72vrb"]
 [ext_resource type="Script" path="res://Assets/Scripts/main.gd" id="1_ii4nv"]
@@ -27,7 +27,10 @@
 [ext_resource type="Texture2D" uid="uid://cpr18x0j6ig2g" path="res://Graphics/Bear/BearIcon.png" id="20_xweg1"]
 [ext_resource type="PackedScene" uid="uid://evjonwcnwwmn" path="res://Assets/Scripts/Animals/Bear.tscn" id="23_tk8hd"]
 [ext_resource type="PackedScene" uid="uid://o8ok72imslx1" path="res://population_hud.tscn" id="27_3chdh"]
-[ext_resource type="Script" path="res://Assets/Scripts/population_hud.gd" id="28_gluq0"]
+[ext_resource type="Script" path="res://Assets/Scripts/quest_log.gd" id="27_3gpde"]
+[ext_resource type="Script" path="res://Assets/Scripts/Quest Resources/Quest_base.gd" id="27_cfmpe"]
+[ext_resource type="Resource" uid="uid://dw21dtim6mlty" path="res://Assets/Scripts/Quest Resources/Quest_squirrel.tres" id="28_y16lj"]
+[ext_resource type="Resource" uid="uid://cfa7nrik2q3s4" path="res://Assets/Scripts/Quest Resources/Quest_hawk.tres" id="29_a013u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_47fab"]
 texture = ExtResource("1_lp1ne")
@@ -141,6 +144,12 @@ sources/0 = SubResource("TileSetScenesCollectionSource_ajo5h")
 [sub_resource type="AtlasTexture" id="AtlasTexture_ucedu"]
 atlas = ExtResource("11_p7808")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_puyxw"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxhhn"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ii4nv")
@@ -330,6 +339,24 @@ size_flags_horizontal = 4
 text = "0
 "
 
+[node name="QuestLog" type="ItemList" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -255.0
+offset_top = 1.0
+offset_right = -3.0
+offset_bottom = 25.0
+grow_horizontal = 0
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxFlat_puyxw")
+theme_override_styles/hovered = SubResource("StyleBoxFlat_vxhhn")
+theme_override_styles/selected = SubResource("StyleBoxFlat_vxhhn")
+allow_search = false
+auto_height = true
+script = ExtResource("27_3gpde")
+all_quests = Array[ExtResource("27_cfmpe")]([ExtResource("28_y16lj"), ExtResource("29_a013u")])
+
 [node name="Animals" type="Node" parent="."]
 
 [node name="Squirrels" type="Node" parent="Animals"]
@@ -350,15 +377,13 @@ text = "0
 stream = ExtResource("18_3bs1d")
 autoplay = true
 
-[node name="PopulationHUD" parent="." node_paths=PackedStringArray("squirrels", "hawks", "fox", "bear", "rabbit", "alligator", "corpses") instance=ExtResource("27_3chdh")]
-script = ExtResource("28_gluq0")
-squirrels = NodePath("../Animals/Squirrels")
-hawks = NodePath("../Animals/Hawks")
-fox = NodePath("../Animals/Fox")
-bear = NodePath("../Animals/Bear")
-rabbit = NodePath("../Animals/Rabbit")
-alligator = NodePath("../Animals/Alligator")
-corpses = NodePath("../Animals/Corpses")
+[node name="PopulationHUD" parent="." node_paths=PackedStringArray("squirrel_node", "hawk_node", "fox_node", "bear_node", "rabbit_node", "alligator_node") instance=ExtResource("27_3chdh")]
+squirrel_node = NodePath("../Animals/Squirrels")
+hawk_node = NodePath("../Animals/Hawks")
+fox_node = NodePath("../Animals/Fox")
+bear_node = NodePath("../Animals/Bear")
+rabbit_node = NodePath("../Animals/Rabbit")
+alligator_node = NodePath("../Animals/Alligator")
 
 [connection signal="tile_placed" from="TileMapLayer" to="CanvasLayer" method="_on_tile_map_layer_tile_placed"]
 [connection signal="ui_tile_selected" from="CanvasLayer/GridContainer/UI_Tile" to="CanvasLayer" method="_on_ui_tile_selected"]
