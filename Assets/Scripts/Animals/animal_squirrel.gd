@@ -1,7 +1,7 @@
 class_name Squirrel
 extends Animal
 	
-@export var max_drey_tile_distance: int = 4
+@export var max_drey_tile_distance: int = 3
 
 var wander_wait: float = 2.0
 var reproducing: bool = false
@@ -33,7 +33,7 @@ func _process_action(delta: float) -> void:
 			var drey_position = tilemap.get_nearest_tile_absolute(position, 4)
 			if not tilemap.is_in_bounds(tilemap.get_coord_from_position(drey_position)) and not reproducing:
 				$AnimatedSprite2D.animation = "idle"
-				
+				advance_state()
 				return
 			#If too far from a Drey
 			destination = drey_position
